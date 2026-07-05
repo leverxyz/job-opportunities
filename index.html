@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Opportunity Board</title>
+<style>
+  :root {
+    --paper:      #f6f6f4;
+    --card:       #ffffff;
+    --row-alt:    #f4f5f7;
+    --line:       #e4e5e9;
+    --ink:        #1c1d21;
+    --ink-soft:   #6b6d76;
+    --ink-faint:  #9a9ca4;
+    --blueprint:  #1f3a5f;
+    --red:   #c2352b; --red-bg:   #fbe9e7;
+    --amber: #9a6a00; --amber-bg: #fbf1d9;
+    --green: #2f7a4d; --green-bg: #e7f3ea;
+    --blue:  #2b5aa0; --blue-bg:  #e8eff8;
+    --teal:  #1f7a75; --teal-bg:  #e3f2f0;
+    --gray-pill: #eceef1;
+    --radius: 14px;
+    --mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#17181b; --card:#1f2024; --row-alt:#26272c; --line:#313239;
+      --ink:#ececee; --ink-soft:#a4a6ad; --ink-faint:#6f717a; --blueprint:#7fa8d6;
+      --red-bg:#3a1f1d; --amber-bg:#352c14; --green-bg:#17301f; --blue-bg:#1c2a3f; --teal-bg:#153030;
+      --gray-pill:#2c2d33;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans);
+    -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.5; }
+
+  /* password gate */
+  #gate { position: fixed; inset: 0; z-index: 50; background: var(--paper);
+    display: flex; align-items: center; justify-content: center; padding: 24px; }
+  #gate .box { width: 100%; max-width: 360px; text-align: center; }
+  #gate .mark { font-family: var(--mono); font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--blueprint); margin-bottom: 18px; }
+  #gate h1 { font-size: 20px; margin: 0 0 6px; font-weight: 600; }
+  #gate p { color: var(--ink-soft); margin: 0 0 24px; font-size: 13px; }
+  #gate input { width: 100%; padding: 12px 14px; font-size: 15px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--card); color: var(--ink); outline: none; font-family: var(--sans); }
+  #gate input:focus { border-color: var(--blueprint); }
+  #gate button { width: 100%; margin-top: 10px; padding: 12px 14px; font-size: 15px; font-weight: 600;
+    color: #fff; background: var(--blueprint); border: none; border-radius: 10px; cursor: pointer; }
+  #gate button:active { opacity: .85; }
+  #gate .err { color: var(--red); font-size: 13px; margin-top: 12px; min-height: 18px; }
+
+  /* app */
+  #app { display: none; max-width: 1320px; margin: 0 auto; padding: 28px 22px 60px; }
+  header.board { margin-bottom: 18px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--blueprint); margin-bottom: 6px; }
+  h1.title { font-size: 24px; font-weight: 650; margin: 0 0 4px; letter-spacing: -.2px; }
+  .meta { color: var(--ink-faint); font-size: 12.5px; }
+  .meta b { color: var(--ink-soft); font-weight: 600; }
+
+  .controls { display: flex; gap: 8px; margin: 16px 0 14px; flex-wrap: wrap; }
+  .seg { display: inline-flex; background: var(--gray-pill); border-radius: 9px; padding: 3px; }
+  .seg button { border: none; background: transparent; color: var(--ink-soft); font-family: var(--sans);
+    font-size: 12.5px; font-weight: 600; padding: 6px 14px; border-radius: 7px; cursor: pointer; }
+  .seg button.on { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+  .tablewrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 1120px; }
+  thead th { position: sticky; top: 0; z-index: 2; background: var(--card); text-align: left;
+    font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: var(--ink-faint);
+    font-weight: 600; padding: 13px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  tbody td { padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: var(--row-alt); }
+  tbody tr:hover { background: color-mix(in srgb, var(--blueprint) 6%, transparent); }
+
+  .job { font-weight: 600; color: var(--ink); }
+  .jobid { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
+  .loc { color: var(--ink-soft); white-space: nowrap; }
+  .desc { color: var(--ink-soft); max-width: 340px; }
+  .keydates { color: var(--ink-soft); white-space: normal; max-width: 200px; }
+  .mag { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+  .srctype { font-weight: 600; color: var(--ink); }
+  .srcdetail { color: var(--ink-faint); font-size: 12px; margin-top: 3px; max-width: 200px; }
+
+  .chip { display: inline-block; margin-bottom: 6px; padding: 2px 8px; font-size: 11px;
+    font-weight: 600; border-radius: 999px; white-space: nowrap; }
+  .chip.red { color: var(--red); background: var(--red-bg); }
+  .chip.amber { color: var(--amber); background: var(--amber-bg); }
+  .chip.green { color: var(--green); background: var(--green-bg); }
+
+  .pill { display: inline-block; padding: 3px 9px; font-size: 11px; font-weight: 600;
+    border-radius: 999px; white-space: nowrap; color: var(--ink-soft); background: var(--gray-pill); }
+  .setaside { font-family: var(--mono); font-size: 10.5px; letter-spacing: .3px; }
+  .setaside.none { color: var(--ink-faint); background: transparent; padding-left: 0; }
+
+  /* status colors */
+  .st-new       { color: var(--blue);  background: var(--blue-bg); }
+  .st-review    { color: var(--amber); background: var(--amber-bg); }
+  .st-interested{ color: var(--teal);  background: var(--teal-bg); }
+  .st-bidding   { color: #fff;         background: var(--blueprint); }
+  .st-submitted { color: var(--green); background: var(--green-bg); }
+  .st-archive   { color: var(--ink-faint); background: var(--gray-pill); }
+
+  .empty { padding: 48px 20px; text-align: center; color: var(--ink-faint); }
+  footer.note { margin-top: 16px; text-align: center; color: var(--ink-faint); font-size: 11.5px; }
+  @media (max-width: 560px) { #app { padding: 18px 12px 40px; } h1.title { font-size: 20px; } }
+</style>
+</head>
+<body>
+
+  <div id="gate">
+    <div class="box">
+      <div class="mark">Concord CE</div>
+      <h1>Job Opportunity Board</h1>
+      <p>Enter the team password to view.</p>
+      <input id="pw" type="password" placeholder="Password" autocomplete="current-password" />
+      <button id="go">View board</button>
+      <div class="err" id="err"></div>
+    </div>
+  </div>
+
+  <div id="app">
+    <header class="board">
+      <div class="eyebrow">Concord CE</div>
+      <h1 class="title">Job Opportunity Board</h1>
+      <div class="meta"><b id="count">0</b> open opportunities · updated <b id="updated">—</b></div>
+    </header>
+
+    <div class="controls">
+      <div class="seg" id="filter">
+        <button data-f="open" class="on">Open</button>
+        <button data-f="all">All</button>
+        <button data-f="archive">Archived</button>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Job</th>
+              <th>Set Aside</th>
+              <th>Location</th>
+              <th>Key Dates</th>
+              <th>Magnitude</th>
+              <th>Description</th>
+              <th>Source</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="note">Read-only · maintained automatically · sorted by soonest bid due</footer>
+  </div>
+
+<script>
+  // ---- CONFIG: change this password. Soft gate only, not real security. ----
+  const PASSWORD = "concord2026";
+  const STORAGE_KEY = "jobboard_ok";
+
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  };
+
+  const gate = document.getElementById('gate');
+  const app  = document.getElementById('app');
+  const pw   = document.getElementById('pw');
+  const err  = document.getElementById('err');
+
+  function unlock(){ gate.style.display='none'; app.style.display='block'; load(); }
+  function tryPw(){
+    if (pw.value === PASSWORD){ store.set(STORAGE_KEY,'1'); unlock(); }
+    else { err.textContent = 'Incorrect password.'; pw.value=''; pw.focus(); }
+  }
+  document.getElementById('go').addEventListener('click', tryPw);
+  pw.addEventListener('keydown', e => { if(e.key==='Enter') tryPw(); });
+  if (store.get(STORAGE_KEY)==='1') { unlock(); } else { pw.focus(); }
+
+  // ---- helpers ----
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const multiline = s => esc(s).replace(/\n/g, '<br>');
+
+  function fmtDate(iso){
+    if (!iso) return '—';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return esc(iso);
+    return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+
+  function dueChip(iso){
+    if (!iso) return '';
+    const today = new Date(); today.setHours(0,0,0,0);
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return '';
+    const days = Math.round((d - today) / 86400000);
+    let cls, label;
+    if (days < 0)        { cls='red';   label = Math.abs(days)+' day'+(Math.abs(days)===1?'':'s')+' overdue'; }
+    else if (days === 0) { cls='red';   label = 'bid due today'; }
+    else if (days <= 3)  { cls='red';   label = 'bid due in '+days+' day'+(days===1?'':'s'); }
+    else if (days <= 14) { cls='amber'; label = 'bid due in '+days+' days'; }
+    else                 { cls='green'; label = 'bid due in '+days+' days'; }
+    return '<span class="chip '+cls+'">'+label+'</span>';
+  }
+
+  function setAsidePill(v){
+    if (!v || v === 'None') return '<span class="pill setaside none">—</span>';
+    return '<span class="pill setaside">'+esc(v)+'</span>';
+  }
+
+  const STATUS_ORDER = { 'new':1,'review':2,'interested':3,'bidding':4,'submitted':5,'archive':6 };
+  function statusPill(s){
+    const key = String(s||'New').toLowerCase();
+    const cls = 'st-' + (STATUS_ORDER[key] ? key : 'new');
+    return '<span class="pill '+cls+'">'+esc(s||'New')+'</span>';
+  }
+
+  let allJobs = [];
+  let filter = 'open';
+
+  function isArchived(j){ return String(j.status||'').toLowerCase() === 'archive'; }
+
+  function render(){
+    const rows = document.getElementById('rows');
+    let list = allJobs.slice();
+    if (filter === 'open')    list = list.filter(j => !isArchived(j));
+    if (filter === 'archive') list = list.filter(j => isArchived(j));
+
+    list.sort((a,b) => {
+      if (!a.bidDueDate) return 1;
+      if (!b.bidDueDate) return -1;
+      return a.bidDueDate < b.bidDueDate ? -1 : a.bidDueDate > b.bidDueDate ? 1 : 0;
+    });
+
+    document.getElementById('count').textContent = allJobs.filter(j => !isArchived(j)).length;
+
+    if (!list.length){
+      rows.innerHTML = '<tr><td colspan="8"><div class="empty">No jobs to show.</div></td></tr>';
+      return;
+    }
+
+    rows.innerHTML = list.map(j => `
+      <tr>
+        <td><div class="job">${esc(j.jobName)}</div><div class="jobid">${esc(j.id||'')}</div></td>
+        <td>${setAsidePill(j.setAside)}</td>
+        <td class="loc">${esc(j.location)}</td>
+        <td class="keydates">${dueChip(j.bidDueDate)}<div>${multiline(j.keyDates)}</div></td>
+        <td class="mag">${esc(j.magnitude || '—')}</td>
+        <td class="desc">${multiline(j.projectDescription)}</td>
+        <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
+        <td>${statusPill(j.status)}</td>
+      </tr>`).join('');
+  }
+
+  document.querySelectorAll('#filter button').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#filter button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      filter = b.dataset.f;
+      render();
+    });
+  });
+
+  async function load(){
+    try {
+      const res = await fetch('data.json?t=' + Date.now());
+      const data = await res.json();
+      allJobs = Array.isArray(data.jobs) ? data.jobs : [];
+      if (data.updated) document.getElementById('updated').textContent = fmtDate(data.updated.slice(0,10));
+      render();
+    } catch (e) {
+      document.getElementById('rows').innerHTML =
+        '<tr><td colspan="8"><div class="empty">Could not load data.json.</div></td></tr>';
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "board": "Concord CE — Job Opportunity Board",
+  "updated": "2026-07-05T00:00:00Z",
+  "jobs": [
+    {
+      "id": "2026-0007",
+      "jobName": "Building 14 Reroof — EPDM Replacement",
+      "projectDescription": "Full tear-off and replacement of ~5,000 SF EPDM membrane on a historic NPS visitor facility. Tapered insulation to correct ponding, new perimeter edge metal, two RTU curbs. Historic building — flashing details coordinated with SHPO.",
+      "setAside": "SDVOSB",
+      "sourceType": "BidNet",
+      "sourceDetail": "BidNet Direct — solicitation NPS-24-R-0142",
+      "location": "Bridgeport, CT",
+      "magnitude": "~$340K",
+      "keyDates": "Site walk: Jul 8 (recommended)\nRFIs due: Jul 12\nBid due: Jul 18, 2:00 PM ET",
+      "bidDueDate": "2026-07-18",
+      "status": "Interested"
+    },
+    {
+      "id": "2026-0006",
+      "jobName": "Elementary School Gymnasium Roof — TPO",
+      "projectDescription": "Subcontract invite from Reilly. ~18,000 SF TPO over existing metal deck, mechanically attached. Phased summer work, hard completion before school reopens.",
+      "setAside": "None",
+      "sourceType": "GC Email",
+      "sourceDetail": "estimating@reillyconstruction.com — repeat GC",
+      "location": "New Haven, CT",
+      "magnitude": "$600K–650K",
+      "keyDates": "Pre-bid walk: Jul 15\nBid due: Jul 24",
+      "bidDueDate": "2026-07-24",
+      "status": "Bidding"
+    },
+    {
+      "id": "2026-0005",
+      "jobName": "Municipal Garage Roof Repairs",
+      "projectDescription": "Localized repairs and recoat on a low-slope built-up roof. Smaller scope, quick turnaround.",
+      "setAside": "Small Business",
+      "sourceType": "Direct",
+      "sourceDetail": "purchasing@fairfieldct.org",
+      "location": "Fairfield, CT",
+      "magnitude": "~$72K",
+      "keyDates": "Bid due: Aug 5",
+      "bidDueDate": "2026-08-05",
+      "status": "Review"
+    }
+  ]
+}
