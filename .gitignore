@@ -1,0 +1,4 @@
+# Never commit environment files with tokens
+.env
+*.env
+.env.*
