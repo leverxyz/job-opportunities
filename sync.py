@@ -147,11 +147,29 @@ def opp_to_job(opp, next_job_id):
     val_low = safe_int(opp.get("val_est_low"))
     val_high = safe_int(opp.get("val_est_high"))
 
-    # Magnitude
+    # Magnitude — under $1M show in K, over show in M
     if val_low and val_high:
-        magnitude = f"${val_low/1e6:.1f}M – ${val_high/1e6:.1f}M"
+        if val_high < 1_000_000:
+            lo = int(val_low / 1000)
+            hi = int(val_high / 1000)
+            if lo == 0:
+                magnitude = f"Under ${hi}K"
+            elif lo == hi:
+                magnitude = f"${lo}K"
+            else:
+                magnitude = f"${lo}K – ${hi}K"
+        else:
+            lo = val_low / 1_000_000
+            hi = val_high / 1_000_000
+            if lo == hi:
+                magnitude = f"${lo:.1f}M".replace(".0M","M")
+            else:
+                magnitude = f"${lo:.1f}M – ${hi:.1f}M".replace(".0M","M")
     elif val_low:
-        magnitude = f"${val_low/1e6:.1f}M+"
+        if val_low < 1_000_000:
+            magnitude = f"${int(val_low/1000)}K+"
+        else:
+            magnitude = f"${val_low/1e6:.1f}M+".replace(".0M","M")
     else:
         magnitude = "Unknown"
 
