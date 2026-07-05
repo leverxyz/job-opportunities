@@ -86,8 +86,8 @@
 
   .job { font-weight: 600; color: var(--ink); }
   .jobid { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
-  .loc { color: var(--ink-soft); white-space: nowrap; }
-  .keydates { color: var(--ink-soft); white-space: normal; max-width: 200px; }
+  .loc { color: var(--ink-soft); white-space: normal; max-width: 130px; font-size: 12.5px; }
+  .keydates { color: var(--ink-soft); white-space: normal; max-width: 240px; }
   .mag { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
   .srctype { font-weight: 600; color: var(--ink); }
   .srcdetail { color: var(--ink-faint); font-size: 12px; margin-top: 3px; max-width: 200px; }
@@ -259,7 +259,7 @@
           <td><div class="job">${esc(j.jobName)}</div></td>
           <td>${setAsidePill(j.setAside)}</td>
           <td class="loc">${esc(j.location)}</td>
-          <td class="keydates">${multiline(j.keyDates)}</td>
+          <td class="keydates">${dueChip(j.bidDueDate)}<br>${multiline(j.keyDates)}</td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
           <td>${statusPill(j.status)}</td>
