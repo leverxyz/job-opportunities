@@ -75,14 +75,13 @@
   thead th { position: sticky; top: 0; z-index: 2; background: var(--card); text-align: left;
     font-size: 11px; letter-spacing: .6px; text-transform: uppercase; color: var(--ink-faint);
     font-weight: 600; padding: 13px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-  tbody.job-group td { padding: 12px 16px; vertical-align: top; }
-  tbody.job-group:last-child .job-top td,
-  tbody.job-group:last-child .job-desc td { border-bottom: none; }
-  tbody.job-group:nth-child(even) td { background: var(--row-alt); }
-  tbody.job-group:hover td { background: color-mix(in srgb, var(--blueprint) 6%, transparent); }
-
-  .job-top td { border-bottom: none; padding-bottom: 4px; }
-  .job-desc td { padding-top: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  tbody td { padding: 12px 16px; vertical-align: top; border-bottom: none; }
+  tbody tr.job-top td { padding-bottom: 4px; }
+  tbody tr.job-desc td { padding-top: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  tbody tr.job-desc.alt td { border-bottom: 1px solid var(--line); }
+  tbody tr:last-child td { border-bottom: none; }
+  tr.alt td { background: var(--row-alt); }
+  tr:hover td { background: color-mix(in srgb, var(--blueprint) 6%, transparent); }
   .desc-cell { color: var(--ink-soft); font-size: 13px; line-height: 1.55; max-width: none; }
 
   .job { font-weight: 600; color: var(--ink); }
@@ -253,9 +252,10 @@
       return;
     }
 
-    rows.innerHTML = list.map(j => `
-      <tbody class="job-group">
-        <tr class="job-top">
+    rows.innerHTML = list.map((j, i) => {
+      const alt = i % 2 === 1 ? ' alt' : '';
+      return `
+        <tr class="job-top${alt}">
           <td><div class="job">${esc(j.jobName)}</div><div class="jobid">${esc(j.id||'')}</div></td>
           <td>${setAsidePill(j.setAside)}</td>
           <td class="loc">${esc(j.location)}</td>
@@ -264,10 +264,10 @@
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
           <td>${statusPill(j.status)}</td>
         </tr>
-        <tr class="job-desc">
+        <tr class="job-desc${alt}">
           <td colspan="7"><div class="desc-cell">${multiline(j.projectDescription)}</div></td>
-        </tr>
-      </tbody>`).join('');
+        </tr>`;
+    }).join('');
   }
 
   document.querySelectorAll('#filter button').forEach(b => {
