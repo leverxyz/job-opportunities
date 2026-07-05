@@ -155,7 +155,14 @@ def opp_to_job(opp, next_job_id):
 
     # Key dates
     due_date = opp.get("due_date", "")
-    key_dates = f"Bid Due: {due_date}" if due_date else "Bid Due: TBD"
+    if due_date:
+        try:
+            d = datetime.strptime(due_date, "%Y-%m-%d")
+            key_dates = f"Bid Due: {d.strftime('%b %d').replace(' 0', ' ')}"
+        except ValueError:
+            key_dates = f"Bid Due: {due_date}"
+    else:
+        key_dates = "Bid Due: TBD"
 
     # Description
     desc = (opp.get("description_text") or opp.get("ai_summary") or "")[:500]

@@ -11,7 +11,7 @@
       "sourceDetail": "BidNet Direct \u2014 solicitation NPS-24-R-0142",
       "location": "Bridgeport, CT",
       "magnitude": "~$340K",
-      "keyDates": "Site walk: Jul 8 (recommended)\nRFIs due: Jul 12\nBid due: Jul 18, 2:00 PM ET",
+      "keyDates": "Bid Due: Jul 18\nSite Visit: Jul 8\nRFI Due: Jul 12",
       "bidDueDate": "2026-07-18",
       "status": "Interested"
     },
@@ -24,7 +24,7 @@
       "sourceDetail": "Unknown",
       "location": "NY \u2014 ~60-120 min from 08505",
       "magnitude": "$0.1M \u2013 $0.2M",
-      "keyDates": "Bid Due: 2026-07-20",
+      "keyDates": "Bid Due: Jul 20",
       "bidDueDate": "2026-07-20",
       "status": "new"
     },
@@ -37,7 +37,7 @@
       "sourceDetail": "estimating@reillyconstruction.com \u2014 repeat GC",
       "location": "New Haven, CT",
       "magnitude": "$600K\u2013650K",
-      "keyDates": "Pre-bid walk: Jul 15\nBid due: Jul 24",
+      "keyDates": "Bid Due: Jul 24\nSite Visit: Jul 15",
       "bidDueDate": "2026-07-24",
       "status": "Bidding"
     },
@@ -50,7 +50,7 @@
       "sourceDetail": "Unknown",
       "location": "MD \u2014 ~90-180 min from 08505",
       "magnitude": "$25.0M \u2013 $60.0M",
-      "keyDates": "Bid Due: 2026-07-29",
+      "keyDates": "Bid Due: Jul 29",
       "bidDueDate": "2026-07-29",
       "status": "new"
     },
@@ -63,7 +63,7 @@
       "sourceDetail": "Unknown",
       "location": "DC \u2014 ~150-210 min from 08505",
       "magnitude": "$0.3M \u2013 $0.9M",
-      "keyDates": "Bid Due: 2026-08-03",
+      "keyDates": "Bid Due: Aug 3",
       "bidDueDate": "2026-08-03",
       "status": "new"
     },
@@ -76,7 +76,7 @@
       "sourceDetail": "Unknown",
       "location": "VA \u2014 ~180-300 min from 08505",
       "magnitude": "$0.0M \u2013 $0.1M",
-      "keyDates": "Bid Due: 2026-08-03",
+      "keyDates": "Bid Due: Aug 3",
       "bidDueDate": "2026-08-03",
       "status": "new"
     },
@@ -89,7 +89,7 @@
       "sourceDetail": "Unknown",
       "location": "NY \u2014 ~60-120 min from 08505",
       "magnitude": "$0.2M \u2013 $0.8M",
-      "keyDates": "Bid Due: 2026-08-04",
+      "keyDates": "Bid Due: Aug 4",
       "bidDueDate": "2026-08-04",
       "status": "new"
     },
@@ -102,7 +102,7 @@
       "sourceDetail": "Unknown",
       "location": "NY \u2014 ~60-120 min from 08505",
       "magnitude": "$2.5M \u2013 $6.0M",
-      "keyDates": "Bid Due: 2026-08-04",
+      "keyDates": "Bid Due: Aug 4",
       "bidDueDate": "2026-08-04",
       "status": "new"
     },
@@ -115,7 +115,7 @@
       "sourceDetail": "purchasing@fairfieldct.org",
       "location": "Fairfield, CT",
       "magnitude": "~$72K",
-      "keyDates": "Bid due: Aug 5",
+      "keyDates": "Bid Due: Aug 5",
       "bidDueDate": "2026-08-05",
       "status": "Review"
     },
@@ -128,7 +128,7 @@
       "sourceDetail": "Unknown",
       "location": "NY \u2014 ~60-120 min from 08505",
       "magnitude": "$0.0M \u2013 $0.1M",
-      "keyDates": "Bid Due: 2026-08-05",
+      "keyDates": "Bid Due: Aug 5",
       "bidDueDate": "2026-08-05",
       "status": "new"
     },
@@ -141,7 +141,7 @@
       "sourceDetail": "Unknown",
       "location": "PA \u2014 ~30-90 min from 08505",
       "magnitude": "$3.0M \u2013 $8.0M",
-      "keyDates": "Bid Due: 2026-08-19",
+      "keyDates": "Bid Due: Aug 19",
       "bidDueDate": "2026-08-19",
       "status": "new"
     }
