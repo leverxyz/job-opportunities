@@ -25,6 +25,9 @@ CONSTRUCTION_KEYWORDS = ["construction", "building", "renovation", "repair", "re
                          "restoration", "replacement", "improvement", "alteration"]
 HIGHWAY_KEYWORDS = ["highway", "paving", "asphalt", "roadway", "bridge"]
 
+# Job titles containing these keywords are always skipped
+EXCLUDE_KEYWORDS = ["cyber repair", "cyber security"]
+
 SET_ASIDE_MAP = {
     "SBA": "Small Business", "SB": "Small Business",
     "SDVOSB": "SDVOSB", "SDVOSBC": "SDVOSB",
@@ -93,6 +96,10 @@ def should_skip(opp):
 
     # Skip highway/paving
     if any(kw in title for kw in HIGHWAY_KEYWORDS):
+        return True
+
+    # Skip excluded keywords
+    if any(kw in title for kw in EXCLUDE_KEYWORDS):
         return True
 
     return False
