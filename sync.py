@@ -36,17 +36,17 @@ SET_ASIDE_MAP = {
 }
 
 DISTANCE_MAP = {
-    "NJ": "0.5–1.5 Hours / 15–60 miles",
-    "PA": "0.5–2 Hours / 25–120 miles",
-    "NY": "1.5–3 Hours / 60–150 miles",
-    "DE": "1–1.5 Hours / 50–90 miles",
-    "MD": "2–3 Hours / 120–180 miles",
-    "DC": "2.5–3.5 Hours / 150–210 miles",
-    "CT": "2–3 Hours / 100–180 miles",
-    "VA": "3–5 Hours / 180–320 miles",
-    "MA": "3–4.5 Hours / 200–280 miles",
-    "OH": "6–8 Hours / 380–500 miles",
-    "RI": "3–4 Hours / 180–240 miles",
+    "NJ": ("Trenton, NJ", "20 miles", "0.5 hours away"),
+    "PA": ("Philadelphia, PA", "35 miles", "0.75 hours away"),
+    "NY": ("New York, NY", "70 miles", "1.5 hours away"),
+    "DE": ("Wilmington, DE", "55 miles", "1 hour away"),
+    "MD": ("Baltimore, MD", "130 miles", "2.25 hours away"),
+    "DC": ("Washington, DC", "175 miles", "3 hours away"),
+    "CT": ("Hartford, CT", "155 miles", "2.75 hours away"),
+    "VA": ("Richmond, VA", "260 miles", "4.25 hours away"),
+    "MA": ("Boston, MA", "270 miles", "4.5 hours away"),
+    "OH": ("Cleveland, OH", "430 miles", "6.5 hours away"),
+    "RI": ("Providence, RI", "230 miles", "3.75 hours away"),
 }
 
 
@@ -160,16 +160,12 @@ def opp_to_job(opp, next_job_id):
     city = opp.get("pop_city", "")
     
     if state in DISTANCE_MAP:
-        drive = DISTANCE_MAP[state]
+        default_city, miles, hours = DISTANCE_MAP[state]
     else:
-        drive = "Unknown"
+        default_city, miles, hours = (state, "unknown", "unknown")
     
-    if city and state:
-        location = f"{city}, {state}\n{drive}"
-    elif state:
-        location = f"{state}\n{drive}"
-    else:
-        location = "Unknown"
+    label = f"{city}, {state}" if city else default_city
+    location = f"{label}\n{miles}\n{hours}"
 
     # Key dates
     due_date = opp.get("due_date", "")
