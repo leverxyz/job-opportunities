@@ -13,7 +13,9 @@
       "magnitude": "~$340K",
       "keyDates": "Bid Due: Jul 18\nSite Visit: Jul 8\nRFI Due: Jul 12",
       "bidDueDate": "2026-07-18",
-      "status": "Interested"
+      "status": "Interested",
+      "siteVisitDate": "2026-07-08",
+      "rfiDueDate": "2026-07-12"
     },
     {
       "id": "CCE-2026-0012",
@@ -39,7 +41,8 @@
       "magnitude": "$600K\u2013650K",
       "keyDates": "Bid Due: Jul 24\nSite Visit: Jul 15",
       "bidDueDate": "2026-07-24",
-      "status": "Bidding"
+      "status": "Bidding",
+      "siteVisitDate": "2026-07-15"
     },
     {
       "id": "CCE-2026-0020",

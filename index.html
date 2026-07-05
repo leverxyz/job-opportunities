@@ -92,11 +92,12 @@
   .srctype { font-weight: 600; color: var(--ink); }
   .srcdetail { color: var(--ink-faint); font-size: 12px; margin-top: 3px; max-width: 200px; }
 
-  .chip { display: inline-block; margin-bottom: 6px; padding: 2px 8px; font-size: 11px;
-    font-weight: 600; border-radius: 999px; white-space: nowrap; }
+  .chip { display: block; margin-bottom: 4px; padding: 2px 8px; font-size: 11px;
+    font-weight: 600; border-radius: 999px; white-space: nowrap; width: fit-content; }
   .chip.red { color: var(--red); background: var(--red-bg); }
   .chip.amber { color: var(--amber); background: var(--amber-bg); }
   .chip.green { color: var(--green); background: var(--green-bg); }
+  .chip.gray { color: var(--ink-faint); background: var(--gray-pill); }
 
   .pill { display: inline-block; padding: 3px 9px; font-size: 11px; font-weight: 600;
     border-radius: 999px; white-space: nowrap; color: var(--ink-soft); background: var(--gray-pill); }
@@ -201,19 +202,19 @@
     return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
   }
 
-  function dueChip(iso){
+  function eventChip(iso, label){
     if (!iso) return '';
     const today = new Date(); today.setHours(0,0,0,0);
     const d = new Date(iso + 'T00:00:00');
     if (isNaN(d)) return '';
     const days = Math.round((d - today) / 86400000);
-    let cls, label;
-    if (days < 0)        { cls='red';   label = Math.abs(days)+' day'+(Math.abs(days)===1?'':'s')+' overdue'; }
-    else if (days === 0) { cls='red';   label = 'bid due today'; }
-    else if (days <= 3)  { cls='red';   label = 'bid due in '+days+' day'+(days===1?'':'s'); }
-    else if (days <= 14) { cls='amber'; label = 'bid due in '+days+' days'; }
-    else                 { cls='green'; label = 'bid due in '+days+' days'; }
-    return '<span class="chip '+cls+'">'+label+'</span>';
+    let cls, text;
+    if (days < 0)        { cls='gray'; text = Math.abs(days)+'d ago — '+label; }
+    else if (days === 0) { cls='red';  text = label+' today'; }
+    else if (days <= 3)  { cls='red';  text = label+' in '+days+'d'; }
+    else if (days <= 14) { cls='amber';text = label+' in '+days+'d'; }
+    else                 { cls='green';text = label+' in '+days+'d'; }
+    return '<span class="chip '+cls+'">'+text+'</span>';
   }
 
   function setAsidePill(v){
@@ -259,7 +260,11 @@
           <td><div class="job">${esc(j.jobName)}</div></td>
           <td>${setAsidePill(j.setAside)}</td>
           <td class="loc">${esc(j.location)}</td>
-          <td class="keydates">${dueChip(j.bidDueDate)}<br>${multiline(j.keyDates)}</td>
+          <td class="keydates">
+            ${eventChip(j.siteVisitDate, 'Site Visit')}
+            ${eventChip(j.bidDueDate, 'Bid Due')}
+            ${eventChip(j.rfiDueDate, 'RFI Due')}
+          </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
           <td>${statusPill(j.status)}</td>
