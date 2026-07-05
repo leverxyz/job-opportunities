@@ -256,10 +256,10 @@
       const alt = i % 2 === 1 ? ' alt' : '';
       return `
         <tr class="job-top${alt}">
-          <td><div class="job">${esc(j.jobName)}</div><div class="jobid">${esc(j.id||'')}</div></td>
+          <td><div class="job">${esc(j.jobName)}</div></td>
           <td>${setAsidePill(j.setAside)}</td>
           <td class="loc">${esc(j.location)}</td>
-          <td class="keydates">${dueChip(j.bidDueDate)}<div>${multiline(j.keyDates)}</div></td>
+          <td class="keydates">${multiline(j.keyDates)}</td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
           <td>${statusPill(j.status)}</td>
