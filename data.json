@@ -3,19 +3,6 @@
   "updated": "2026-07-05T20:32:35Z",
   "jobs": [
     {
-      "id": "CCE-2026-0013",
-      "jobName": "PBXP 222050 - B403 CYBER REPAIR",
-      "projectDescription": "***UPDATE 08***\n\n- Updated RFI and Response document attached\n\n- Proposal due date/time is updated to 13 July/8:00am EST. (Solicitation amendment will be posted to reflect this change).\n\n***END OF UPDATE 08***\n\n\n\n***UPDATE 07***\n\n- Updated RFI and Response document attached.\n\n- 3 attachments in support of referenced RFI number and question.\n\n- Note: one more RFI is being responded to; RFI and Response document will be updated and posted as soon as that is completed.\n\n***END OF UPDATE 07***\n\n\n\n**",
-      "setAside": "None",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Unknown",
-      "location": "OH \u2014 ~360-480 min from 08505",
-      "magnitude": "$10.0M \u2013 $20.0M",
-      "keyDates": "Bid Due: 2026-07-13",
-      "bidDueDate": "2026-07-13",
-      "status": "new"
-    },
-    {
       "id": "2026-0007",
       "jobName": "Building 14 Reroof \u2014 EPDM Replacement",
       "projectDescription": "Full tear-off and replacement of ~5,000 SF EPDM membrane on a historic NPS visitor facility. Tapered insulation to correct ponding, new perimeter edge metal, two RTU curbs. Historic building \u2014 flashing details coordinated with SHPO.",
