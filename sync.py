@@ -36,10 +36,17 @@ SET_ASIDE_MAP = {
 }
 
 DISTANCE_MAP = {
-    "NJ": "15-45 min", "PA": "30-90 min", "NY": "60-120 min",
-    "DE": "60-90 min", "MD": "90-180 min", "DC": "150-210 min",
-    "VA": "180-300 min", "OH": "360-480 min", "CT": "90-150 min",
-    "MA": "180-240 min", "RI": "150-210 min",
+    "NJ": "0.5–1.5 Hours / 15–60 miles",
+    "PA": "0.5–2 Hours / 25–120 miles",
+    "NY": "1.5–3 Hours / 60–150 miles",
+    "DE": "1–1.5 Hours / 50–90 miles",
+    "MD": "2–3 Hours / 120–180 miles",
+    "DC": "2.5–3.5 Hours / 150–210 miles",
+    "CT": "2–3 Hours / 100–180 miles",
+    "VA": "3–5 Hours / 180–320 miles",
+    "MA": "3–4.5 Hours / 200–280 miles",
+    "OH": "6–8 Hours / 380–500 miles",
+    "RI": "3–4 Hours / 180–240 miles",
 }
 
 
@@ -150,8 +157,19 @@ def opp_to_job(opp, next_job_id):
 
     # Location
     state = opp.get("pop_state", "")
-    dist = DISTANCE_MAP.get(state, "Unknown")
-    location = f"{state} — ~{dist} from 08505" if state else "Unknown"
+    city = opp.get("pop_city", "")
+    
+    if state in DISTANCE_MAP:
+        drive = DISTANCE_MAP[state]
+    else:
+        drive = "Unknown"
+    
+    if city and state:
+        location = f"{city}, {state}\n{drive}"
+    elif state:
+        location = f"{state}\n{drive}"
+    else:
+        location = "Unknown"
 
     # Key dates
     due_date = opp.get("due_date", "")
