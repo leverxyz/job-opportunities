@@ -205,7 +205,7 @@ def opp_to_job(opp, next_job_id):
         "projectDescription": desc,
         "setAside": SET_ASIDE_MAP.get(set_aside_raw, "Other"),
         "sourceType": "HigherGov",
-        "sourceDetail": (opp.get("agency") or {}).get("name", "Unknown"),
+        "sourceDetail": (opp.get("agency") or {}).get("agency_name", "Unknown"),
         "location": location,
         "magnitude": magnitude,
         "keyDates": key_dates,
