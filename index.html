@@ -93,9 +93,10 @@
   .jobid { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
   .loc { color: var(--ink-soft); white-space: normal; max-width: 190px; font-size: 12.5px; }
   .keydates { color: var(--ink-soft); white-space: normal; max-width: 240px; }
-  .mag { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+  .mag { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); white-space: normal; word-break: break-word; }
   .srctype { font-weight: 600; color: var(--ink); }
-  .srcdetail { color: var(--ink-faint); font-size: 12px; margin-top: 3px; }
+  .srcdetail { color: var(--ink-faint); font-size: 12px; margin-top: 3px; overflow-wrap: break-word; }
+  td { overflow: hidden; }
 
   .chip { display: block; margin-bottom: 4px; padding: 2px 8px; font-size: 11px;
     font-weight: 600; border-radius: 999px; white-space: nowrap; width: fit-content; }
