@@ -29,10 +29,10 @@ HIGHWAY_KEYWORDS = ["highway", "paving", "asphalt", "roadway", "bridge"]
 EXCLUDE_KEYWORDS = ["cyber repair", "cyber security"]
 
 SET_ASIDE_MAP = {
-    "SBA": "Small Business", "SB": "Small Business",
+    "SBA": "SBA", "SB": "SBA",
     "SDVOSB": "SDVOSB", "SDVOSBC": "SDVOSB",
     "HUBZONE": "HUBZone", "WOSB": "WOSB",
-    "NONE": "None", "": "None",
+    "NONE": "NONE", "": "NONE",
 }
 
 DISTANCE_MAP = {
