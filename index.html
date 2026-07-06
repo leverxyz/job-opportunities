@@ -118,6 +118,32 @@
 
   .empty { padding: 48px 20px; text-align: center; color: var(--ink-faint); }
   footer.note { margin-top: 16px; text-align: center; color: var(--ink-faint); font-size: 11.5px; }
+
+  .add-btn { padding: 7px 18px; font-size: 12.5px; font-weight: 600; color: #fff;
+    background: var(--blueprint); border: none; border-radius: 9px; cursor: pointer; }
+  .add-btn:active { opacity: .85; }
+
+  .modal { display: none; position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,.4);
+    align-items: center; justify-content: center; padding: 20px; }
+  .modal.show { display: flex; }
+  .modal-box { width: 100%; max-width: 560px; background: var(--card); border-radius: var(--radius);
+    box-shadow: 0 4px 24px rgba(0,0,0,.15); max-height: 90vh; overflow-y: auto; }
+  .modal-head { display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 22px; border-bottom: 1px solid var(--line); }
+  .modal-head h2 { margin: 0; font-size: 17px; font-weight: 650; }
+  .close-btn { background: none; border: none; font-size: 22px; color: var(--ink-faint); cursor: pointer; padding: 0 4px; }
+  .modal-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; }
+  .modal-body label { display: flex; flex-direction: column; gap: 4px; font-size: 12px;
+    font-weight: 600; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .4px; }
+  .modal-body input, .modal-body textarea, .modal-body select { padding: 9px 12px;
+    font-size: 14px; font-family: var(--sans); border: 1px solid var(--line); border-radius: 8px;
+    background: var(--paper); color: var(--ink); outline: none; }
+  .modal-body input:focus, .modal-body textarea:focus, .modal-body select:focus { border-color: var(--blueprint); }
+  .row { display: flex; gap: 12px; }
+  .row label { flex: 1; }
+  .row.three label { flex: 1; }
+  .save-btn { padding: 11px; font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--blueprint); border: none; border-radius: 9px; cursor: pointer; margin-top: 4px; }
   @media (max-width: 560px) { #app { padding: 18px 12px 40px; } h1.title { font-size: 20px; } }
 </style>
 </head>
@@ -144,6 +170,55 @@
         <button data-f="open" class="on">Open</button>
         <button data-f="all">All</button>
         <button data-f="archive">Archived</button>
+      </div>
+      <button id="addBtn" class="add-btn">+ Add New</button>
+    </div>
+
+    <!-- Add New Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h2>Add Opportunity</h2>
+          <button id="closeModal" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <label>Project Name <input id="f-name" type="text" placeholder="Project name" /></label>
+          <label>Description <textarea id="f-desc" rows="3" placeholder="Brief description"></textarea></label>
+          <div class="row">
+            <label>Set Aside
+              <select id="f-setaside">
+                <option value="NONE">NONE</option><option value="SBA">SBA</option>
+                <option value="SDVOSB">SDVOSB</option><option value="HUBZone">HUBZone</option>
+                <option value="WOSB">WOSB</option><option value="Other">Other</option>
+              </select>
+            </label>
+            <label>Source Type
+              <select id="f-srctype">
+                <option value="HigherGov">HigherGov</option><option value="BidNet">BidNet</option>
+                <option value="GC Email">GC Email</option><option value="Direct">Direct</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+          </div>
+          <label>Source Detail <input id="f-srcdetail" type="text" placeholder="Agency or GC name" /></label>
+          <div class="row">
+            <label>Location <input id="f-loc" type="text" placeholder="City, ST" /></label>
+            <label>Magnitude <input id="f-mag" type="text" placeholder="$500K – $1M" /></label>
+          </div>
+          <div class="row three">
+            <label>Site Visit <input id="f-site" type="date" /></label>
+            <label>RFI Due <input id="f-rfi" type="date" /></label>
+            <label>Bid Due <input id="f-bid" type="date" /></label>
+          </div>
+          <label>Status
+            <select id="f-status">
+              <option value="new">New</option><option value="review">Review</option>
+              <option value="interested">Interested</option><option value="bidding">Bidding</option>
+              <option value="submitted">Submitted</option><option value="archive">Archive</option>
+            </select>
+          </label>
+          <button id="saveNew" class="save-btn">Save Opportunity</button>
+        </div>
       </div>
     </div>
 
@@ -295,6 +370,54 @@
         '<tr><td colspan="7"><div class="empty">Could not load data.json.</div></td></tr>';
     }
   }
+
+  // ---- Add New ----
+  const modal = document.getElementById('modal');
+  document.getElementById('addBtn').addEventListener('click', () => modal.classList.add('show'));
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+
+  document.getElementById('saveNew').addEventListener('click', () => {
+    const name = document.getElementById('f-name').value.trim();
+    if (!name) return alert('Project name is required.');
+
+    const bid = document.getElementById('f-bid').value;
+    const site = document.getElementById('f-site').value;
+    const rfi = document.getElementById('f-rfi').value;
+
+    // Build keyDates string
+    let kd = [];
+    if (site) kd.push('Site Visit: ' + fmtDate(site));
+    if (rfi) kd.push('RFI Due: ' + fmtDate(rfi));
+    if (bid) kd.push('Bid Due: ' + fmtDate(bid));
+    if (!kd.length) kd.push('Bid Due: TBD');
+
+    const job = {
+      id: 'manual-' + Date.now(),
+      jobName: name,
+      projectDescription: document.getElementById('f-desc').value.trim(),
+      setAside: document.getElementById('f-setaside').value,
+      sourceType: document.getElementById('f-srctype').value,
+      sourceDetail: document.getElementById('f-srcdetail').value.trim(),
+      location: document.getElementById('f-loc').value.trim(),
+      magnitude: document.getElementById('f-mag').value.trim() || 'Unknown',
+      keyDates: kd.join('\n'),
+      bidDueDate: bid || null,
+      siteVisitDate: site || null,
+      rfiDueDate: rfi || null,
+      status: document.getElementById('f-status').value,
+    };
+
+    allJobs.unshift(job);
+    render();
+    modal.classList.remove('show');
+
+    // Reset form
+    ['f-name','f-desc','f-srcdetail','f-loc','f-mag','f-bid','f-site','f-rfi'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-status').value = 'new';
+    document.getElementById('f-setaside').value = 'NONE';
+    document.getElementById('f-srctype').value = 'HigherGov';
+  });
 </script>
 </body>
 </html>
