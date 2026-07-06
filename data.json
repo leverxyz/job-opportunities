@@ -1,7 +1,46 @@
 {
   "board": "Concord CE \u2014 Job Opportunity Board",
-  "updated": "2026-07-06T09:01:46Z",
+  "updated": "2026-07-06T17:26:23Z",
   "jobs": [
+    {
+      "id": "CCE-2026-0039",
+      "jobName": "Refresh and Refurbish BEQ Facilities, Building 4295 & Building 4296",
+      "projectDescription": "This procurement is restricted to the General MACC contractors. Only the General MACC contractors listed on the RFP cover letter may submit a proposal. See attached documents for scope of work and any applicable drawings.\n\n\n\nAmendment 0001 (As-built drawings 4169020 to 4169125 were distributed via DoD Safe Link due to file size).\n\nAmendment 0002\n",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Cherry Point, NC\nunknown\nunknown",
+      "magnitude": "$0.9M \u2013 $2.2M",
+      "keyDates": "Bid Due: Jul 6",
+      "bidDueDate": "2026-07-06",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0038",
+      "jobName": "Replace Building 7 Boilers - Stratton Air National Guard Base",
+      "projectDescription": "The purpose of this update is to answer additional questions which have been submitted in response to the solicitation.\n\nThe purpose of this update is to post the site visit sign in sheet as well as to answer questions which were raised as a result of the site visit.  Note that the CLIN structure has been revised as a result of this amendment.  See attached &quot;Solicitation Amendment 01&quot; for complete details.\n\nA site visit will be held on Tuesday June 23, 2026 at 10:00AM.\n\n\nSubmit quotes ",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Department of the Army",
+      "location": "Schenectady, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$250K \u2013 $600K",
+      "keyDates": "Bid Due: Jul 7",
+      "bidDueDate": "2026-07-07",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0037",
+      "jobName": "Delta Range Grenade Pits Fort Devens MA",
+      "projectDescription": "1. THE U.S. ARMY CONTRACTING COMMAND - NEW JERSEY HAS A NEW CONSTRUCTION REQUIREMENT IN SUPPORT OF THE UNITED STATES ARMY GARRISON (USAG) FORT DEVENS MA. THIS PROJECT IS LOCATED AT THE DELAT RANGE ON THE MAIN CANTONMENT OF THE UNITED STATES ARMY GARRISON FORT DEVENS MA.\n\n2. THE NORTH AMERICAN INDUSTRY CLASSIFICATION (NAICS) CODE FOR THIS PROJECT IS 238110 - POURED CONCRETE FOUNDATION AND STRUCTURE CONTRACTORS , WITH A SIZE STANDARD OF $19,000,000.00.\n\n3. PERIOD OF PERFORMANCE: ALL WORK SHALL BE ",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "ACC Picatinny",
+      "location": "Devens, MA\n270 miles\n4.5 hours away",
+      "magnitude": "$0.8M \u2013 $2.5M",
+      "keyDates": "Bid Due: Jul 15",
+      "bidDueDate": "2026-07-15",
+      "status": "new"
+    },
     {
       "id": "CCE-2026-0012",
       "jobName": "MASI, CARPET REPLACEMENT AT FEDERAL HALL",
@@ -16,6 +55,71 @@
       "status": "new"
     },
     {
+      "id": "AR-2026-0001",
+      "jobName": "Install Vault in BLDG 1751 \u2014 McGuire AFB",
+      "projectDescription": "EPDM roofing work for secure vault construction. TWCF \u2013 Alter Security Vault Aerial Delivery Facility B1751. Prime: Eastern Construction.",
+      "setAside": "NONE",
+      "sourceType": "Direct",
+      "sourceDetail": "Eastern Construction / JP Gowda",
+      "location": "Wrightstown, NJ\nMcGuire AFB\n~15 miles from Bordentown",
+      "magnitude": "TBD \u2014 pending SOW review",
+      "keyDates": "Bid Due: Jul 20, 2PM\nRFI Due: Jul 8",
+      "bidDueDate": "2026-07-20",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0034",
+      "jobName": "S--MASI, CARPET REPLACEMENT AT FEDERAL HALL",
+      "projectDescription": "NPS/ FEHA CARPET REPLACEMENT AT FEDERAL HALL",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "NPS Northeast Region",
+      "location": "New York, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$75K \u2013 $250K",
+      "keyDates": "Bid Due: Jul 20",
+      "bidDueDate": "2026-07-20",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0035",
+      "jobName": "Cyber Maintenance Hangar Modernization",
+      "projectDescription": "based on the new USACE Alert 26-HQ-010, Rev1\n\n\n\tPurpose of this Notice\n\t\n\tThis notice is to inform industry of an active solicitation and to outline the mandatory prerequisites required to obtain the restricted solicitation package, including drawings and specifications. The information to be released is considered Controlled Unclassified Information (CUI) and/or Federal Contract Information (FCI).\n\n\n\n\n2. Procedure to Obtain Restricted Solicitation Documents\n\nThis solicitation or its attachments",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "USACE Louisville District",
+      "location": "Mansfield, OH\n430 miles\n6.5 hours away",
+      "magnitude": "$5M \u2013 $15M",
+      "keyDates": "Bid Due: Jul 20",
+      "bidDueDate": "2026-07-20",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0036",
+      "jobName": "Chimney Repairs, Franklin Falls Dam, Franklin, NH",
+      "projectDescription": "The U.S. Army Corps of Engineers &ndash; New England District is issuing a Solicitation Notice for Chimney Repairs, Franklin Falls Dam, Franklin, NH.\n\nTHE WORK CONSISTS OF: Contractor shall furnish all labor, materials and equipment necessary to remove an existing stainless steel chimney liner and install a new stainless steel chimney liner for a wood burning stove.  The Contractor shall also make repairs to the brick-and-mortar chimney and correct deficiencies outlined in the existing condition",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "USACE New England District",
+      "location": "Franklin, NH\nunknown\nunknown",
+      "magnitude": "Unknown",
+      "keyDates": "Bid Due: Jul 20",
+      "bidDueDate": "2026-07-20",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0033",
+      "jobName": "Construct ERHM Infrastructure Upgrades - University Drive - Pittsburgh, PA",
+      "projectDescription": "The scope of work shall generally consist of but is not limited to the following: construction work to facilitate all modifications at multiple existing buildings on the VAPHS University Drive VA campus to upgrade the infrastructure to support the new Electronic Health Records Modernization (EHRM) system.\n\nThe upgrade to the infrastructure will be campus wide buildings impacted to include Buildings 1, 5, 8, 29, 30, 33, and site. The architectural total existing space square footage affected is a",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Program Contracting Activity Central",
+      "location": "Pittsburgh, PA\n35 miles\n0.75 hours away",
+      "magnitude": "$8M \u2013 $18M",
+      "keyDates": "Bid Due: Jul 24",
+      "bidDueDate": "2026-07-24",
+      "status": "new"
+    },
+    {
       "id": "CCE-2026-0020",
       "jobName": "DESIGN-BUILD, P-664 FOREIGN MATERIEL EXPLOITATION LABORATORY, NATIONAL MARITIME INTELLIGENCE CENTER (NMIC), SUITLAND, MD",
       "projectDescription": "Login at https://piee.eb.mil and search for 'N4008026R5966' to obtain more details.*",
@@ -26,6 +130,19 @@
       "magnitude": "$25M \u2013 $60M",
       "keyDates": "Bid Due: Jul 29",
       "bidDueDate": "2026-07-29",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0032",
+      "jobName": "5660--DESIGN-BUILD CONSTRUCTION FOR UPGRADE PERIMETER SECURITY  VA MEDICAL CENTER (VAMC), MARTINSBURG, WV",
+      "projectDescription": "PROPOSAL SUBMISSION REQUIREMENTS AND INSTRUCTIONS, BASIS OF AWARD, AND EVALUATION CRITERIA (PHASE ONE ONLY)\n\nDESCRIPTION OF WORK\n\nThe Department of Veterans Affairs (VA), Office of Information & Technology (OIT), IT Space and Facilities Management, maintains the Capital Region Readiness Center (CRRC), a Mission-Critical facility, located on the premises of the VA Medical Center (VAMC) campus in Martinsburg, WV.  \n\nThis requirement is for a Design-Build (DB) contract to design and install a perim",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "VA Office of Construction and Facilities Management",
+      "location": "Martinsburg, WV\nunknown\nunknown",
+      "magnitude": "$3M \u2013 $9M",
+      "keyDates": "Bid Due: Jul 31",
+      "bidDueDate": "2026-07-31",
       "status": "new"
     },
     {
@@ -76,6 +193,19 @@
       "sourceDetail": "VA Western NY",
       "location": "New York, NY\n70 miles\n1.5 hours away",
       "magnitude": "$2.5M \u2013 $6M",
+      "keyDates": "Bid Due: Aug 4",
+      "bidDueDate": "2026-08-04",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0031",
+      "jobName": "REPLACE BACKFLOW PREVENTER ON LIGHTHOUSE ROAD AT C",
+      "projectDescription": "REPLACE BACKFLOW PREVENTER ON LIGHTHOUSE ROAD AT CAPE HATTERAS NATIONAL SEASHORE",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "NPS Southeast Region",
+      "location": "Buxton, NC\nunknown\nunknown",
+      "magnitude": "$25K \u2013 $90K",
       "keyDates": "Bid Due: Aug 4",
       "bidDueDate": "2026-08-04",
       "status": "new"
