@@ -1,6 +1,6 @@
 {
   "board": "Concord CE \u2014 Job Opportunity Board",
-  "updated": "2026-07-06T17:26:23Z",
+  "updated": "2026-07-06T19:00:00Z",
   "jobs": [
     {
       "id": "CCE-2026-0039",
@@ -56,16 +56,17 @@
     },
     {
       "id": "AR-2026-0001",
-      "jobName": "Install Vault in BLDG 1751 \u2014 McGuire AFB",
-      "projectDescription": "EPDM roofing work for secure vault construction. TWCF \u2013 Alter Security Vault Aerial Delivery Facility B1751. Prime: Eastern Construction.",
+      "jobName": "Install Security Vault in BLDG 1751 \u2014 McGuire AFB",
+      "projectDescription": "MACC IDIQ Task Order PTFL20-2007. Construct a secure Class B vault (45'\u00d7100'\u00d715') as an independent structure within B1751 at JB MDL for classified materials storage up to SECRET level. Scope includes: concrete foundation, reinforced CMU walls (fully grouted), elevated concrete slab on structural steel framing, fully adhered EPDM roofing, Advantor IDS, HVAC with BACnet DDC controls, plumbing, electrical, fire suppression, vault door, communications, earthwork, and exterior improvements. 12-month period of performance. Bid Schedule: Base Bid + 3 allowances ($50K IDS, $25K concrete demo, $20K soil remediation). 704-page SOW dated June 2026. Prime/GC: Eastern Construction.",
       "setAside": "NONE",
-      "sourceType": "Direct",
+      "sourceType": "GC Email",
       "sourceDetail": "Eastern Construction / JP Gowda",
-      "location": "Wrightstown, NJ\nMcGuire AFB\n~15 miles from Bordentown",
-      "magnitude": "TBD \u2014 pending SOW review",
-      "keyDates": "Bid Due: Jul 20, 2PM\nRFI Due: Jul 8",
+      "location": "Wrightstown, NJ\nJB MDL McGuire AFB\n~15 miles from Bordentown",
+      "magnitude": "TBD \u2014 Base Bid + $95K allowances",
+      "keyDates": "RFI Due: Jul 8\nBid Due: Jul 20, 2PM",
       "bidDueDate": "2026-07-20",
-      "status": "new"
+      "status": "review",
+      "rfiDueDate": "2026-07-08"
     },
     {
       "id": "CCE-2026-0034",
