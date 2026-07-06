@@ -54,7 +54,7 @@
   #gate .err { color: var(--red); font-size: 13px; margin-top: 12px; min-height: 18px; }
 
   /* app */
-  #app { display: none; max-width: 1320px; margin: 0 auto; padding: 28px 22px 60px; }
+  #app { display: none; max-width: 1400px; margin: 0 auto; padding: 28px 16px 60px; }
   header.board { margin-bottom: 18px; }
   .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
     color: var(--blueprint); margin-bottom: 6px; }
@@ -348,7 +348,7 @@
           </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
-          <td>${statusPill(j.status)} <button class="del-btn" data-id="${esc(j.id||'')}">Delete</button></td>
+          <td><button class="del-btn" data-id="${esc(j.id||'')}">Delete</button> ${statusPill(j.status)}</td>
         </tr>`;
     }).join('');
   }
