@@ -145,9 +145,9 @@
   .save-btn { padding: 11px; font-size: 14px; font-weight: 600; color: #fff;
     background: var(--blueprint); border: none; border-radius: 9px; cursor: pointer; margin-top: 4px; }
 
-  .del-btn { background: none; border: none; font-size: 16px; color: var(--ink-faint);
-    cursor: pointer; padding: 0 4px; line-height: 1; }
-  .del-btn:hover { color: var(--red); }
+  .del-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
+    cursor: pointer; padding: 2px 8px; border-radius: 6px; font-family: var(--sans); margin-left: 6px; }
+  .del-btn:hover { color: var(--red); border-color: var(--red); }
   @media (max-width: 560px) { #app { padding: 18px 12px 40px; } h1.title { font-size: 20px; } }
 </style>
 </head>
@@ -238,7 +238,6 @@
               <th>Magnitude</th>
               <th>Source</th>
               <th>Status</th>
-              <th></th>
             </tr>
           </thead>
           <tbody id="rows"></tbody>
@@ -331,7 +330,7 @@
     document.getElementById('count').textContent = allJobs.filter(j => !isArchived(j)).length;
 
     if (!list.length){
-      rows.innerHTML = '<tr><td colspan="8"><div class="empty">No jobs to show.</div></td></tr>';
+      rows.innerHTML = '<tr><td colspan="7"><div class="empty">No jobs to show.</div></td></tr>';
       return;
     }
 
@@ -349,8 +348,7 @@
           </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
-          <td>${statusPill(j.status)}</td>
-          <td><button class="del-btn" data-id="${esc(j.id||'')}">&times;</button></td>
+          <td>${statusPill(j.status)} <button class="del-btn" data-id="${esc(j.id||'')}">Delete</button></td>
         </tr>`;
     }).join('');
   }
@@ -382,7 +380,7 @@
       render();
     } catch (e) {
       document.getElementById('rows').innerHTML =
-        '<tr><td colspan="8"><div class="empty">Could not load data.json.</div></td></tr>';
+        '<tr><td colspan="7"><div class="empty">Could not load data.json.</div></td></tr>';
     }
   }
 
