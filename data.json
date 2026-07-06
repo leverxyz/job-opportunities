@@ -3,21 +3,6 @@
   "updated": "2026-07-06T09:01:46Z",
   "jobs": [
     {
-      "id": "2026-0007",
-      "jobName": "Building 14 Reroof \u2014 EPDM Replacement",
-      "projectDescription": "Full tear-off and replacement of ~5,000 SF EPDM membrane on a historic NPS visitor facility. Tapered insulation to correct ponding, new perimeter edge metal, two RTU curbs. Historic building \u2014 flashing details coordinated with SHPO.",
-      "setAside": "SDVOSB",
-      "sourceType": "BidNet",
-      "sourceDetail": "National Park Service",
-      "location": "Bridgeport, CT\n155 miles\n2.75 hours away",
-      "magnitude": "~$340K",
-      "keyDates": "Bid Due: Jul 18\nSite Visit: Jul 8\nRFI Due: Jul 12",
-      "bidDueDate": "2026-07-18",
-      "status": "Interested",
-      "siteVisitDate": "2026-07-08",
-      "rfiDueDate": "2026-07-12"
-    },
-    {
       "id": "CCE-2026-0012",
       "jobName": "MASI, CARPET REPLACEMENT AT FEDERAL HALL",
       "projectDescription": "NPS/ FEHA CARPET REPLACEMENT AT FEDERAL HALL",
@@ -29,20 +14,6 @@
       "keyDates": "Bid Due: Jul 20",
       "bidDueDate": "2026-07-20",
       "status": "new"
-    },
-    {
-      "id": "2026-0006",
-      "jobName": "Elementary School Gymnasium Roof \u2014 TPO",
-      "projectDescription": "Subcontract invite from Reilly. ~18,000 SF TPO over existing metal deck, mechanically attached. Phased summer work, hard completion before school reopens.",
-      "setAside": "NONE",
-      "sourceType": "GC Email",
-      "sourceDetail": "Reilly Construction",
-      "location": "New Haven, CT\n155 miles\n2.75 hours away",
-      "magnitude": "$600K\u2013650K",
-      "keyDates": "Bid Due: Jul 24\nSite Visit: Jul 15",
-      "bidDueDate": "2026-07-24",
-      "status": "Bidding",
-      "siteVisitDate": "2026-07-15"
     },
     {
       "id": "CCE-2026-0020",
@@ -108,19 +79,6 @@
       "keyDates": "Bid Due: Aug 4",
       "bidDueDate": "2026-08-04",
       "status": "new"
-    },
-    {
-      "id": "2026-0005",
-      "jobName": "Municipal Garage Roof Repairs",
-      "projectDescription": "Localized repairs and recoat on a low-slope built-up roof. Smaller scope, quick turnaround.",
-      "setAside": "SBA",
-      "sourceType": "Direct",
-      "sourceDetail": "Fairfield CT",
-      "location": "Fairfield, CT\n155 miles\n2.75 hours away",
-      "magnitude": "~$72K",
-      "keyDates": "Bid Due: Aug 5",
-      "bidDueDate": "2026-08-05",
-      "status": "Review"
     },
     {
       "id": "CCE-2026-0015",
