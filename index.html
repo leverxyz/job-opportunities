@@ -171,10 +171,11 @@
     </header>
 
     <div class="controls">
-      <div class="seg" id="filter">
-        <button data-f="open" class="on">Open</button>
-        <button data-f="all">All</button>
-        <button data-f="archive">Archived</button>
+      <div class="seg" id="boards">
+        <button data-board="HigherGov" class="on">HigherGov</button>
+        <button data-board="BidNet">BidNet</button>
+        <button data-board="GC Email">General Contractors</button>
+        <button data-board="all">All</button>
       </div>
       <button id="addBtn" class="add-btn">+ Add New</button>
     </div>
@@ -312,15 +313,14 @@
   }
 
   let allJobs = [];
-  let filter = 'open';
-
-  function isArchived(j){ return String(j.status||'').toLowerCase() === 'archive'; }
+  let board = 'HigherGov';
 
   function render(){
     const rows = document.getElementById('rows');
     let list = allJobs.slice();
-    if (filter === 'open')    list = list.filter(j => !isArchived(j));
-    if (filter === 'archive') list = list.filter(j => isArchived(j));
+    if (board !== 'all') {
+      list = list.filter(j => j.sourceType === board);
+    }
 
     list.sort((a,b) => {
       if (!a.bidDueDate) return 1;
@@ -328,7 +328,7 @@
       return a.bidDueDate < b.bidDueDate ? -1 : a.bidDueDate > b.bidDueDate ? 1 : 0;
     });
 
-    document.getElementById('count').textContent = allJobs.filter(j => !isArchived(j)).length;
+    document.getElementById('count').textContent = list.length;
 
     if (!list.length){
       rows.innerHTML = '<tr><td colspan="7"><div class="empty">No jobs to show.</div></td></tr>';
@@ -354,11 +354,11 @@
     }).join('');
   }
 
-  document.querySelectorAll('#filter button').forEach(b => {
+  document.querySelectorAll('#boards button').forEach(b => {
     b.addEventListener('click', () => {
-      document.querySelectorAll('#filter button').forEach(x => x.classList.remove('on'));
+      document.querySelectorAll('#boards button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
-      filter = b.dataset.f;
+      board = b.dataset.board;
       render();
     });
   });
@@ -387,7 +387,10 @@
 
   // ---- Add New ----
   const modal = document.getElementById('modal');
-  document.getElementById('addBtn').addEventListener('click', () => modal.classList.add('show'));
+  document.getElementById('addBtn').addEventListener('click', () => {
+    if (board !== 'all') document.getElementById('f-srctype').value = board;
+    modal.classList.add('show');
+  });
   document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('show'));
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
 
