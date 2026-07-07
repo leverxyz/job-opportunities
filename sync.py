@@ -10,6 +10,13 @@ import json, os, re, sys, subprocess
 from datetime import datetime, timezone, timedelta
 import httpx
 
+# Import DPMC scraper
+try:
+    from dpmc_scraper import fetch_and_parse as fetch_dpmc, classify_dpmc, dpmc_to_job
+    HAS_DPMC = True
+except ImportError:
+    HAS_DPMC = False
+
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(REPO_DIR, "data.json")
 
@@ -47,8 +54,11 @@ ENVIRONMENTAL_KEYWORDS = [
 ]
 
 GC_CONTEXT_KEYWORDS = [
-    "construction", "building", "renovation", "rehab", "restoration",
-    "alteration", "addition", "demolition",
+    "renovation", "renovations", "rehab", "restoration",
+    "alteration", "alterations", "addition", "additions", "demolition", "architectural",
+    "masonry", "concrete", "carpentry", "drywall", "painting",
+    "flooring", "carpet", "framing", "site work", "earthwork",
+    "finish", "interior", "exterior",
 ]
 # "repair", "replacement", "improvement" deliberately excluded — appear in MEP-only
 
@@ -123,6 +133,11 @@ def fmt_date(iso_str):
 # --- Skip Log ---
 skip_log = []
 
+def is_false_gc(text):
+    """'Building N' patterns are location references, not GC construction context."""
+    no_building_n = re.sub(r'\bbuilding\s+\d+\w?\b', '', text, flags=re.IGNORECASE)
+    return any_kw_match(GC_CONTEXT_KEYWORDS, no_building_n)
+
 def log_skip(opp_key, title, rule):
     skip_log.append({"key": opp_key, "title": title[:80], "rule": rule})
 
@@ -167,7 +182,7 @@ def classify_tier(title, desc, set_aside, val_low, val_high, distance_tier, is_n
                                   "building envelope", "exterior restoration",
                                   "masonry restoration", "brick"], combined) and not has_roofing_exclusion
     mep_count = count_kw_match(MEP_KEYWORDS, combined)
-    has_gc_context = any_kw_match(GC_CONTEXT_KEYWORDS, combined)
+    has_gc_context = is_false_gc(combined)  # excludes "Building N" references
     has_environmental = any_kw_match(ENVIRONMENTAL_KEYWORDS, combined)
     is_highway = any_kw_match(HIGHWAY_KEYWORDS, combined)
     is_bridge = wb_match("bridge", combined) and any_kw_match(BRIDGE_PAIRS, combined)
@@ -185,7 +200,7 @@ def classify_tier(title, desc, set_aside, val_low, val_high, distance_tier, is_n
             return ("SKIP", "", "", True)
         # MEP-only or environmental-only with no roofing
         if not has_roofing:
-            if mep_count >= 2 and not has_gc_context:
+            if mep_count >= 1:
                 return ("SKIP", "", "", True)
             if has_environmental and not has_gc_context:
                 return ("SKIP", "", "", True)
@@ -210,8 +225,10 @@ def classify_tier(title, desc, set_aside, val_low, val_high, distance_tier, is_n
     if has_environmental and not has_gc_context:
         return ("SKIP", "", "", True)
 
-    # MEP-only check — but check Tier 5 promotion first
-    is_mep_only = mep_count >= 2 and not has_gc_context and not has_roofing
+    # MEP check — MEP keywords without roofing/envelope = skip
+    # Also check for Tier 5: MEP WITH roofing = promote
+    is_mep = mep_count >= 1
+    is_mep_only = is_mep and not has_roofing and not has_envelope
 
     # Tier 1: Roofing/Envelope — highest priority
     if has_roofing or has_envelope:
@@ -219,7 +236,7 @@ def classify_tier(title, desc, set_aside, val_low, val_high, distance_tier, is_n
         reason_parts = []
         if has_roofing: reason_parts.append("roofing scope detected")
         if has_envelope: reason_parts.append("envelope scope detected")
-        if is_mep_only:
+        if is_mep:
             # MEP with roofing — promote to Tier 5, not Tier 1
             return ("Tier 5", "APPLIED-SUB-MEP", "MEP-heavy with roofing scope", False)
         return ("Tier 1", tag, "; ".join(reason_parts), False)
@@ -448,6 +465,26 @@ def merge_and_save(existing_jobs, new_jobs):
     # Sort by bidDueDate (nulls last)
     existing_jobs.sort(key=lambda j: (j.get("bidDueDate") is None, j.get("bidDueDate", "")))
 
+    # Purge: MEP/environmental jobs that slipped through with "new" status
+    before = len(existing_jobs)
+    existing_jobs[:] = [
+        j for j in existing_jobs
+        if not (
+            j.get("status") == "new"
+            and any_kw_match(MEP_KEYWORDS, (j.get("jobName","") + " " + j.get("projectDescription","")).lower())
+            and not any_kw_match(ROOFING_KEYWORDS, (j.get("jobName","") + " " + j.get("projectDescription","")).lower())
+        )
+        and not (
+            j.get("status") == "new"
+            and any_kw_match(ENVIRONMENTAL_KEYWORDS, (j.get("jobName","") + " " + j.get("projectDescription","")).lower())
+            and not any_kw_match(ROOFING_KEYWORDS, (j.get("jobName","") + " " + j.get("projectDescription","")).lower())
+        )
+        and j.get("tier") is not None  # also purge untiered
+    ]
+    purged = before - len(existing_jobs)
+    if purged:
+        print(f"  Purged {purged} jobs (MEP/env or untiered)")
+
     # Mark expired: keys no longer returned AND past due
     today = datetime.now(timezone.utc).date()
     for job in existing_jobs:
@@ -514,8 +551,28 @@ def main():
     print(f"Skipped: {len(skip_log)}")
 
     # Print skip log
-    for s in skip_log:
+    for s in skip_log[:10]:
         print(f"  SKIP [{s['rule']:30s}] {s['title'][:60]}")
+    if len(skip_log) > 10:
+        print(f"  ... and {len(skip_log)-10} more")
+
+    # DPMC scraper (§3)
+    if HAS_DPMC:
+        print("\nPulling DPMC...")
+        dpmc_raw = fetch_dpmc()
+        print(f"  DPMC projects: {len(dpmc_raw)}")
+        dpmc_added = 0
+        for proj in dpmc_raw:
+            tier_label, tag, reasoning, is_skip = classify_dpmc(proj)
+            if is_skip:
+                continue
+            job = dpmc_to_job(proj, tier_label, tag, reasoning)
+            key = (job["sourceType"], job["opportunityId"])
+            if key not in eks:
+                new_jobs.append(job)
+                eks.add(key)
+                dpmc_added += 1
+        print(f"  DPMC passed: {dpmc_added}")
 
     # Merge
     added, updated = merge_and_save(existing, new_jobs)

@@ -189,6 +189,7 @@
       <div class="seg" id="boards">
         <button data-board="HigherGov" class="on">HigherGov</button>
         <button data-board="BidNet">BidNet</button>
+        <button data-board="DPMC">DPMC</button>
         <button data-board="GC Email">General Contractors</button>
         <button data-board="all">All</button>
       </div>
@@ -345,6 +346,8 @@
     if (board !== 'all') {
       list = list.filter(j => j.sourceType === board);
     }
+    // Hide expired/cancelled
+    list = list.filter(j => !['expired','archive'].includes((j.status||'').toLowerCase()));
 
     list.sort((a,b) => {
       if (!a.bidDueDate) return 1;
