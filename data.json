@@ -1,6 +1,6 @@
 {
   "board": "Concord CE \u2014 Job Opportunity Board",
-  "updated": "2026-07-06T19:00:00Z",
+  "updated": "2026-07-07T09:00:23Z",
   "jobs": [
     {
       "id": "CCE-2026-0039",
@@ -105,6 +105,19 @@
       "magnitude": "Unknown",
       "keyDates": "Bid Due: Jul 20",
       "bidDueDate": "2026-07-20",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0052",
+      "jobName": "BUILDING REPAIRS, BUIILDING 530, DAM NECK ANNEX",
+      "projectDescription": "Login at https://piee.eb.mil and search for 'N4008526R0176' to obtain more details.*",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Virginia Beach, VA\n260 miles\n4.25 hours away",
+      "magnitude": "$0.5M \u2013 $2.5M",
+      "keyDates": "Bid Due: Jul 22",
+      "bidDueDate": "2026-07-22",
       "status": "new"
     },
     {
@@ -222,6 +235,32 @@
       "magnitude": "Under $100K",
       "keyDates": "Bid Due: Aug 5",
       "bidDueDate": "2026-08-05",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0051",
+      "jobName": "REPLACE AND RELOCATE FAN COIL UNIT, BLDG 513, NAS OCEANA",
+      "projectDescription": "Login at https://piee.eb.mil and search for 'N4008526R0146' to obtain more details.*",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Virginia Beach, VA\n260 miles\n4.25 hours away",
+      "magnitude": "$150K \u2013 $350K",
+      "keyDates": "Bid Due: Aug 5",
+      "bidDueDate": "2026-08-05",
+      "status": "new"
+    },
+    {
+      "id": "CCE-2026-0050",
+      "jobName": "Z1DA--NRM CONST - 528A7-18-707 - Replace Boiler Stack Rome CBOC -",
+      "projectDescription": "The Rome Community Based Outpatient Clinic (CBOC) located at 125 Brookley Road, Rome, NY 13441 has a need to demolish two (2) existing boiler exhaust stacks and one (1) generator steam relief stack and demolish the concrete / masonry chimney structure and seal the existing roof and construct and install two (2) new steel boiler exhaust stacks, the steel support structure, and one (1) steel generator exhaust pipe.\n",
+      "setAside": "SDVOSB",
+      "sourceType": "HigherGov",
+      "sourceDetail": "VISN 2:\u00a0New York/New Jersey VA Health Care Network",
+      "location": "Rome, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$250K \u2013 $650K",
+      "keyDates": "Bid Due: Aug 6",
+      "bidDueDate": "2026-08-06",
       "status": "new"
     },
     {
