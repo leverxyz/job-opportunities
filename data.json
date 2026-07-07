@@ -1,20 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-07T21:35:14Z",
+  "updated": "2026-07-07T21:35:58Z",
   "jobs": [
-    {
-      "id": "CCE-2026-0039",
-      "jobName": "Refresh and Refurbish BEQ Facilities, Building 4295 & Building 4296",
-      "projectDescription": "This procurement is restricted to the General MACC contractors. Only the General MACC contractors listed on the RFP cover letter may submit a proposal. See attached documents for scope of work and any applicable drawings.\n\n\n\nAmendment 0001 (As-built drawings 4169020 to 4169125 were distributed via DoD Safe Link due to file size).\n\nAmendment 0002\n",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Naval Facilities Engineering Command",
-      "location": "Cherry Point, NC\nunknown\nunknown",
-      "magnitude": "$0.9M \u2013 $2.2M",
-      "keyDates": "Bid Due: Jul 6",
-      "bidDueDate": "2026-07-06",
-      "status": "expired"
-    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
@@ -90,25 +77,6 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/delta-range-grenade-pits-fort-devens-ma-w15qkn26qa138-o-11ef3",
       "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "0c31a62a31f3513da96399ba42b46be3",
-      "jobName": "CSS 98845 - Replace Controls and Chiller in Blackwood, NJ (NJ050)",
-      "projectDescription": "THE SOLICITATION IS NOW POSTED - The Army contracting Command - NJ, intends to award a firm fixed price contract as a result of the solicitation. please review the attached Statement of Work (SOW), Appendices, and Solicitation for the detailed requirement. The solicitation is 100% Small Business Set Aside.-The requirement response date is posted on this notice and is also included in the solicitation. The estimated start date for this contract will be approximately 15 July, 2026. **It is the res",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "ACC Picatinny",
-      "location": "Blackwood, NJ\n20 miles\n0.5 hours away",
-      "magnitude": "$350K \u2013 $900K",
-      "keyDates": "Bid Due: Jul 15, 2026",
-      "bidDueDate": "2026-07-15",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/css-98845-replace-controls-and-chiller-in-blackw-w15qkn26ra046-o-d967e",
-      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "0f9c83cfcf585c5f8681d7f2cca9b44e",
@@ -242,20 +210,6 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/construct-arabian-leopard-exhibit-at-the-smithsoni-33330226rt0010005-o-57564",
       "distanceTier": "D2 Regional"
-    },
-    {
-      "id": "AR-2026-0001",
-      "jobName": "Install Security Vault in BLDG 1751 \u2014 McGuire AFB",
-      "projectDescription": "MACC IDIQ Task Order PTFL20-2007. Construct a secure Class B vault (45'\u00d7100'\u00d715') as an independent structure within B1751 at JB MDL for classified materials storage up to SECRET level. Scope includes: concrete foundation, reinforced CMU walls (fully grouted), elevated concrete slab on structural steel framing, fully adhered EPDM roofing, Advantor IDS, HVAC with BACnet DDC controls, plumbing, electrical, fire suppression, vault door, communications, earthwork, and exterior improvements. 12-month period of performance. Bid Schedule: Base Bid + 3 allowances ($50K IDS, $25K concrete demo, $20K soil remediation). 704-page SOW dated June 2026. Prime/GC: Eastern Construction.",
-      "setAside": "NONE",
-      "sourceType": "GC Email",
-      "sourceDetail": "Eastern Construction / JP Gowda",
-      "location": "Wrightstown, NJ\nJB MDL McGuire AFB\n~15 miles from Bordentown",
-      "magnitude": "TBD \u2014 Base Bid + $95K allowances",
-      "keyDates": "RFI Due: Jul 8\nBid Due: Jul 20, 2PM",
-      "bidDueDate": "2026-07-20",
-      "status": "review",
-      "rfiDueDate": "2026-07-08"
     },
     {
       "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
@@ -581,25 +535,6 @@
       "distanceTier": "D1 Core"
     },
     {
-      "opportunityId": "26457a9eca0058f6a21501b86d8908cf",
-      "jobName": "Building G560 Mechanical Replacement",
-      "projectDescription": "Only M&amp;R MACC Contractors listed on the General Requirements cover page may submit a proposal for this ROICC Camp Lejeune area of responsibility project.  See attached documents for scope of work and any applicable drawings.\n",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Naval Facilities Engineering Command",
-      "location": "Camp Lejeune, NC\n450 miles\n7 hours away",
-      "magnitude": "$0.5M \u2013 $2.5M",
-      "keyDates": "Bid Due: Aug 3, 2026",
-      "bidDueDate": "2026-08-03",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/building-g560-mechanical-replacement-n40085-26-r-9057-k-4d4e2",
-      "distanceTier": "D4 Far"
-    },
-    {
       "opportunityId": "a40627fa7f4d51dd98fcfff5f5d75e76",
       "jobName": "Y1LZ--Warehouse Exterior Improvements",
       "projectDescription": "The Hampton VA Healthcare System requires the services of a qualified General Contracting firm to provide construction services for the installation of a concrete pad for vehicle use and installation of a concrete ramp. Please read all documents attached to this solicitation and the Statement of Work for details.\n",
@@ -733,25 +668,6 @@
       "distanceTier": "D3 Stretch"
     },
     {
-      "opportunityId": "29764787fcaa50d4a93d1b898ab1049e",
-      "jobName": "Multiple Building Fire Exhaust Systems Repairs",
-      "projectDescription": "Only Mechanical MACC Contractors listed on the General Requirements cover page may submit a proposal for this ROICC Camp Lejeune area of responsibility project.  See attached documents for scope of work and any applicable drawings.\n",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Naval Facilities Engineering Command",
-      "location": "Camp Lejeune, NC\n450 miles\n7 hours away",
-      "magnitude": "$0.8M \u2013 $2.5M",
-      "keyDates": "Bid Due: Aug 5, 2026",
-      "bidDueDate": "2026-08-05",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/multiple-building-fire-exhaust-systems-repairs-n4008526r9059-k-a59a1",
-      "distanceTier": "D4 Far"
-    },
-    {
       "opportunityId": "6c0d0adf1b155db3b8a9e01c980f96ec",
       "jobName": "Construct 145th Security Forces Building",
       "projectDescription": "\n\nThe purpose of this amendment is to extend the bid submission due date in order to allow the Government sufficient time to respond to industry questions, and to provide offerors adequate time to review the responses and adjust their bids accordingly. \n\n1. The deadline for the submission of bids is extended: \n\nFrom: Jul 08, 2026 01:00 pm EDT \n\nTo: Aug 05, 2026 01:00 pm EDT \n\nPasses for bid opening is extended: \n\nFrom: Jul 02, 2026 10:00 am EDT \n\nTo: Jul 30, 2026 10:00 am EDT \n\n2. Questions &amp",
@@ -882,25 +798,6 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/greenhouse-modernization-1232sa26q0889-k-697fd",
-      "distanceTier": "D1 Core"
-    },
-    {
-      "opportunityId": "b2ea7f3be02b54719fd04794711a9f9b",
-      "jobName": "Z1DA--Upgrade Chiller Plant Construction Northport  - Project 632-25-101",
-      "projectDescription": "Work includes general construction and alterations, of the existing chiller plant and includes the necessary removal of existing building components, systems, construction and installation of certain other items. The project will be constructed in two phases. Phase 1 work shall be completed and fully operational, supporting the medical facility, before a notice to proceed with phase 2 work will be issued. The project includes the installation and maintenance of a temporary chiller plant to suppo",
-      "tier": "Tier 4",
-      "tag": "CONCORD-SUB",
-      "reasoning": "",
-      "setAside": "SDVOSB",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Program Contracting Activity Central",
-      "location": "Northport, NY\n70 miles\n1.5 hours away",
-      "magnitude": "$8M \u2013 $18M",
-      "keyDates": "Bid Due: Aug 18, 2026",
-      "bidDueDate": "2026-08-18",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1da-upgrade-chiller-plant-construction-northport-36c77626b0024-o-2ded6",
       "distanceTier": "D1 Core"
     },
     {
