@@ -150,6 +150,20 @@
   .del-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
     cursor: pointer; padding: 2px 8px; border-radius: 6px; font-family: var(--sans); margin-left: 6px; }
   .del-btn:hover { color: var(--red); border-color: var(--red); }
+
+  .tier { display: inline-block; padding: 1px 7px; font-size: 10px; font-weight: 700;
+    border-radius: 4px; letter-spacing: .3px; vertical-align: middle; margin-right: 5px; }
+  .t1 { color: #fff; background: #1a7a3a; }
+  .t2 { color: #fff; background: var(--blueprint); }
+  .t3 { color: var(--amber); background: var(--amber-bg); }
+  .t4 { color: var(--blue); background: var(--blue-bg); }
+  .t5 { color: var(--ink-faint); background: var(--gray-pill); }
+  .tcr { color: #fff; background: #c2352b; }
+  .tlane { color: var(--teal); background: var(--teal-bg); }
+
+  .tag-chip { display: inline-block; padding: 1px 8px; font-size: 10.5px; font-weight: 600;
+    border-radius: 999px; color: var(--ink-soft); background: var(--gray-pill);
+    margin-bottom: 4px; margin-top: 3px; }
   @media (max-width: 560px) { #app { padding: 18px 12px 40px; } h1.title { font-size: 20px; } }
 </style>
 </head>
@@ -313,6 +327,15 @@
     return '<span class="pill '+cls+'">'+esc(s||'New')+'</span>';
   }
 
+  function tierBadge(t){
+    if (!t) return '';
+    const cls = t === 'Tier 1' ? 'tier t1' : t === 'Tier 2' ? 'tier t2' :
+               t === 'Tier 3' ? 'tier t3' : t === 'Tier 4' ? 'tier t4' :
+               t === 'Tier 5' ? 'tier t5' : t === 'CHIEF-REVIEW' ? 'tier tcr' :
+               t.startsWith('Lane') ? 'tier tlane' : 'tier';
+    return '<span class="'+cls+'">'+esc(t)+'</span>';
+  }
+
   let allJobs = [];
   let board = 'HigherGov';
 
@@ -340,7 +363,7 @@
       const alt = i % 2 === 1 ? ' alt' : '';
       return `
         <tr class="${alt ? 'alt' : ''}">
-          <td><div class="job">${esc(j.jobName)}</div><div class="desc-cell">${multiline(j.projectDescription)}</div></td>
+          <td><div class="job">${tierBadge(j.tier)} ${esc(j.jobName)}</div><div class="tag-chip">${esc(j.tag||'')}</div><div class="desc-cell">${multiline(j.projectDescription)}</div></td>
           <td>${setAsidePill(j.setAside)}</td>
           <td class="loc">${esc(j.location)}</td>
           <td class="keydates">

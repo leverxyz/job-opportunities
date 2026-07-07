@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-HigherGov → data.json sync pipeline.
-Pulls opportunities, filters per Chief's rules, merges with existing data.json,
-commits and pushes to job-opportunities repo.
+Project Opportunity Board — Sync Pipeline v2
+HigherGov → Tier Classification → data.json → GitHub Pages
+Per sourcing-rules.md v2026-07-06
 
 Usage: python3 sync.py
 """
-import json, os, sys, subprocess
-from datetime import datetime, timezone
+import json, os, re, sys, subprocess
+from datetime import datetime, timezone, timedelta
 import httpx
 
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,139 +15,347 @@ DATA_FILE = os.path.join(REPO_DIR, "data.json")
 
 # --- Config ---
 HIGHERGOV_KEY = os.environ.get("HIGHERGOV_API_KEY", "")
-SEARCH_ID = "1AhI2Gg-oi0-u2w9mSrGw"
+SEARCH_IDS = {
+    "federal": "RUjIV5pvOv6TKsq2QJbUA",  # §1 — Federal Northeast
+    # "roofing_nationwide": None,          # §1 — TBD by Chief
+    # "nj_state_local": None,              # §1 — TBD by Chief
+}
 HIGHERGOV_URL = "https://www.highergov.com/api-external/opportunity/"
 
-# Filtering rules
-MEP_KEYWORDS = ["mechanical", "electrical", "plumbing", "hvac", "mep", "boiler", "chiller",
-                "fire protection", "sprinkler"]
-CONSTRUCTION_KEYWORDS = ["construction", "building", "renovation", "repair", "rehab",
-                         "restoration", "replacement", "improvement", "alteration"]
-HIGHWAY_KEYWORDS = ["highway", "paving", "asphalt", "roadway", "bridge"]
+# --- §0.7 Keyword Sets (whole-word matching via word boundaries) ---
 
-# Job titles containing these keywords are always skipped
-EXCLUDE_KEYWORDS = ["cyber repair", "cyber security"]
+ROOFING_KEYWORDS = [
+    "roof", "roofing", "reroof", "re-roof", "membrane", "epdm", "tpo", "sbs",
+    "pvc roof", "shingle", "standing seam", "built-up roof", "bur", "flashing",
+    "roof deck", "skylight", "siding", "window replacement", "windows", "facade",
+    "building envelope", "exterior restoration", "masonry restoration", "brick",
+]
+
+ROOFING_EXCLUSIONS = [  # These contain "roof" but are HVAC, not roofing
+    "rooftop unit", "roof top unit", "rtu",
+]
+
+MEP_KEYWORDS = [
+    "mechanical", "electrical", "plumbing", "hvac", "mep", "boiler", "chiller",
+    "fire protection", "sprinkler",
+]
+
+ENVIRONMENTAL_KEYWORDS = [
+    "environmental remediation", "remediation", "abatement", "asbestos",
+    "lead abatement", "mold", "soil", "groundwater", "hazardous waste",
+    "wetlands", "ust removal", "tank removal",
+]
+
+GC_CONTEXT_KEYWORDS = [
+    "construction", "building", "renovation", "rehab", "restoration",
+    "alteration", "addition", "demolition",
+]
+# "repair", "replacement", "improvement" deliberately excluded — appear in MEP-only
+
+HIGHWAY_KEYWORDS = ["highway", "paving", "asphalt", "roadway"]
+BRIDGE_PAIRS = ["deck", "span", "girder", "culvert", "abutment"]  # bridge only skips when paired
+
+EXCLUDE_KEYWORDS = ["cyber security", "cybersecurity"]
+
+# --- §0.5 Distance Tiers ---
+
+DISTANCE_TIERS = {
+    "NJ": ("D1 Core", "Trenton, NJ", "20 miles", "0.5 hours away"),
+    "PA": ("D1 Core", "Philadelphia, PA", "35 miles", "0.75 hours away"),
+    "DE": ("D1 Core", "Wilmington, DE", "55 miles", "1 hour away"),
+    "NY": ("D1 Core", "New York, NY", "70 miles", "1.5 hours away"),
+    "MD": ("D2 Regional", "Baltimore, MD", "130 miles", "2.25 hours away"),
+    "DC": ("D2 Regional", "Washington, DC", "175 miles", "3 hours away"),
+    "CT": ("D2 Regional", "Hartford, CT", "155 miles", "2.75 hours away"),
+    "MA": ("D3 Stretch", "Boston, MA", "270 miles", "4.5 hours away"),
+    "RI": ("D3 Stretch", "Providence, RI", "230 miles", "3.75 hours away"),
+    "VA": ("D3 Stretch", "Richmond, VA", "260 miles", "4.25 hours away"),
+    "NH": ("D3 Stretch", "Concord, NH", "280 miles", "4.75 hours away"),
+    "VT": ("D3 Stretch", "Montpelier, VT", "330 miles", "5.5 hours away"),
+    "ME": ("D3 Stretch", "Portland, ME", "380 miles", "6 hours away"),
+    "OH": ("D4 Far", "Cleveland, OH", "430 miles", "6.5 hours away"),
+    "WV": ("D4 Far", "Charleston, WV", "430 miles", "6.5 hours away"),
+    "NC": ("D4 Far", "Raleigh, NC", "450 miles", "7 hours away"),
+}
 
 SET_ASIDE_MAP = {
-    "SBA": "SBA", "SB": "SBA",
+    "SBA": "SBA", "SB": "SBA", "SBP": "SBA-Partial",
     "SDVOSB": "SDVOSB", "SDVOSBC": "SDVOSB",
-    "HUBZONE": "HUBZone", "WOSB": "WOSB",
+    "HUBZONE": "HUBZone",
+    "WOSB": "WOSB", "EDWOSB": "WOSB",
     "NONE": "NONE", "": "NONE",
 }
 
-DISTANCE_MAP = {
-    "NJ": ("Trenton, NJ", "20 miles", "0.5 hours away"),
-    "PA": ("Philadelphia, PA", "35 miles", "0.75 hours away"),
-    "NY": ("New York, NY", "70 miles", "1.5 hours away"),
-    "DE": ("Wilmington, DE", "55 miles", "1 hour away"),
-    "MD": ("Baltimore, MD", "130 miles", "2.25 hours away"),
-    "DC": ("Washington, DC", "175 miles", "3 hours away"),
-    "CT": ("Hartford, CT", "155 miles", "2.75 hours away"),
-    "VA": ("Richmond, VA", "260 miles", "4.25 hours away"),
-    "MA": ("Boston, MA", "270 miles", "4.5 hours away"),
-    "OH": ("Cleveland, OH", "430 miles", "6.5 hours away"),
-    "RI": ("Providence, RI", "230 miles", "3.75 hours away"),
-}
+VALID_SET_ASIDES = {"SBA", "SB", "SBP", "NONE", "SDVOSB", "SDVOSBC", "WOSB", "EDWOSB", "HUBZONE"}
 
+# --- Helpers ---
+
+def wb_match(keyword, text):
+    """Whole-word / phrase boundary match, case-insensitive."""
+    pattern = r'\b' + re.escape(keyword) + r'\b'
+    return bool(re.search(pattern, text, re.IGNORECASE))
+
+def any_kw_match(keywords, text):
+    """True if any keyword matches with word boundaries."""
+    for kw in keywords:
+        if wb_match(kw, text):
+            return True
+    return False
+
+def count_kw_match(keywords, text):
+    """Count how many keywords match with word boundaries."""
+    return sum(1 for kw in keywords if wb_match(kw, text))
+
+def safe_int(v):
+    if v is None: return 0
+    try: return int(v)
+    except (ValueError, TypeError): return 0
+
+def fmt_date(iso_str):
+    """Format ISO date to 'Mon DD, YYYY'."""
+    if not iso_str: return iso_str
+    try:
+        d = datetime.strptime(iso_str, "%Y-%m-%d")
+        return d.strftime("%b %d, %Y").replace(" 0", " ")
+    except ValueError:
+        return iso_str
+
+# --- Skip Log ---
+skip_log = []
+
+def log_skip(opp_key, title, rule):
+    skip_log.append({"key": opp_key, "title": title[:80], "rule": rule})
+
+# --- §0.4 Actionability ---
+
+def fails_actionability(due_date_str, val_high):
+    """Return (True, reason) if opportunity should be skipped per §0.4."""
+    if due_date_str:
+        try:
+            due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+            today = datetime.now(timezone.utc).date()
+            if due < today:
+                return (True, "past due")
+            if (due - today).days < 5:
+                return (True, f"short window: { (due-today).days }d out")
+        except ValueError:
+            pass
+    # Value floor — $25K, exempt Tier 1 (checked after tiering)
+    return (False, "")
+
+def below_value_floor(val_high, is_tier1):
+    """Return True if below $25K and not Tier 1."""
+    if is_tier1:
+        return False
+    return val_high > 0 and val_high < 25000
+
+
+# --- §0.1 Tier Classification ---
+
+def classify_tier(title, desc, set_aside, val_low, val_high, distance_tier, is_nj_state_funded):
+    """
+    Classify an opportunity into Tier 1-5 or SKIP.
+    Returns: (tier_label, tag, reasoning, is_skip)
+    """
+    combined = f"{title} {desc}".lower()
+
+    # Check roofing exclusions first (RTU trap)
+    has_roofing_exclusion = any_kw_match(ROOFING_EXCLUSIONS, combined)
+
+    has_roofing = any_kw_match(ROOFING_KEYWORDS, combined) and not has_roofing_exclusion
+    has_envelope = any_kw_match(["siding", "window replacement", "windows", "facade",
+                                  "building envelope", "exterior restoration",
+                                  "masonry restoration", "brick"], combined) and not has_roofing_exclusion
+    mep_count = count_kw_match(MEP_KEYWORDS, combined)
+    has_gc_context = any_kw_match(GC_CONTEXT_KEYWORDS, combined)
+    has_environmental = any_kw_match(ENVIRONMENTAL_KEYWORDS, combined)
+    is_highway = any_kw_match(HIGHWAY_KEYWORDS, combined)
+    is_bridge = wb_match("bridge", combined) and any_kw_match(BRIDGE_PAIRS, combined)
+    is_cyber = any_kw_match(EXCLUDE_KEYWORDS, combined)
+    is_8a = "8(A)" in (set_aside or "").upper() or "8A" in (set_aside or "").upper()
+
+    # Use high value for tiering; missing → assume ≤$3M (§0.1)
+    effective_val = val_high if val_high > 0 else val_low
+    if effective_val == 0:
+        effective_val = 3_000_000  # assume ≤$3M
+
+    # --- NJ State-Funded routing (§0.2) ---
+    if is_nj_state_funded:
+        if is_highway or is_cyber or is_8a:
+            return ("SKIP", "", "", True)
+        # MEP-only or environmental-only with no roofing
+        if not has_roofing:
+            if mep_count >= 2 and not has_gc_context:
+                return ("SKIP", "", "", True)
+            if has_environmental and not has_gc_context:
+                return ("SKIP", "", "", True)
+            # No roofing at all → skip (Concord can't touch, Applied can't perform)
+            return ("SKIP", "", "", True)
+
+        # Has roofing — route to lanes
+        is_strictly_roofing = has_roofing and not has_envelope
+        if is_strictly_roofing:
+            return ("Lane 1", "APPLIED-PRIME", "NJ state-funded, strictly roofing", False)
+        # Mixed envelope
+        if has_roofing and has_envelope:
+            return ("CHIEF-REVIEW", "", "NJ state-funded, mixed roof+envelope — Chief review", False)
+        # Roofing inside larger project
+        return ("Lane 2", "APPLIED-SUB", "NJ state-funded, roofing scope in larger project", False)
+
+    # --- Federal / Private / Commercial routing (§0.1) ---
+    if is_highway or is_bridge or is_cyber or is_8a:
+        return ("SKIP", "", "", True)
+
+    # Environmental-only (no GC context)
+    if has_environmental and not has_gc_context:
+        return ("SKIP", "", "", True)
+
+    # MEP-only check — but check Tier 5 promotion first
+    is_mep_only = mep_count >= 2 and not has_gc_context and not has_roofing
+
+    # Tier 1: Roofing/Envelope — highest priority
+    if has_roofing or has_envelope:
+        tag = "APPLIED-PRIME"
+        reason_parts = []
+        if has_roofing: reason_parts.append("roofing scope detected")
+        if has_envelope: reason_parts.append("envelope scope detected")
+        if is_mep_only:
+            # MEP with roofing — promote to Tier 5, not Tier 1
+            return ("Tier 5", "APPLIED-SUB-MEP", "MEP-heavy with roofing scope", False)
+        return ("Tier 1", tag, "; ".join(reason_parts), False)
+
+    # MEP-only, no roofing → skip
+    if is_mep_only:
+        return ("SKIP", "", "", True)
+
+    # Tier 2 vs Tier 4: Concord GC, split at $3M
+    if effective_val <= 3_000_000:
+        tier_label = "Tier 2"
+        tag = "CONCORD-PRIME"
+    else:
+        tier_label = "Tier 4"
+        tag = "CONCORD-SUB"
+
+    # Distance tier filter for Tiers 2/4
+    distance_block = False
+    if distance_tier in ("D3 Stretch", "D4 Far"):
+        distance_block = True
+
+    if distance_block:
+        return (tier_label, tag, f"GC work at {distance_tier} — boresighted, needs Chief review", False)
+
+    return (tier_label, tag, "", False)
+
+
+# --- Pipeline ---
 
 def load_existing():
-    """Load existing data.json, return jobs list."""
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE) as f:
             data = json.load(f)
         return data.get("jobs", [])
     return []
 
-
-def next_id(existing_jobs):
-    """Generate next job ID: CCE-YYYY-NNNN."""
-    year = datetime.now().strftime("%Y")
-    max_n = 0
-    prefix = f"CCE-{year}-"
-    for job in existing_jobs:
-        jid = job.get("id", "")
-        if jid.startswith(prefix):
-            try:
-                n = int(jid.split("-")[-1])
-                max_n = max(max_n, n)
-            except ValueError:
-                pass
-    return f"{prefix}{max_n + 1:04d}"
-
-
-def safe_int(v):
-    if v is None:
-        return 0
-    try:
-        return int(v)
-    except (ValueError, TypeError):
-        return 0
-
-
-def should_skip(opp):
-    """Return True if this opportunity should be filtered out."""
-    title = (opp.get("title") or "").lower()
-    desc = (opp.get("description_text") or "").lower()
-    combined = title + " " + desc
-    set_aside = (opp.get("set_aside") or "").upper()
-
-    # Skip 8(a)
-    if "8(A)" in set_aside or "8A" in set_aside:
-        return True
-
-    # Skip MEP-only (no construction context)
-    mep_count = sum(1 for kw in MEP_KEYWORDS if kw in combined)
-    has_construction = any(kw in combined for kw in CONSTRUCTION_KEYWORDS)
-    if mep_count >= 2 and not has_construction:
-        return True
-
-    # Skip highway/paving
-    if any(kw in title for kw in HIGHWAY_KEYWORDS):
-        return True
-
-    # Skip excluded keywords
-    if any(kw in title for kw in EXCLUDE_KEYWORDS):
-        return True
-
-    return False
-
+def existing_keys(jobs):
+    return {(j.get("sourceType", ""), j.get("opportunityId", j.get("id", ""))) for j in jobs}
 
 def pull_highergov():
-    """Pull and filter opportunities from HigherGov."""
+    """Pull from all configured HigherGov searches."""
     if not HIGHERGOV_KEY:
         print("ERROR: HIGHERGOV_API_KEY not set")
         return []
 
-    params = {"api_key": HIGHERGOV_KEY, "search_id": SEARCH_ID}
-    resp = httpx.get(HIGHERGOV_URL, params=params, timeout=30)
-    data = resp.json()
-
-    results = data.get("results", [])
-    if isinstance(results, dict):
-        results = results.get("data", results.get("results", []))
-
-    filtered = []
-    for opp in results:
-        if should_skip(opp):
+    all_results = []
+    for label, search_id in SEARCH_IDS.items():
+        if not search_id:
             continue
+        print(f"  Pulling {label} (search {search_id})...")
+        params = {"api_key": HIGHERGOV_KEY, "search_id": search_id, "page_size": "100"}
+        try:
+            resp = httpx.get(HIGHERGOV_URL, params=params, timeout=30)
+            data = resp.json()
+            results = data.get("results", [])
+            if isinstance(results, dict):
+                results = results.get("data", results.get("results", []))
+            print(f"    {len(results)} results")
+            all_results.extend(results)
+        except Exception as e:
+            print(f"    ERROR: {e}")
+    return all_results
 
-        set_aside_raw = (opp.get("set_aside") or "").upper()
-        # Active lane only: SBA, NONE, SB
-        if set_aside_raw not in ("SBA", "SB", "NONE", "", "SDVOSB", "SDVOSBC"):
-            continue
-
-        filtered.append(opp)
-
-    return filtered
-
-
-def opp_to_job(opp, next_job_id):
-    """Convert a HigherGov opportunity to a job board entry."""
+def process_opportunity(opp, existing_keys_set):
+    """Process one HigherGov opportunity through all rules."""
+    title = opp.get("title", "")
+    desc = (opp.get("description_text") or opp.get("ai_summary") or "")
+    combined = f"{title} {desc}".lower()
+    opp_id = opp.get("id", opp.get("opp_key", ""))
+    source_key = ("HigherGov", opp_id)
     set_aside_raw = (opp.get("set_aside") or "").upper()
+    due_date_str = opp.get("due_date", "")
     val_low = safe_int(opp.get("val_est_low"))
     val_high = safe_int(opp.get("val_est_high"))
 
-    # Magnitude — under $1M show in K, over show in M
+    # §0.4 Actionability (before tiering)
+    skip, reason = fails_actionability(due_date_str, val_high)
+    if skip:
+        log_skip(opp_id, title, f"actionability: {reason}")
+        return None
+
+    # Set-aside lane check
+    if set_aside_raw not in VALID_SET_ASIDES and set_aside_raw:
+        log_skip(opp_id, title, f"unrecognized set-aside: {set_aside_raw}")
+        # Don't drop — flag for review
+        set_aside_display = f"REVIEW: {set_aside_raw}"
+    else:
+        set_aside_display = SET_ASIDE_MAP.get(set_aside_raw, set_aside_raw)
+
+    # 8(a) skip
+    if "8(A)" in set_aside_raw or "8A" in set_aside_raw:
+        log_skip(opp_id, title, "8(a) set-aside")
+        return None
+
+    # Cyber skip
+    if any_kw_match(EXCLUDE_KEYWORDS, combined):
+        log_skip(opp_id, title, "cyber/IT exclusion")
+        return None
+
+    # Highway skip
+    if any_kw_match(HIGHWAY_KEYWORDS, combined):
+        log_skip(opp_id, title, "highway/paving")
+        return None
+
+    # Bridge skip (paired)
+    if wb_match("bridge", combined) and any_kw_match(BRIDGE_PAIRS, combined):
+        log_skip(opp_id, title, "bridge work")
+        return None
+
+    # Distance tier
+    state = opp.get("pop_state", "")
+    distance_info = DISTANCE_TIERS.get(state, ("Unknown", state, "unknown", "unknown"))
+    distance_tier, default_city, miles, hours = distance_info
+
+    # NJ state-funded check — HigherGov Federal search should be federal money
+    # But flag mixed funding if state/local somehow appears
+    source_type = opp.get("source_type", "")
+    is_nj_state = (source_type == "sled" and state == "NJ")
+
+    # Tier classification
+    tier_label, tag, reasoning, is_skip = classify_tier(
+        title, desc, set_aside_raw, val_low, val_high, distance_tier, is_nj_state
+    )
+
+    if is_skip:
+        log_skip(opp_id, title, f"tier skip: {tier_label}")
+        return None
+
+    # §0.4 Value floor (after tiering — Tier 1 exempt)
+    is_tier1 = tier_label == "Tier 1"
+    if below_value_floor(val_high, is_tier1):
+        log_skip(opp_id, title, f"below $25K value floor (val_high={val_high})")
+        return None
+
+    # Magnitude
+    magnitude = "TBD"
     if val_low and val_high:
         if val_high < 1_000_000:
             lo = int(val_low / 1000)
@@ -162,84 +370,102 @@ def opp_to_job(opp, next_job_id):
             lo = val_low / 1_000_000
             hi = val_high / 1_000_000
             if lo == hi:
-                magnitude = f"${lo:.1f}M".replace(".0M","M")
+                magnitude = f"${lo:.1f}M".replace(".0M", "M")
             else:
-                magnitude = f"${lo:.1f}M – ${hi:.1f}M".replace(".0M","M")
+                magnitude = f"${lo:.1f}M – ${hi:.1f}M".replace(".0M", "M")
     elif val_low:
         if val_low < 1_000_000:
             magnitude = f"${int(val_low/1000)}K+"
         else:
-            magnitude = f"${val_low/1e6:.1f}M+".replace(".0M","M")
-    else:
-        magnitude = "Unknown"
+            magnitude = f"${val_low/1e6:.1f}M+".replace(".0M", "M")
 
     # Location
-    state = opp.get("pop_state", "")
     city = opp.get("pop_city", "")
-    
-    if state in DISTANCE_MAP:
-        default_city, miles, hours = DISTANCE_MAP[state]
-    else:
-        default_city, miles, hours = (state, "unknown", "unknown")
-    
     label = f"{city}, {state}" if city else default_city
     location = f"{label}\n{miles}\n{hours}"
 
     # Key dates
-    due_date = opp.get("due_date", "")
-    if due_date:
-        try:
-            d = datetime.strptime(due_date, "%Y-%m-%d")
-            key_dates = f"Bid Due: {d.strftime('%b %d').replace(' 0', ' ')}"
-        except ValueError:
-            key_dates = f"Bid Due: {due_date}"
+    if due_date_str:
+        key_dates = f"Bid Due: {fmt_date(due_date_str)}"
     else:
         key_dates = "Bid Due: TBD"
 
-    # Description
-    desc = (opp.get("description_text") or opp.get("ai_summary") or "")[:500]
+    # NAICS
+    naics = opp.get("naics_code", {})
+    naics_code = naics.get("code", "") if isinstance(naics, dict) else ""
 
-    return {
-        "id": next_job_id,
-        "jobName": opp.get("title", "")[:200],
-        "projectDescription": desc,
-        "setAside": SET_ASIDE_MAP.get(set_aside_raw, "Other"),
+    # Link
+    path = opp.get("path", "")
+    link = f"https://www.highergov.com{path}" if path else ""
+
+    job = {
+        "opportunityId": opp_id,
+        "jobName": title[:200],
+        "projectDescription": desc[:500],
+        "tier": tier_label,
+        "tag": tag,
+        "reasoning": reasoning,
+        "setAside": set_aside_display,
         "sourceType": "HigherGov",
         "sourceDetail": (opp.get("agency") or {}).get("agency_name", "Unknown"),
         "location": location,
         "magnitude": magnitude,
         "keyDates": key_dates,
-        "bidDueDate": due_date if due_date else None,
+        "bidDueDate": due_date_str if due_date_str else None,
         "status": "new",
+        "naics": naics_code,
+        "link": link,
+        "distanceTier": distance_tier,
     }
+    return job
 
 
 def merge_and_save(existing_jobs, new_jobs):
-    """Merge new jobs into existing list, deduplicate by jobName, save."""
-    existing_names = {j.get("jobName", "") for j in existing_jobs}
+    existing_by_key = existing_keys(existing_jobs)
     added = 0
-    next_id_counter = None
+    updated = 0
 
     for job in new_jobs:
-        if job["jobName"] in existing_names:
-            continue
-        # Assign fresh ID
-        if next_id_counter is None:
-            # Recalculate from existing + already-added
-            all_jobs = existing_jobs + [j for j in new_jobs if j != job]
-            next_id_counter = int(next_id(all_jobs).split("-")[-1])
-        next_id_counter += 1
-        year = datetime.now().strftime("%Y")
-        job["id"] = f"CCE-{year}-{next_id_counter:04d}"
-        existing_jobs.append(job)
-        existing_names.add(job["jobName"])
-        added += 1
+        key = (job["sourceType"], job["opportunityId"])
+        if key in existing_by_key:
+            # Update mutable fields, preserve status
+            for ej in existing_jobs:
+                if (ej.get("sourceType"), ej.get("opportunityId", ej.get("id"))) == key:
+                    ej["bidDueDate"] = job.get("bidDueDate")
+                    ej["keyDates"] = job.get("keyDates")
+                    ej["magnitude"] = job.get("magnitude")
+                    ej["projectDescription"] = job.get("projectDescription")
+                    ej["tier"] = job.get("tier")
+                    ej["tag"] = job.get("tag")
+                    ej["reasoning"] = job.get("reasoning")
+                    updated += 1
+                    break
+        else:
+            existing_jobs.append(job)
+            existing_by_key.add(key)
+            added += 1
 
     # Sort by bidDueDate (nulls last)
     existing_jobs.sort(key=lambda j: (j.get("bidDueDate") is None, j.get("bidDueDate", "")))
 
+    # Mark expired: keys no longer returned AND past due
+    today = datetime.now(timezone.utc).date()
+    for job in existing_jobs:
+        if job.get("status") == "new" and job.get("bidDueDate"):
+            try:
+                due = datetime.strptime(job["bidDueDate"], "%Y-%m-%d").date()
+                if due < today:
+                    is_still_live = any(
+                        (nj["sourceType"], nj["opportunityId"]) == (job.get("sourceType"), job.get("opportunityId", job.get("id")))
+                        for nj in new_jobs
+                    )
+                    if not is_still_live:
+                        job["status"] = "expired"
+            except ValueError:
+                pass
+
     data = {
-        "board": "Concord CE — Job Opportunity Board",
+        "board": "Project Opportunity Board",
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "jobs": existing_jobs,
     }
@@ -248,18 +474,16 @@ def merge_and_save(existing_jobs, new_jobs):
         json.dump(data, f, indent=2)
         f.write("\n")
 
-    return added
+    return added, updated
 
 
 def commit_and_push():
-    """Commit data.json changes and push to origin."""
     os.chdir(REPO_DIR)
     subprocess.run(["git", "add", "data.json"], check=True)
     result = subprocess.run(
-        ["git", "commit", "-m", f"Sync: HigherGov update — {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
+        ["git", "commit", "-m", f"Sync: pipeline update — {datetime.now().strftime('%Y-%m-%d %H:%M')}"],
         capture_output=True, text=True
     )
-    # Exit 1 means nothing to commit — that's fine
     if result.returncode == 0 or "nothing to commit" in result.stdout + result.stderr:
         subprocess.run(["git", "push"], check=True)
         return True
@@ -267,37 +491,44 @@ def commit_and_push():
 
 
 def main():
-    print("=== HigherGov → data.json sync ===")
+    global skip_log
+    skip_log = []
+    print("=== Project Opportunity Board — Sync v2 ===")
+    print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}")
 
-    # Load existing
     existing = load_existing()
     print(f"Existing jobs: {len(existing)}")
 
-    # Pull HigherGov
     print("Pulling HigherGov...")
     raw = pull_highergov()
-    print(f"HigherGov results (filtered): {len(raw)}")
+    print(f"Raw results: {len(raw)}")
 
-    if not raw:
-        print("No new opportunities. Done.")
-        return
-
-    # Convert to job entries
+    eks = existing_keys(existing)
     new_jobs = []
-    base_id = int(next_id(existing).split("-")[-1])
-    for i, opp in enumerate(raw):
-        nid = f"CCE-{datetime.now().strftime('%Y')}-{base_id + i:04d}"
-        new_jobs.append(opp_to_job(opp, nid))
+    for opp in raw:
+        job = process_opportunity(opp, eks)
+        if job:
+            new_jobs.append(job)
 
-    # Merge and save
-    added = merge_and_save(existing, new_jobs)
-    print(f"Added: {added} new jobs")
+    print(f"Passed filters: {len(new_jobs)}")
+    print(f"Skipped: {len(skip_log)}")
 
-    if added > 0:
+    # Print skip log
+    for s in skip_log:
+        print(f"  SKIP [{s['rule']:30s}] {s['title'][:60]}")
+
+    # Merge
+    added, updated = merge_and_save(existing, new_jobs)
+    print(f"Added: {added}, Updated: {updated}")
+
+    final = load_existing()
+    print(f"Total jobs: {len(final)}")
+
+    if added > 0 or updated > 0:
         commit_and_push()
-        print("Committed and pushed to GitHub.")
+        print("Pushed to GitHub.")
     else:
-        print("No changes to commit.")
+        print("No changes to push.")
 
     print(f"Board: https://leverxyz.github.io/job-opportunities/")
 
