@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-07T21:33:52Z",
+  "updated": "2026-07-07T21:35:14Z",
   "jobs": [
     {
       "id": "CCE-2026-0039",
@@ -458,7 +458,7 @@
       "sourceType": "HigherGov",
       "sourceDetail": "USFS Region 9: Eastern Region",
       "location": "Philadelphia, PA\n35 miles\n0.75 hours away",
-      "magnitude": "$350K \u2013 $700K",
+      "magnitude": "$250K \u2013 $500K",
       "keyDates": "Bid Due: Jul 28, 2026",
       "bidDueDate": "2026-07-28",
       "status": "new",
@@ -944,7 +944,7 @@
     {
       "opportunityId": "315a39a6fff1572ab800f97e6f154295",
       "jobName": "BLDG 66 Windows Replacement",
-      "projectDescription": "Windows Replacement \n",
+      "projectDescription": "Amendment 0001 ACM Report, Statement of Work (SOW) and the Specification attachments \n\nWindows Replacement \n",
       "tier": "Tier 1",
       "tag": "APPLIED-PRIME",
       "reasoning": "roofing scope detected; envelope scope detected",
