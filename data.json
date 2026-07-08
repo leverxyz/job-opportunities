@@ -1,26 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-08T02:11:53Z",
+  "updated": "2026-07-08T02:15:00Z",
   "jobs": [
-    {
-      "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
-      "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
-      "projectDescription": "Amendment 0003:\n\nThe purpose of this amendment is to extend solicitation due date and answer vendor questions.\n\n\n\nAmendment 0002:\n\nThe purpose of this amendment is to answer vendors&#39; questions. Please see attachement  Solicitation Amendment W15QKN26RA0560002 SF 30. Hazard Surveys are not a part of this amendment, to the best of our knowledge, there is no asbestus within the building.\n\n\n\nThe purpose of this amendment is to extend the response due date. Please see attachement Solicitation Amen",
-      "tier": "Tier 1",
-      "tag": "APPLIED-PRIME",
-      "reasoning": "roofing scope detected; envelope scope detected",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "ACC Picatinny",
-      "location": "Devens, MA\n270 miles\n4.5 hours away",
-      "magnitude": "$0.7M \u2013 $1.4M",
-      "keyDates": "Bid Due: Jul 13, 2026",
-      "bidDueDate": "2026-07-13",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/full-window-replacement-building-674-u-s-army-g-w15qkn26ra056-k-cece7",
-      "distanceTier": "D3 Stretch"
-    },
     {
       "opportunityId": "77595cf101dd5ecab97b9c0d6d0645fe",
       "jobName": "Z--Roof Repair OH",
