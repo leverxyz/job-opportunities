@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-08T02:18:46Z",
+  "updated": "2026-07-08T02:19:55Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -191,6 +191,26 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1da-upgrade-medical-gas-communication-system-36c24426r0119-o-33398",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "dpmc-T0694-00 \r\n\t\t\t\t\tSBE Opportunity",
+      "jobName": "SPP Restroom Renovations \u2013 NJDOT Cherry Hill Maintenance Yard, Cherry Hill, Camden County, NJ",
+      "projectDescription": "SPP Restroom Renovations \u2013 NJDOT Cherry Hill Maintenance Yard, Cherry Hill, Camden County, NJ",
+      "tier": "Lane 3",
+      "tag": "CONCORD-SUB",
+      "reasoning": "NJ DPMC \u2014 building reno, roof possible",
+      "setAside": "NONE",
+      "sourceType": "DPMC",
+      "sourceDetail": "NJ DPMC",
+      "location": "Cherry Hill, NJ\nLocal \u2014 NJ state work",
+      "magnitude": "$1,108,568",
+      "keyDates": "Bid Due: Jul 16, 2026",
+      "bidDueDate": "2026-07-16",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.nj.gov/treasury/dpmc/project_construction_advertisements.shtml",
+      "distanceTier": "D1 Core",
+      "dpmcStatus": "pre_bid_held"
     },
     {
       "opportunityId": "1f319f2b136150a0962890510952056c",
@@ -856,6 +876,26 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/bldg-66-windows-replacement-n4008526r9053-k-186d1",
       "distanceTier": "D4 Far"
+    },
+    {
+      "opportunityId": "dpmc-E0398-00",
+      "jobName": "Curtain Wall Replacement \u2013 Marie Katzenbach School for the Deaf, Ewing, Mercer County, NJ",
+      "projectDescription": "Curtain Wall Replacement \u2013 Marie Katzenbach School for the Deaf, Ewing, Mercer County, NJ",
+      "tier": "Lane 2",
+      "tag": "APPLIED-SUB",
+      "reasoning": "NJ DPMC \u2014 roofing sub in larger project",
+      "setAside": "NONE",
+      "sourceType": "DPMC",
+      "sourceDetail": "NJ DPMC",
+      "location": "Ewing, NJ\nLocal \u2014 NJ state work",
+      "magnitude": "$5,075,132Add Alt #1A $112,168",
+      "keyDates": "Bid Due: 06/18/202606/23/202607/02/202607/16/2026",
+      "bidDueDate": null,
+      "status": "new",
+      "naics": "",
+      "link": "https://www.nj.gov/treasury/dpmc/project_construction_advertisements.shtml",
+      "distanceTier": "D1 Core",
+      "dpmcStatus": "pre_bid_held"
     }
   ]
 }
