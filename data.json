@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-08T02:19:55Z",
+  "updated": "2026-07-08T09:01:06Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -115,6 +115,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1da-646a4-22-700-ehrm-infrastructure-upgrades-36c77626r0071-o-7f369",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "1e6e1bb998d05bc2a813832e9c963a52",
+      "jobName": "CONVERT INTEL SPACES TO CONTROLLED AREA, BLDG 145, NAS OCEANA, VIRGINIA BEACH, VA ",
+      "projectDescription": "CONVERT INTEL SPACES TO CONTROLLED AREA, BLDG 145, NAS OCEANA, VIRGINIA BEACH, VA. See General Requirements and all applicable attachments. This solicitation and all applicable attachments are restricted to MACC GROUP: ML-C00081 (N4008524D0030-0038 AND N4008524D0069) under the DESIGN-BUILD (DB)/DESIGN-BID-BUILD (DBB), INDEFINITE DELIVERY/INDEFINITE QUANTITY (ID/IQ) MULTIPLE AWARD CONSTRUCTION CONTRACT (MACC) SMALL BUSINESS SET ASIDE CONSTRUCTION PROJECTS PRIMARILY IN THE HAMPTON ROADS, VIRGINIA ",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "VIRGINIA BEACH, VA\n260 miles\n4.25 hours away",
+      "magnitude": "$0.8M \u2013 $2.5M",
+      "keyDates": "Bid Due: Jul 15, 2026",
+      "bidDueDate": "2026-07-15",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/convert-intel-spaces-to-controlled-area-bldg-145-n4008526r0169-o-cb840",
+      "distanceTier": "D3 Stretch"
     },
     {
       "opportunityId": "4c8a4b1a907c5534af3864fe59e3cfba",
@@ -861,7 +880,7 @@
     {
       "opportunityId": "315a39a6fff1572ab800f97e6f154295",
       "jobName": "BLDG 66 Windows Replacement",
-      "projectDescription": "Windows Replacement \n",
+      "projectDescription": "Amendment 0001 ACM Report, Statement of Work (SOW) and the Specification attachments \n\nWindows Replacement \n",
       "tier": "Tier 1",
       "tag": "APPLIED-PRIME",
       "reasoning": "roofing scope detected; envelope scope detected",
