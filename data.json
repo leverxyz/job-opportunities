@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-08T09:01:06Z",
+  "updated": "2026-07-09T09:00:37Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -308,6 +308,25 @@
       "distanceTier": "D1 Core"
     },
     {
+      "opportunityId": "daed49c8b1255456a995651bef26215f",
+      "jobName": "NYFO Paddock Fencing",
+      "projectDescription": "This is a sources sought notice ONLY. The U.S. Government desires to procure paddock fencing in fiscal year 2026, for The US Park Police (USPP) New York Field Office (NYFO) Horse Mounted Patrol (HMP) Unit which has a stable located at 407 Beach 169th Street, Queens, NY 11694. The USPP NYFO HMP Stable area has two (2) horse paddocks near the stable. The Government encourages all interested parties to respond to this sources sought and identify their capabilities of meeting the requirements of the",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "NPS National Office",
+      "location": "Queens, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$25K \u2013 $90K",
+      "keyDates": "Bid Due: Jul 21, 2026",
+      "bidDueDate": "2026-07-21",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/nyfo-paddock-fencing-140p2126q0149-o-d73df",
+      "distanceTier": "D1 Core"
+    },
+    {
       "opportunityId": "b1067c34c613513695c7c198ac7e526d",
       "jobName": "Y1AB--Stabilize/Improve Building 120 - 552-21-102",
       "projectDescription": "The purpose of this amendment is to extend the bid opening date to July 22, 2026 at 12:00PM Local Time. \n",
@@ -365,6 +384,25 @@
       "distanceTier": "D3 Stretch"
     },
     {
+      "opportunityId": "fbc1687da62f5c89bfeed541fe55fb5b",
+      "jobName": "Building 305 Office Renovations - ZQEL 19-0016",
+      "projectDescription": "Solicitation Notice: Renovation of Building 305, Youngstown Air Reserve Station\n\n1. Action and Classification\n\n\n\tSolicitation Number: FA665626B0002\n\tProject Title: ZQEL 19-0016 - MAINTAIN/REPAIR/CONSTRUCT VARIOUS ROOM RENOVATIONS AT BUILDING 305 MX COMMANDER OFFICES\n\tIssuing Agency: 910th Airlift Wing (AFRC), Youngstown Air Reserve Station, Ohio\n\tNAICS Code: 236220 - Commercial and Institutional Building Construction\n\tSet-Aside: This acquisition is anticipated to be a 100% HUBZone Small Business",
+      "tier": "Tier 5",
+      "tag": "APPLIED-SUB-MEP",
+      "reasoning": "MEP-heavy with roofing scope",
+      "setAside": "REVIEW: HZC",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Reserve Command",
+      "location": "Vienna, OH\n430 miles\n6.5 hours away",
+      "magnitude": "$100K \u2013 $250K",
+      "keyDates": "Bid Due: Jul 22, 2026",
+      "bidDueDate": "2026-07-22",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/building-305-office-renovations-zqel-19-0016-fa665626b0002-o-7a551",
+      "distanceTier": "D4 Far"
+    },
+    {
       "opportunityId": "b85ccacc04f95607bffa964f52ed42b7",
       "jobName": "Construct ERHM Infrastructure Upgrades - University Drive - Pittsburgh, PA",
       "projectDescription": "The scope of work shall generally consist of but is not limited to the following: construction work to facilitate all modifications at multiple existing buildings on the VAPHS University Drive VA campus to upgrade the infrastructure to support the new Electronic Health Records Modernization (EHRM) system.\n\nThe upgrade to the infrastructure will be campus wide buildings impacted to include Buildings 1, 5, 8, 29, 30, 33, and site. The architectural total existing space square footage affected is a",
@@ -401,6 +439,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z2da-ehrm-upgrades-white-river-junction-vt-36c77626r0092-o-8a57a",
       "distanceTier": "D3 Stretch"
+    },
+    {
+      "opportunityId": "5ee8a65cf32d5020861be572cc9d20ca",
+      "jobName": "Design-Build (DB) Barracks Initiative (Package #2), Marine Corps Base (MCB) Camp Lejeune, North Carolina",
+      "projectDescription": "DESIGN-BUILD (DB) BARRACKS INITIATIVE (PACKAGE #2), MARINE CORPS BASE (MCB) CAMP LEJEUNE, NC AND MARINE CORPS AIR STATION (MCAS) NEW RIVER, NC. THE PROPOSED DESIGN-BUILD PROJECT INCLUDES THE DEMOLITION OF FIVE BACHELOR ENLISTED QUARTERS BUILDINGS AND WILL PROVIDE BY REPLACEMENT BILLETING CAPACITY OF 565 TWO-PERSON ROOMS TO SUPPORT 1,130 PERSONNEL AT MARINE CORPS BASE (MCB) CAMP LEJEUNE AND MARINE CORPS AIR STATION (MCAS) NEW RIVER. THIS REQUEST FOR PROPOSAL (RFP) IS FOR PHASE ONE FACTORS 1-4 ONL",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Camp Lejeune, NC\n450 miles\n7 hours away",
+      "magnitude": "$150M \u2013 $250M",
+      "keyDates": "Bid Due: Jul 27, 2026",
+      "bidDueDate": "2026-07-27",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/design-build-db-barracks-initiative-package-2-n4008526r0058-o-308ae",
+      "distanceTier": "D4 Far"
     },
     {
       "opportunityId": "ff0e81cb206b5a9a826df9781c11502b",
@@ -460,6 +517,25 @@
       "distanceTier": "D1 Core"
     },
     {
+      "opportunityId": "32da8370567b5824a17885312b6da0aa",
+      "jobName": "Maine Air National Guard Fuel Cell Hangar Construction",
+      "projectDescription": "Amendment #5: The purpose of Amendment 0005 is to implement the following changes:\nPLA Removal: The mandatory Project Labor Agreement (PLA) requirement is eliminated in its entirety per HCA approved waiver (7 July 2026). FAR 52.222-34 and Section 00 22 13 are deleted.\nClause Addition: FAR 52.223-2 (Affirmative Procurement of Biobased Products) is incorporated to correct an administrative omission.\nWage Update: The Davis-Bacon Wage Decision is updated to ME20260051, Mod 1 (18 May 2026).\nExtension",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Department of the Army",
+      "location": "Bangor, ME\n380 miles\n6 hours away",
+      "magnitude": "$18M \u2013 $35M",
+      "keyDates": "Bid Due: Jul 28, 2026",
+      "bidDueDate": "2026-07-28",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/maine-air-national-guard-fuel-cell-hangar-construc-w50s8326ba001-o-202ba",
+      "distanceTier": "D3 Stretch"
+    },
+    {
       "opportunityId": "c75a474477195bfeb37243f8872e7101",
       "jobName": "Bldg HP51, HP53, HP55, HP57 Paint and Flooring Repairs",
       "projectDescription": "Only M&amp;R MACC Contractors listed on the General Requirements cover page may submit a proposal for this ROICC Camp Lejeune area of responsibility project.  See attached documents for scope of work and any applicable drawings.\n",
@@ -496,6 +572,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/design-build-p-664-foreign-materiel-exploitation-n4008026r5966-o-10100",
       "distanceTier": "D2 Regional"
+    },
+    {
+      "opportunityId": "e75cad4037b25afcaa9189e597dd3dc8",
+      "jobName": "Z2DA--FY26 EHRM 620A4-22-700 EHRM Infrastructure Upgrades  Construction  Castle Point VA Medical Center; Wappinger Falls NY",
+      "projectDescription": "7-8-2026 - Amendment 2 - Extend the bid due date to 7/29 and add clause 52.212-4\n\n6-15-2026 - Amendment 1 - Upload site visit sign-in sheet, and add VAAR Clause 852.219-73.\n\nIn accordance with 38 U.S.C. &sect; 8127 (Public Law 109-461), this project is a competitive Service-Disabled Veteran - Owned Small Business (SDVOSB) Set-Aside.                         \n\nThe contractor shall provide all tools, equipment, materials, labor, supervision, personnel, and shall do all things necessary that will re",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "",
+      "setAside": "SDVOSB",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Program Contracting Activity Central",
+      "location": "Wappingers Falls, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$3M \u2013 $9M",
+      "keyDates": "Bid Due: Jul 29, 2026",
+      "bidDueDate": "2026-07-29",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z2da-fy26-ehrm-620a4-22-700-ehrm-infrastructure-u-ifb-36c77626b0025-o-eac27",
+      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "6c0184a011655bd897ce3593d26ca252",
@@ -572,6 +667,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/request-for-proposal-to-solicitation-w912dr26ra035-w912dr26ra035-o-76c2a",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "417df5ff98055413aab041d81fda1905",
+      "jobName": "N4008526R0177, Design Bid Build - Building 114 Crane 64 Replacement, Naval Undersea Warfare Center, Naval Station Newport, Newport, RI",
+      "projectDescription": "N4008526R0177, DESIGN BID BUILD - BUILDING 114 CRANE 64 REPLACEMENT, NAVAL UNDERSEA WARFARE CENTER, NAVAL STATION NEWPORT, NEWPORT, RI\n\nTHIS ACTION IS RESERVED FOR DESIGN-BUILD (DB)/ DESIGN-BIDBUILD (DBB), INDEFINITE DELIVERY /INDEFINITE QUANTITY (IDIQ), MULTIPLE AWARD CONSTRUCTION CONTRACT (MACC) FOR NEW LONDON, CT/ NEWPORT, RI AORs (CONTRACT NUMBERS N4008522D0021, N4008522D0022, N4008522D0023, N4008522D0024, N4008522D0025). FOR FACILITIES IN THE NORTH AREA OF RESPONSIBILITY (AOR) TO INCLUDE CO",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Newport, RI\n230 miles\n3.75 hours away",
+      "magnitude": "$0.4M \u2013 $1.2M",
+      "keyDates": "Bid Due: Jul 31, 2026",
+      "bidDueDate": "2026-07-31",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/n4008526r0177-design-bid-build-building-114-cra-n4008526r0177-o-ff0f0",
+      "distanceTier": "D3 Stretch"
     },
     {
       "opportunityId": "a40627fa7f4d51dd98fcfff5f5d75e76",
@@ -745,6 +859,25 @@
       "distanceTier": "D1 Core"
     },
     {
+      "opportunityId": "adf4f61d03645006b37f505213ca8dff",
+      "jobName": "BEQ M400 Area Paint-Flooring Repairs",
+      "projectDescription": "Only General MACC Contractors listed on the General Requirements cover page may submit a proposal for this ROICC Camp Lejeune area of responsibility project.  See attached documents for scope of work and any applicable drawings.\n",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Camp Lejeune, NC\n450 miles\n7 hours away",
+      "magnitude": "$75K \u2013 $250K",
+      "keyDates": "Bid Due: Aug 6, 2026",
+      "bidDueDate": "2026-08-06",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/beq-m400-area-paint-flooring-repairs-n4008526r9054-k-32a1c",
+      "distanceTier": "D4 Far"
+    },
+    {
       "opportunityId": "ca36186d5c38577d8ec365f784242252",
       "jobName": "Phase 1 Construction for the Critical Infrastructure Recovery & Renewal (CIRR)  Project",
       "projectDescription": "The Trustees of Princeton University, a U.S. Department of Energy Prime Contractor, represented by Princeton Plasma Physics Laboratory (PPPL) has a requirement for a qualified and capable contractor to perform the Phase 1 construction of the Critical Infrastructure Recovery &amp; Renewal (CIRR) Project located at Princeton Plasma Physics Laboratory, 100 Stellarator Road, James Forrestal Campus, US Route 1 North, Princeton, NJ.\n\nThe work includes: \n\nBase Scope:\n\n- Replacement of XQT-1 Substation ",
@@ -762,6 +895,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/phase-1-construction-for-the-critical-infrastructu-rfp-26-056-cm-k-d3ba2",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "003173480f865dddaa6cbf931dc4d41e",
+      "jobName": "BQ AS4000 Area Paint - Flooring Repairs",
+      "projectDescription": "Only General MACC Contractors listed on the General Requirements cover page may submit a proposal for this ROICC Camp Lejeune area of responsibility project.  See attached documents for scope of work and any applicable drawings.\n",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "location": "Camp Lejeune, NC\n450 miles\n7 hours away",
+      "magnitude": "$50K \u2013 $250K",
+      "keyDates": "Bid Due: Aug 7, 2026",
+      "bidDueDate": "2026-08-07",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/bq-as4000-area-paint-flooring-repairs-n4008526r9063-k-51764",
+      "distanceTier": "D4 Far"
     },
     {
       "opportunityId": "54c34b5f228e5894b94b515a328e51e0",
