@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-10T09:01:39Z",
+  "updated": "2026-07-11T09:00:34Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -96,25 +96,6 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z2db-pharmacy-hood-and-cache-upgrade-36c24126q0525-k-ef1e1",
       "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "efcac4476117536e88ca0fc689ccb1e1",
-      "jobName": "Z1DA--646A4-22-700 | EHRM Infrastructure Upgrades |  Pittsburgh-Heinz, PA",
-      "projectDescription": "EHRM Infrastructure Upgrades Pittsburgh-Heinz\n",
-      "tier": "Tier 4",
-      "tag": "CONCORD-SUB",
-      "reasoning": "",
-      "setAside": "SDVOSB",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Program Contracting Activity Central",
-      "location": "Pittsburgh, PA\n35 miles\n0.75 hours away",
-      "magnitude": "$3M \u2013 $9M",
-      "keyDates": "Bid Due: Jul 15, 2026",
-      "bidDueDate": "2026-07-15",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1da-646a4-22-700-ehrm-infrastructure-upgrades-36c77626r0071-o-7f369",
-      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "1e6e1bb998d05bc2a813832e9c963a52",
@@ -308,6 +289,25 @@
       "distanceTier": "D3 Stretch"
     },
     {
+      "opportunityId": "5c99c3e4ec0a5fc1b06ca3a9467ab5ab",
+      "jobName": "Construction of F16 Mission Training Center",
+      "projectDescription": "REQUEST FOR PROPOSALS (RFP) TO AWARD A SINGLE FIRM FIXED-PRICE CONTRACT FOR SERVICES, NON-PERSONAL, TO PROVIDE ALL PLANT, LABOR, TRANSPORTATION, MATERIALS, TOOLS, EQUIPMENT, APPLIANCES AND SUPERVISION NECESSARY FOR THE CONSTRUCTION OF CONSTRUCT A F-16 MTC FACILITY AT THE 177TH FIGHTER WING IN EGG HARBOR TOWNSHIP, NJ. THIS PROJECT IS SET ASIDE 100% FOR SMALL BUSINESSES. THE NORTH AMERICAN INDUSTRY CLASSIFICATION SYSTEM (NAICS) CODE IS 236220, WITH A SMALL BUSINESS SIZE STANDARD OF $45,000,000. TH",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Department of the Army",
+      "location": "Egg Harbor Township, NJ\n20 miles\n0.5 hours away",
+      "magnitude": "$10M \u2013 $25M",
+      "keyDates": "Bid Due: Jul 17, 2026",
+      "bidDueDate": "2026-07-17",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/construction-of-f16-mission-training-center-w50s8f-26-r-a011-o-80c1a",
+      "distanceTier": "D1 Core"
+    },
+    {
       "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
       "jobName": "S--MASI, CARPET REPLACEMENT AT FEDERAL HALL",
       "projectDescription": "NPS/ FEHA CARPET REPLACEMENT AT FEDERAL HALL",
@@ -346,6 +346,25 @@
       "distanceTier": "D4 Far"
     },
     {
+      "opportunityId": "cf02414ae0775efd82c46b713ef26605",
+      "jobName": "EDIS: REPAIR STAFF LOT GATE & FENCE",
+      "projectDescription": "EDIS: REPAIR STAFF LOT GATE & FENCE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "NPS Northeast Region",
+      "location": "West Orange, NJ\n20 miles\n0.5 hours away",
+      "magnitude": "$15K \u2013 $45K",
+      "keyDates": "Bid Due: Jul 20, 2026",
+      "bidDueDate": "2026-07-20",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/edis-repair-staff-lot-gate-fence-140p4526q0039-o-d2730",
+      "distanceTier": "D1 Core"
+    },
+    {
       "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
       "jobName": "CSS 88855 - Repair AMSA Interior - Reading, PA",
       "projectDescription": "PROJECT TITLE: REPAIR AMSA INTERIORPROJECT LOCATION: READING, PATHIS SOLICITATION IS SET ASIDE FOR SMALL BUSINESS.1. THE U.S. ARMY CONTRACTING COMMAND - NEW JERSEY HAS A NEW CONSTRUCTION REQUIREMENT IN SUPPORT OF THE U.S. ARMY 99TH READINESSDIVISION. THIS PROJECTED IS LOCATED WITH THE 99TH READINESS DIVISION A1 REGION: CSS 88855 - REPAIR AMSA INTERIOR LOCATED AT THE READINGUSARC/AMSA 116 LOCATED AT 547 PHILADELPHIA AVENUE, READING, PA, 19607.2. THE NORTH AMERICAN INDUSTRY CLASSIFICATION (NAICS) ",
@@ -382,6 +401,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/nyfo-paddock-fencing-140p2126q0149-o-d73df",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "b4e9efc973625c25833ebec0d21732be",
+      "jobName": "Renovate Squad Ops (Bldg 25), Project AXQD232620",
+      "projectDescription": "The 104 FW requests vendor proposals for the repair and renovatation of Building 25 (approx. 25,000 sq. ft.) at Barnes Air National Guard Base, Westfield, Massachusetts.\n\n26 June 2026: Site Visit Information added to the solicitation documentation. \n\n10 July 2026: Interim Q&amp;A 1 added to the solicitation documentation. \n\nSee PIEE link for details. \n",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Department of the Army",
+      "location": "Westfield, MA\n270 miles\n4.5 hours away",
+      "magnitude": "$2.5M \u2013 $6M",
+      "keyDates": "Bid Due: Jul 21, 2026",
+      "bidDueDate": "2026-07-21",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/renovate-squad-ops-bldg-25-project-axqd232620-w50s8126ra010-o-b6fd7",
+      "distanceTier": "D3 Stretch"
     },
     {
       "opportunityId": "b1067c34c613513695c7c198ac7e526d",
@@ -534,6 +572,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/design-build-db-barracks-initiative-package-2-n4008526r0058-o-308ae",
       "distanceTier": "D4 Far"
+    },
+    {
+      "opportunityId": "6b6c12aae371511baa21ebf61399fd85",
+      "jobName": "Fort Drum NY Job Order Contract (JOC)",
+      "projectDescription": "The purpose of amendment W911S226RA0010001 is to extend the proposal due date, incorporate Attachment 30 to provide responses to all Request for Information received, add paragraph 2.3.3.3.1. to Section 00 21 16, Part II, Factor 3 (Price), and remove 52.219-4. The MICC - Fort Drum, is releasing this Request for Proposal (RFP) for a Job Order Contract (JOC) under an Indefinite Delivery, Indefinite Quantity (IDIQ) contract, set aside for all eligible Small Business construction firms. The JOC will",
+      "tier": "Tier 5",
+      "tag": "APPLIED-SUB-MEP",
+      "reasoning": "MEP-heavy with roofing scope",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "MICC Fort Drum",
+      "location": "Fort Drum, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$10M \u2013 $50M",
+      "keyDates": "Bid Due: Jul 27, 2026",
+      "bidDueDate": "2026-07-27",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/fort-drum-ny-job-order-contract-joc-w911s226ra001-o-3fea7",
+      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "ff0e81cb206b5a9a826df9781c11502b",
@@ -800,6 +857,25 @@
       "naics": "",
       "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/removal-of-exterior-siding-refurbishment-of-inte-6973gh-26-r-00078-o-469d7",
       "distanceTier": "D4 Far"
+    },
+    {
+      "opportunityId": "efcac4476117536e88ca0fc689ccb1e1",
+      "jobName": "Z1DA--646A4-22-700 | EHRM Infrastructure Upgrades |  Pittsburgh-Heinz, PA",
+      "projectDescription": "EHRM Infrastructure Upgrades Pittsburgh-Heinz\n",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "",
+      "setAside": "SDVOSB",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Program Contracting Activity Central",
+      "location": "Pittsburgh, PA\n35 miles\n0.75 hours away",
+      "magnitude": "$3M \u2013 $9M",
+      "keyDates": "Bid Due: Aug 3, 2026",
+      "bidDueDate": "2026-08-03",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1da-646a4-22-700-ehrm-infrastructure-upgrades-36c77626r0071-o-7f369",
+      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "a40627fa7f4d51dd98fcfff5f5d75e76",
@@ -1163,6 +1239,25 @@
       "distanceTier": "D1 Core"
     },
     {
+      "opportunityId": "9e45ffb1e3c55626b3ab30245c6418d1",
+      "jobName": "Z1LZ--526-17-707 Parking Lot Replacement and Expansion",
+      "projectDescription": "This solicitation is for the Expand Parking Lot project at the James J. Peters Bronx VAMC, located at 130 W. Kingsbridge Road, BX, NY, IFB Solicitation 36C24236B0044.  Interested contractors are encouraged to review all attachments for this solicitation.  This is an SDVOSB Set-Aside procurement.\n\nThank you for your potential interest.\n\nSincerely,\n\nPatricia\n",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "",
+      "setAside": "SDVOSB",
+      "sourceType": "HigherGov",
+      "sourceDetail": "VISN 2:\u00a0New York/New Jersey VA Health Care Network",
+      "location": "Bronx, NY\n70 miles\n1.5 hours away",
+      "magnitude": "$1M \u2013 $5M",
+      "keyDates": "Bid Due: Aug 12, 2026",
+      "bidDueDate": "2026-08-12",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.comhttps://www.highergov.com/contract-opportunity/z1lz-526-17-707-parking-lot-replacement-and-expan-36c24226b0044-o-f18bd",
+      "distanceTier": "D1 Core"
+    },
+    {
       "opportunityId": "3e638a4352065a3fa8335306cb9806a0",
       "jobName": "Solvent Storage Building Envelope & Steam Tunnel Repairs",
       "projectDescription": "This is a combined synopsis/solicitation for commercial items prepared in accordance with the format in FAR Part 12.  This announcement constitutes the only solicitation.  Quotations are being requested and a separate written solicitation will not be issued. \n\n\n\nSolicitation number 1232SA26Q0852 is issued as a Request for Quotation (RFQ) for solvent storage building envelope and steam tunnel repairs.\n\n\n\nThis acquisition  is set-aside for small business concerns.  The applicable North American In",
@@ -1241,7 +1336,7 @@
     {
       "opportunityId": "315a39a6fff1572ab800f97e6f154295",
       "jobName": "BLDG 66 Windows Replacement",
-      "projectDescription": "Windows Replacement \n",
+      "projectDescription": "Amendment 0001 ACM Report, Statement of Work (SOW) and the Specification attachments \n\nWindows Replacement \n",
       "tier": "Tier 1",
       "tag": "APPLIED-PRIME",
       "reasoning": "roofing scope detected; envelope scope detected",
