@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T04:12:39Z",
+  "updated": "2026-07-18T04:12:45Z",
   "jobs": [
     {
       "jobName": "INTERESTED CMD TEST",
@@ -13,7 +13,8 @@
       "setAside": "NONE",
       "status": "new",
       "magnitude": "Unknown",
-      "opportunityId": "manual-1784347959"
+      "opportunityId": "manual-1784347959",
+      "interested": true
     },
     {
       "jobName": "INTERESTED TEST PROBE",
@@ -2372,5 +2373,18 @@
     "GC Email:manual-1784345317",
     "GC Email:manual-TESTPROBE-1784342505"
   ],
-  "signals": []
+  "signals": [
+    {
+      "ts": "2026-07-18T04:12:45Z",
+      "type": "interested",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784347959",
+      "jobName": "INTERESTED CMD TEST",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "TestCo",
+      "magnitude": "Unknown",
+      "distanceTier": ""
+    }
+  ]
 }
