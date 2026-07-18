@@ -601,18 +601,22 @@ def main():
         print("\nPulling DPMC...")
         dpmc_raw = fetch_dpmc()
         print(f"  DPMC projects: {len(dpmc_raw)}")
-        dpmc_added = 0
+        dpmc_passed = 0
         for proj in dpmc_raw:
             tier_label, tag, reasoning, is_skip = classify_dpmc(proj)
             if is_skip:
                 continue
             job = dpmc_to_job(proj, tier_label, tag, reasoning)
-            key = (job["sourceType"], job["opportunityId"])
-            if key not in eks:
-                new_jobs.append(job)
-                eks.add(key)
-                dpmc_added += 1
-        print(f"  DPMC passed: {dpmc_added}")
+            # Always hand off to merge_and_save, same as the HigherGov path --
+            # it decides add vs. update against the live board itself. The old
+            # `if key not in eks` gate here meant an already-boarded DPMC job
+            # never re-entered new_jobs, so it never got its due date/tier/
+            # description refreshed, and looked indistinguishable from a job
+            # that had genuinely disappeared from the source (both "not in
+            # new_jobs") to the expiry check below.
+            new_jobs.append(job)
+            dpmc_passed += 1
+        print(f"  DPMC passed: {dpmc_passed}")
 
     # Merge
     added, updated = merge_and_save(existing, new_jobs)
