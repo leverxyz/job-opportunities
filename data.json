@@ -1,24 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T02:42:29Z",
+  "updated": "2026-07-18T02:42:33Z",
   "jobs": [
-    {
-      "jobName": "TEST PROBE -- EDITED",
-      "projectDescription": "automated end-to-end test entry",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "setAside": "NONE",
-      "sourceType": "GC Email",
-      "sourceDetail": "TestCo",
-      "location": "Trenton, NJ",
-      "magnitude": "$250K",
-      "keyDates": "Bid Due: TBD",
-      "bidDueDate": null,
-      "siteVisitDate": null,
-      "rfiDueDate": null,
-      "status": "new",
-      "opportunityId": "manual-TESTPROBE-1784342505"
-    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
@@ -2359,5 +2342,7 @@
       "dpmcStatus": "pre_bid_held"
     }
   ],
-  "excludedKeys": []
+  "excludedKeys": [
+    "GC Email:manual-TESTPROBE-1784342505"
+  ]
 }
