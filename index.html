@@ -224,11 +224,10 @@
                 <option value="WOSB">WOSB</option><option value="Other">Other</option>
               </select>
             </label>
-            <label>Source Type
+            <label>Board Tab
               <select id="f-srctype">
                 <option value="HigherGov">HigherGov</option><option value="BidNet">BidNet</option>
-                <option value="GC Email">GC Email</option><option value="Direct">Direct</option>
-                <option value="Other">Other</option>
+                <option value="DPMC">DPMC</option><option value="GC Email">General Contractors</option>
               </select>
             </label>
           </div>
@@ -242,13 +241,6 @@
             <label>RFI Due <input id="f-rfi" type="date" /></label>
             <label>Bid Due <input id="f-bid" type="date" /></label>
           </div>
-          <label>Status
-            <select id="f-status">
-              <option value="new">New</option><option value="review">Review</option>
-              <option value="interested">Interested</option><option value="bidding">Bidding</option>
-              <option value="submitted">Submitted</option><option value="archive">Archive</option>
-            </select>
-          </label>
           <button id="saveNew" class="save-btn">Save Opportunity</button>
         </div>
       </div>
@@ -502,13 +494,15 @@
       document.getElementById('f-tier').value = job.tier || 'Tier 1';
       document.getElementById('f-setaside').value = job.setAside || 'NONE';
       document.getElementById('f-srctype').value = job.sourceType || 'HigherGov';
+      if (!['HigherGov','BidNet','DPMC','GC Email'].includes(document.getElementById('f-srctype').value)) {
+        document.getElementById('f-srctype').value = 'GC Email';
+      }
       document.getElementById('f-srcdetail').value = job.sourceDetail || '';
       document.getElementById('f-loc').value = job.location || '';
       document.getElementById('f-mag').value = job.magnitude || '';
       document.getElementById('f-bid').value = job.bidDueDate || '';
       document.getElementById('f-site').value = job.siteVisitDate || '';
       document.getElementById('f-rfi').value = job.rfiDueDate || '';
-      document.getElementById('f-status').value = job.status || 'new';
       modalTitle.textContent = 'Edit Opportunity';
       saveBtn.textContent = 'Save Changes';
       modal.classList.add('show');
@@ -550,7 +544,6 @@
 
   function resetForm(){
     ['f-name','f-desc','f-srcdetail','f-loc','f-mag','f-bid','f-site','f-rfi'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('f-status').value = 'new';
     document.getElementById('f-setaside').value = 'NONE';
     document.getElementById('f-srctype').value = 'HigherGov';
     document.getElementById('f-tier').value = 'Tier 1';
@@ -597,7 +590,7 @@
       bidDueDate: bid || null,
       siteVisitDate: site || null,
       rfiDueDate: rfi || null,
-      status: document.getElementById('f-status').value,
+      status: 'new',
     };
 
     saveBtn.disabled = true;
