@@ -1,21 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T04:12:51Z",
+  "updated": "2026-07-18T04:12:56Z",
   "jobs": [
-    {
-      "jobName": "INTERESTED CMD TEST",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "sourceType": "GC Email",
-      "sourceDetail": "TestCo",
-      "bidDueDate": "2026-09-01",
-      "keyDates": "Bid Due: 2026-09-01",
-      "setAside": "NONE",
-      "status": "new",
-      "magnitude": "Unknown",
-      "opportunityId": "manual-1784347959",
-      "interested": false
-    },
     {
       "jobName": "INTERESTED TEST PROBE",
       "tier": "Tier 2",
@@ -2371,6 +2357,7 @@
   ],
   "excludedKeys": [
     "GC Email:manual-1784345317",
+    "GC Email:manual-1784347959",
     "GC Email:manual-TESTPROBE-1784342505"
   ],
   "signals": [
