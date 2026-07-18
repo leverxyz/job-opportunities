@@ -147,10 +147,12 @@
   .save-btn { padding: 11px; font-size: 14px; font-weight: 600; color: #fff;
     background: var(--blueprint); border: none; border-radius: 9px; cursor: pointer; margin-top: 4px; }
 
-  .del-btn, .edit-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
-    cursor: pointer; padding: 2px 8px; border-radius: 6px; font-family: var(--sans); margin-left: 6px; }
+  .del-btn, .edit-btn, .link-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
+    cursor: pointer; padding: 2px 8px; border-radius: 6px; font-family: var(--sans); margin-left: 6px;
+    text-decoration: none; display: inline-block; }
   .del-btn:hover { color: var(--red); border-color: var(--red); }
   .edit-btn:hover { color: var(--blueprint); border-color: var(--blueprint); }
+  .link-btn:hover { color: var(--teal); border-color: var(--teal); }
   .del-btn:disabled, .edit-btn:disabled { opacity: .5; cursor: default; }
 
   .tier { display: inline-block; padding: 1px 7px; font-size: 10px; font-weight: 700;
@@ -468,7 +470,7 @@
           </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
-          <td><button class="edit-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Edit</button> <button class="del-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Delete</button></td>
+          <td><button class="edit-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Edit</button> <button class="del-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Delete</button>${j.link ? ` <a class="link-btn" href="${esc(j.link)}" target="_blank" rel="noopener">Link</a>` : ''}</td>
         </tr>`;
     }).join('');
   }

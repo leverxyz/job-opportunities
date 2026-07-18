@@ -474,9 +474,18 @@ def process_opportunity(opp, excluded_keys):
     naics = opp.get("naics_code", {})
     naics_code = naics.get("code", "") if isinstance(naics, dict) else ""
 
-    # Link
+    # Link -- HigherGov's `path` field is already a full URL (verified live
+    # 2026-07-18: "https://www.highergov.com/contract-opportunity/..."), not
+    # a relative path. Prepending the base again produced a doubled/broken
+    # URL on every entry ("...comhttps://..."). Defensive fallback kept in
+    # case the API ever actually returns a relative path.
     path = opp.get("path", "")
-    link = f"https://www.highergov.com{path}" if path else ""
+    if path.startswith("http"):
+        link = path
+    elif path:
+        link = f"https://www.highergov.com{path}"
+    else:
+        link = ""
 
     job = {
         "opportunityId": opp_id,
@@ -518,6 +527,7 @@ def merge_and_save(existing_jobs, new_jobs, excluded_keys=None):
                     ej["tier"] = job.get("tier")
                     ej["tag"] = job.get("tag")
                     ej["reasoning"] = job.get("reasoning")
+                    ej["link"] = job.get("link")
                     updated += 1
                     break
         else:
