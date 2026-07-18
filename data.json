@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T04:12:45Z",
+  "updated": "2026-07-18T04:12:51Z",
   "jobs": [
     {
       "jobName": "INTERESTED CMD TEST",
@@ -14,7 +14,7 @@
       "status": "new",
       "magnitude": "Unknown",
       "opportunityId": "manual-1784347959",
-      "interested": true
+      "interested": false
     },
     {
       "jobName": "INTERESTED TEST PROBE",
