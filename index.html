@@ -147,9 +147,11 @@
   .save-btn { padding: 11px; font-size: 14px; font-weight: 600; color: #fff;
     background: var(--blueprint); border: none; border-radius: 9px; cursor: pointer; margin-top: 4px; }
 
-  .del-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
+  .del-btn, .edit-btn { background: none; border: 1px solid var(--line); font-size: 11px; color: var(--ink-faint);
     cursor: pointer; padding: 2px 8px; border-radius: 6px; font-family: var(--sans); margin-left: 6px; }
   .del-btn:hover { color: var(--red); border-color: var(--red); }
+  .edit-btn:hover { color: var(--blueprint); border-color: var(--blueprint); }
+  .del-btn:disabled, .edit-btn:disabled { opacity: .5; cursor: default; }
 
   .tier { display: inline-block; padding: 1px 7px; font-size: 10px; font-weight: 700;
     border-radius: 4px; letter-spacing: .3px; vertical-align: middle; margin-right: 5px; }
@@ -200,13 +202,22 @@
     <div id="modal" class="modal">
       <div class="modal-box">
         <div class="modal-head">
-          <h2>Add Opportunity</h2>
+          <h2 id="modalTitle">Add Opportunity</h2>
           <button id="closeModal" class="close-btn">&times;</button>
         </div>
         <div class="modal-body">
           <label>Project Name <input id="f-name" type="text" placeholder="Project name" /></label>
           <label>Description <textarea id="f-desc" rows="3" placeholder="Brief description"></textarea></label>
-          <div class="row">
+          <div class="row three">
+            <label>Tier
+              <select id="f-tier">
+                <option value="Tier 1">Tier 1 — APPLIED-PRIME</option>
+                <option value="Tier 2">Tier 2 — CONCORD-PRIME</option>
+                <option value="Tier 3">Tier 3 — APPLIED-SUB</option>
+                <option value="Tier 4">Tier 4 — CONCORD-SUB</option>
+                <option value="Tier 5">Tier 5 — APPLIED-SUB-MEP</option>
+              </select>
+            </label>
             <label>Set Aside
               <select id="f-setaside">
                 <option value="NONE">NONE</option><option value="SBA">SBA</option>
@@ -263,7 +274,7 @@
       </div>
     </div>
 
-    <footer class="note">Read-only · maintained automatically · sorted by soonest bid due</footer>
+    <footer class="note">Add / Edit / Delete save straight to GitHub · sorted by soonest bid due</footer>
   </div>
 
 <script>
@@ -337,6 +348,96 @@
     return '<span class="'+cls+'">'+esc(t)+'</span>';
   }
 
+  // ---- GitHub write-back (fine-grained PAT, Contents API) ----
+  // This token is scoped to ONLY this one repo, Contents: read/write, nothing
+  // else -- it cannot reach any other repo or account resource. Since this
+  // repo is public and this file is served as-is, the token is visible to
+  // anyone who views source. That is a known, accepted tradeoff (Chief,
+  // 2026-07-18) -- not an oversight. Worst case: someone corrupts this
+  // board's data. All rendered fields go through esc()/multiline(), so a
+  // malicious entry cannot inject a script that runs in a visitor's browser.
+  const GH_TOKEN = "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";
+  const GH_API = "https://api.github.com/repos/leverxyz/job-opportunities/contents/data.json";
+
+  function utf8ToBase64(str){
+    const bytes = new TextEncoder().encode(str);
+    let bin = '';
+    bytes.forEach(b => bin += String.fromCharCode(b));
+    return btoa(bin);
+  }
+  function base64ToUtf8(b64){
+    const bin = atob(b64.replace(/\n/g, ''));
+    const bytes = Uint8Array.from(bin, c => c.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  }
+
+  async function ghGetFile(){
+    const res = await fetch(GH_API, {
+      headers: { Authorization: 'Bearer ' + GH_TOKEN, Accept: 'application/vnd.github+json' }
+    });
+    if (!res.ok) throw new Error('Could not load the latest board data (HTTP ' + res.status + ').');
+    const data = await res.json();
+    const parsed = JSON.parse(base64ToUtf8(data.content));
+    return {
+      sha: data.sha,
+      jobs: Array.isArray(parsed.jobs) ? parsed.jobs : [],
+      excludedKeys: Array.isArray(parsed.excludedKeys) ? parsed.excludedKeys : [],
+    };
+  }
+
+  async function ghSaveFile(jobs, excludedKeys, sha, message){
+    const payload = {
+      board: 'Project Opportunity Board',
+      updated: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),
+      jobs: jobs,
+      excludedKeys: excludedKeys,
+    };
+    const res = await fetch(GH_API, {
+      method: 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + GH_TOKEN,
+        Accept: 'application/vnd.github+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: message,
+        content: utf8ToBase64(JSON.stringify(payload, null, 2) + '\n'),
+        sha: sha,
+      }),
+    });
+    if (res.status === 409) { const e = new Error('conflict'); e.conflict = true; throw e; }
+    if (!res.ok) { const t = await res.text(); throw new Error('Save failed (HTTP ' + res.status + '): ' + t.slice(0, 300)); }
+    return res.json();
+  }
+
+  // mutateFn(jobs, excludedKeys) -> { jobs, excludedKeys }. Always re-fetches
+  // the live file first so a manual edit never overwrites a same-minute
+  // cron sync (or another teammate's edit) -- on a 409 (someone saved in
+  // between), refetch and retry once with the fresh sha before giving up.
+  async function persistChange(mutateFn, message){
+    let lastErr;
+    for (let attempt = 0; attempt < 2; attempt++){
+      try {
+        const { sha, jobs, excludedKeys } = await ghGetFile();
+        const result = mutateFn(jobs, excludedKeys);
+        await ghSaveFile(result.jobs, result.excludedKeys, sha, message);
+        allJobs = result.jobs;
+        render();
+        return;
+      } catch (e) {
+        lastErr = e;
+        if (e && e.conflict) continue;
+        throw e;
+      }
+    }
+    throw lastErr;
+  }
+
+  const TIER_TAG = {
+    'Tier 1': 'APPLIED-PRIME', 'Tier 2': 'CONCORD-PRIME', 'Tier 3': 'APPLIED-SUB',
+    'Tier 4': 'CONCORD-SUB', 'Tier 5': 'APPLIED-SUB-MEP',
+  };
+
   let allJobs = [];
   let board = 'HigherGov';
 
@@ -376,7 +477,7 @@
           </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
-          <td><button class="del-btn" data-id="${esc(j.id||'')}">Delete</button> ${statusPill(j.status)}</td>
+          <td><button class="edit-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Edit</button> <button class="del-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Delete</button> ${statusPill(j.status)}</td>
         </tr>`;
     }).join('');
   }
@@ -392,10 +493,40 @@
 
   // Delete buttons (event delegation)
   document.getElementById('rows').addEventListener('click', e => {
+    if (e.target.classList.contains('edit-btn')) {
+      const [srcType, oid] = e.target.dataset.key.split('::');
+      const job = allJobs.find(j => (j.sourceType||'') === srcType && (j.opportunityId||j.id||'') === oid);
+      if (!job) return;
+      editingKey = { sourceType: srcType, opportunityId: oid };
+      document.getElementById('f-name').value = job.jobName || '';
+      document.getElementById('f-desc').value = job.projectDescription || '';
+      document.getElementById('f-tier').value = job.tier || 'Tier 1';
+      document.getElementById('f-setaside').value = job.setAside || 'NONE';
+      document.getElementById('f-srctype').value = job.sourceType || 'HigherGov';
+      document.getElementById('f-srcdetail').value = job.sourceDetail || '';
+      document.getElementById('f-loc').value = job.location || '';
+      document.getElementById('f-mag').value = job.magnitude || '';
+      document.getElementById('f-bid').value = job.bidDueDate || '';
+      document.getElementById('f-site').value = job.siteVisitDate || '';
+      document.getElementById('f-rfi').value = job.rfiDueDate || '';
+      document.getElementById('f-status').value = job.status || 'new';
+      modalTitle.textContent = 'Edit Opportunity';
+      saveBtn.textContent = 'Save Changes';
+      modal.classList.add('show');
+      return;
+    }
     if (e.target.classList.contains('del-btn')) {
-      const id = e.target.dataset.id;
-      allJobs = allJobs.filter(j => j.id !== id);
-      render();
+      const [srcType, oid] = e.target.dataset.key.split('::');
+      if (!confirm('Delete this opportunity? This is permanent \u2014 it will not come back on the next sync.')) return;
+      e.target.textContent = '\u2026';
+      e.target.disabled = true;
+      persistChange((jobs, excludedKeys) => {
+        const filtered = jobs.filter(j => !((j.sourceType||'') === srcType && (j.opportunityId||j.id||'') === oid));
+        const key = srcType + ':' + oid;
+        const newExcluded = excludedKeys.includes(key) ? excludedKeys : excludedKeys.concat([key]);
+        return { jobs: filtered, excludedKeys: newExcluded };
+      }, 'Board: delete ' + srcType + ' ' + oid)
+        .catch(err => { alert('Could not delete: ' + err.message); e.target.textContent = 'Delete'; e.target.disabled = false; });
     }
   });
 
@@ -412,34 +543,52 @@
     }
   }
 
-  // ---- Add New ----
+  // ---- Add / Edit ----
   const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modalTitle');
+  const saveBtn = document.getElementById('saveNew');
+  let editingKey = null; // { sourceType, opportunityId } or null when adding
+
+  function resetForm(){
+    ['f-name','f-desc','f-srcdetail','f-loc','f-mag','f-bid','f-site','f-rfi'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-status').value = 'new';
+    document.getElementById('f-setaside').value = 'NONE';
+    document.getElementById('f-srctype').value = 'HigherGov';
+    document.getElementById('f-tier').value = 'Tier 1';
+  }
+
   document.getElementById('addBtn').addEventListener('click', () => {
+    editingKey = null;
+    resetForm();
     if (board !== 'all') document.getElementById('f-srctype').value = board;
+    modalTitle.textContent = 'Add Opportunity';
+    saveBtn.textContent = 'Save Opportunity';
     modal.classList.add('show');
   });
   document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('show'));
   modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
 
-  document.getElementById('saveNew').addEventListener('click', () => {
+  saveBtn.addEventListener('click', () => {
     const name = document.getElementById('f-name').value.trim();
     if (!name) return alert('Project name is required.');
+    const tier = document.getElementById('f-tier').value;
+    if (!tier) return alert('Tier is required \u2014 an untiered entry gets removed by the next daily sync.');
 
     const bid = document.getElementById('f-bid').value;
     const site = document.getElementById('f-site').value;
     const rfi = document.getElementById('f-rfi').value;
 
-    // Build keyDates string
     let kd = [];
     if (site) kd.push('Site Visit: ' + fmtDate(site));
     if (rfi) kd.push('RFI Due: ' + fmtDate(rfi));
     if (bid) kd.push('Bid Due: ' + fmtDate(bid));
     if (!kd.length) kd.push('Bid Due: TBD');
 
-    const job = {
-      id: 'manual-' + Date.now(),
+    const formJob = {
       jobName: name,
       projectDescription: document.getElementById('f-desc').value.trim(),
+      tier: tier,
+      tag: TIER_TAG[tier] || '',
       setAside: document.getElementById('f-setaside').value,
       sourceType: document.getElementById('f-srctype').value,
       sourceDetail: document.getElementById('f-srcdetail').value.trim(),
@@ -452,15 +601,30 @@
       status: document.getElementById('f-status').value,
     };
 
-    allJobs.unshift(job);
-    render();
-    modal.classList.remove('show');
+    saveBtn.disabled = true;
+    const finish = () => { saveBtn.disabled = false; modal.classList.remove('show'); resetForm(); };
 
-    // Reset form
-    ['f-name','f-desc','f-srcdetail','f-loc','f-mag','f-bid','f-site','f-rfi'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('f-status').value = 'new';
-    document.getElementById('f-setaside').value = 'NONE';
-    document.getElementById('f-srctype').value = 'HigherGov';
+    if (editingKey) {
+      saveBtn.textContent = 'Saving\u2026';
+      persistChange((jobs, excludedKeys) => {
+        const idx = jobs.findIndex(j => (j.sourceType||'') === editingKey.sourceType && (j.opportunityId||j.id||'') === editingKey.opportunityId);
+        if (idx === -1) throw new Error('That entry no longer exists \u2014 someone may have deleted it. Refresh and try again.');
+        jobs[idx] = Object.assign({}, jobs[idx], formJob, { opportunityId: editingKey.opportunityId });
+        return { jobs, excludedKeys };
+      }, 'Board: edit ' + editingKey.sourceType + ' ' + editingKey.opportunityId)
+        .then(finish)
+        .catch(err => { saveBtn.disabled = false; saveBtn.textContent = 'Save Changes'; alert('Could not save: ' + err.message); });
+    } else {
+      saveBtn.textContent = 'Saving\u2026';
+      const opportunityId = 'manual-' + Date.now();
+      formJob.opportunityId = opportunityId;
+      persistChange((jobs, excludedKeys) => {
+        jobs.unshift(formJob);
+        return { jobs, excludedKeys };
+      }, 'Board: add ' + formJob.sourceType + ' \u2014 ' + formJob.jobName)
+        .then(finish)
+        .catch(err => { saveBtn.disabled = false; saveBtn.textContent = 'Save Opportunity'; alert('Could not save: ' + err.message); });
+    }
   });
 </script>
 </body>

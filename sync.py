@@ -292,6 +292,22 @@ def load_existing():
         return data.get("jobs", [])
     return []
 
+def load_excluded_keys():
+    """Jobs Chief deleted from the board. Board-side delete writes
+    "sourceType:opportunityId" strings here; a synced source that still
+    returns one of these must never re-add it -- a hard delete alone gets
+    silently undone by the next sync that still finds the opportunity."""
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE) as f:
+            data = json.load(f)
+        pairs = set()
+        for entry in data.get("excludedKeys", []):
+            if isinstance(entry, str) and ":" in entry:
+                src, _, oid = entry.partition(":")
+                pairs.add((src, oid))
+        return pairs
+    return set()
+
 def existing_keys(jobs):
     return {(j.get("sourceType", ""), j.get("opportunityId", j.get("id", ""))) for j in jobs}
 
@@ -340,13 +356,20 @@ def pull_highergov():
         all_results.extend(label_results)
     return all_results
 
-def process_opportunity(opp, existing_keys_set):
+def process_opportunity(opp, excluded_keys):
     """Process one HigherGov opportunity through all rules."""
     title = opp.get("title", "")
     desc = (opp.get("description_text") or opp.get("ai_summary") or "")
     combined = f"{title} {desc}".lower()
     opp_id = opp.get("id", opp.get("opp_key", ""))
     source_key = ("HigherGov", opp_id)
+
+    # Chief deleted this one from the board -- never re-add it, ahead of
+    # every other rule.
+    if source_key in excluded_keys:
+        log_skip(opp_id, title, "excluded by Chief (deleted from board)")
+        return None
+
     set_aside_raw = (opp.get("set_aside") or "").upper()
     due_date_str = opp.get("due_date", "")
     val_low = safe_int(opp.get("val_est_low"))
@@ -477,7 +500,7 @@ def process_opportunity(opp, existing_keys_set):
     return job
 
 
-def merge_and_save(existing_jobs, new_jobs):
+def merge_and_save(existing_jobs, new_jobs, excluded_keys=None):
     existing_by_key = existing_keys(existing_jobs)
     added = 0
     updated = 0
@@ -545,6 +568,7 @@ def merge_and_save(existing_jobs, new_jobs):
         "board": "Project Opportunity Board",
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "jobs": existing_jobs,
+        "excludedKeys": sorted(f"{src}:{oid}" for src, oid in (excluded_keys or set())),
     }
 
     with open(DATA_FILE, "w") as f:
@@ -567,23 +591,50 @@ def commit_and_push():
     return False
 
 
+def pull_latest():
+    """Fast-forward-only pull before touching data.json.
+
+    The board page now writes data.json directly via the GitHub Contents
+    API (Add/Edit/Delete), bypassing this clone entirely. Without this,
+    load_existing() would read a stale local file -- silently resurrecting
+    something a person just deleted (excludedKeys would be stale too) --
+    and the eventual `git push` would be rejected as non-fast-forward.
+    --ff-only rather than a merge or reset: this workflow should only ever
+    see linear history (independent commits to data.json from either side),
+    so a real divergence should fail loudly, not get silently merged or
+    (worse) discard uncommitted work sitting in the tree in an unrelated
+    file. Never `reset --hard` here for the same reason.
+    """
+    os.chdir(REPO_DIR)
+    subprocess.run(["git", "fetch", "origin"], check=True, capture_output=True)
+    result = subprocess.run(["git", "merge", "--ff-only", "origin/main"], capture_output=True, text=True)
+    if result.returncode != 0:
+        print(f"  WARNING: could not fast-forward to origin/main: {result.stderr.strip()}")
+        print("  Continuing with local data.json as-is -- history may have diverged, needs a human look.")
+
+
 def main():
     global skip_log
     skip_log = []
     print("=== Project Opportunity Board — Sync v2 ===")
     print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}")
 
+    pull_latest()
+
     existing = load_existing()
     print(f"Existing jobs: {len(existing)}")
+
+    excluded = load_excluded_keys()
+    if excluded:
+        print(f"Excluded (Chief-deleted) keys: {len(excluded)}")
 
     print("Pulling HigherGov...")
     raw = pull_highergov()
     print(f"Raw results: {len(raw)}")
 
-    eks = existing_keys(existing)
     new_jobs = []
     for opp in raw:
-        job = process_opportunity(opp, eks)
+        job = process_opportunity(opp, excluded)
         if job:
             new_jobs.append(job)
 
@@ -607,6 +658,8 @@ def main():
             if is_skip:
                 continue
             job = dpmc_to_job(proj, tier_label, tag, reasoning)
+            if (job.get("sourceType"), job.get("opportunityId")) in excluded:
+                continue
             # Always hand off to merge_and_save, same as the HigherGov path --
             # it decides add vs. update against the live board itself. The old
             # `if key not in eks` gate here meant an already-boarded DPMC job
@@ -619,7 +672,7 @@ def main():
         print(f"  DPMC passed: {dpmc_passed}")
 
     # Merge
-    added, updated = merge_and_save(existing, new_jobs)
+    added, updated = merge_and_save(existing, new_jobs, excluded)
     print(f"Added: {added}, Updated: {updated}")
 
     final = load_existing()
