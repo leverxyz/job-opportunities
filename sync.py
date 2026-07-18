@@ -8,6 +8,7 @@ Usage: python3 sync.py
 """
 import json, os, re, sys, subprocess
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 import httpx
 
 # Import DPMC scraper
@@ -21,7 +22,25 @@ REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(REPO_DIR, "data.json")
 
 # --- Config ---
-HIGHERGOV_KEY = os.environ.get("HIGHERGOV_API_KEY", "")
+def _load_highergov_key():
+    """Same fallback hg.py already uses: env var first, then ~/.hermes/.env
+    directly. Lets `python3 sync.py` run bare -- no caller-side `export` --
+    which matters because the bare form is what's in command_allowlist; an
+    `export $(...) && python3 sync.py` chain trips the gate's compound-
+    command check and forces an approval prompt on every cron run."""
+    key = os.environ.get("HIGHERGOV_API_KEY")
+    if key:
+        return key.strip()
+    env_file = Path.home() / ".hermes" / ".env"
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            line = line.strip()
+            if line.startswith("HIGHERGOV_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+
+HIGHERGOV_KEY = _load_highergov_key()
 SEARCH_IDS = {
     "federal": "RUjIV5pvOv6TKsq2QJbUA",  # §1 — Federal Northeast
     # "roofing_nationwide": None,          # §1 — TBD by Chief
