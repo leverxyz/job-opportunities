@@ -2,3 +2,10 @@
 .env
 *.env
 .env.*
+
+# Tool backups, audit logs, caches — never commit
+*.bak
+*.bak-*
+*_audit.log
+__pycache__/
+*.pyc
