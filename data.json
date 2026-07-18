@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T02:42:33Z",
+  "updated": "2026-07-18T02:44:11Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -678,7 +678,7 @@
       "sourceType": "HigherGov",
       "sourceDetail": "Department of the Army",
       "location": "Westfield, MA\n270 miles\n4.5 hours away",
-      "magnitude": "$2.5M \u2013 $6M",
+      "magnitude": "$15M \u2013 $20M",
       "keyDates": "Bid Due: Jul 27, 2026",
       "bidDueDate": "2026-07-27",
       "status": "new",
@@ -906,7 +906,7 @@
       "sourceType": "HigherGov",
       "sourceDetail": "USFS Region 9: Eastern Region",
       "location": "Philadelphia, PA\n35 miles\n0.75 hours away",
-      "magnitude": "$350K \u2013 $700K",
+      "magnitude": "$250K \u2013 $500K",
       "keyDates": "Bid Due: Jul 28, 2026",
       "bidDueDate": "2026-07-28",
       "status": "new",
