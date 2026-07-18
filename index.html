@@ -476,7 +476,7 @@
           </td>
           <td class="mag">${esc(j.magnitude || '—')}</td>
           <td><div class="srctype">${esc(j.sourceType||'')}</div><div class="srcdetail">${esc(j.sourceDetail||'')}</div></td>
-          <td><button class="edit-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Edit</button> <button class="del-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Delete</button> ${statusPill(j.status)}</td>
+          <td><button class="edit-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Edit</button> <button class="del-btn" data-key="${esc((j.sourceType||'')+'::'+(j.opportunityId||j.id||''))}">Delete</button></td>
         </tr>`;
     }).join('');
   }
