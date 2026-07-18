@@ -1,7 +1,21 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T02:44:11Z",
+  "updated": "2026-07-18T03:28:37Z",
   "jobs": [
+    {
+      "jobName": "BOARD.PY TEST PROBE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceType": "GC Email",
+      "sourceDetail": "TestCo",
+      "location": "Trenton, NJ",
+      "magnitude": "$150K",
+      "bidDueDate": "2026-09-01",
+      "keyDates": "Bid Due: 2026-09-01",
+      "setAside": "NONE",
+      "status": "new",
+      "opportunityId": "manual-1784345317"
+    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
