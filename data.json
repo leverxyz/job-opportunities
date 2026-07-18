@@ -1,15 +1,15 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T03:28:37Z",
+  "updated": "2026-07-18T03:28:48Z",
   "jobs": [
     {
       "jobName": "BOARD.PY TEST PROBE",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
       "sourceType": "GC Email",
       "sourceDetail": "TestCo",
       "location": "Trenton, NJ",
-      "magnitude": "$150K",
+      "magnitude": "$275K",
       "bidDueDate": "2026-09-01",
       "keyDates": "Bid Due: 2026-09-01",
       "setAside": "NONE",
