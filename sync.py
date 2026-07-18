@@ -308,6 +308,20 @@ def load_excluded_keys():
         return pairs
     return set()
 
+def load_signals():
+    """Chief's interested/not-interested decisions -- the training data for
+    the future learning loop (own session, not built yet). Two kinds:
+    explicit ("interested", logged by the board page when he clicks the
+    button) and implicit ("expired_no_interest", logged here the first
+    time a job's bid due date passes without him ever marking it
+    interested). Standalone records -- a job can be deleted later and the
+    signal still stands on its own."""
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE) as f:
+            data = json.load(f)
+        return data.get("signals", [])
+    return []
+
 def existing_keys(jobs):
     return {(j.get("sourceType", ""), j.get("opportunityId", j.get("id", ""))) for j in jobs}
 
@@ -509,7 +523,7 @@ def process_opportunity(opp, excluded_keys):
     return job
 
 
-def merge_and_save(existing_jobs, new_jobs, excluded_keys=None):
+def merge_and_save(existing_jobs, new_jobs, excluded_keys=None, signals=None):
     existing_by_key = existing_keys(existing_jobs)
     added = 0
     updated = 0
@@ -574,11 +588,46 @@ def merge_and_save(existing_jobs, new_jobs, excluded_keys=None):
             except ValueError:
                 pass
 
+    # Implicit "not interested" signal: bid due date passed, Chief never
+    # clicked Interested on it. Logged once per job (expirySignaled guards
+    # against re-logging on every subsequent daily sync). Separate from the
+    # "expired" status above on purpose -- that one also requires the
+    # source to have stopped returning it (an amendment can push the due
+    # date and keep a job live); this is purely "the date passed and he
+    # never said yes," which is the actual training signal.
+    if signals is None:
+        signals = []
+    for job in existing_jobs:
+        if job.get("interested") or job.get("expirySignaled"):
+            continue
+        due_str = job.get("bidDueDate")
+        if not due_str:
+            continue
+        try:
+            due = datetime.strptime(due_str, "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        if due < today:
+            signals.append({
+                "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "type": "expired_no_interest",
+                "sourceType": job.get("sourceType", ""),
+                "opportunityId": job.get("opportunityId", job.get("id", "")),
+                "jobName": job.get("jobName", ""),
+                "tier": job.get("tier"),
+                "tag": job.get("tag"),
+                "sourceDetail": job.get("sourceDetail", ""),
+                "magnitude": job.get("magnitude", ""),
+                "distanceTier": job.get("distanceTier", ""),
+            })
+            job["expirySignaled"] = True
+
     data = {
         "board": "Project Opportunity Board",
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "jobs": existing_jobs,
         "excludedKeys": sorted(f"{src}:{oid}" for src, oid in (excluded_keys or set())),
+        "signals": signals,
     }
 
     with open(DATA_FILE, "w") as f:
@@ -682,7 +731,8 @@ def main():
         print(f"  DPMC passed: {dpmc_passed}")
 
     # Merge
-    added, updated = merge_and_save(existing, new_jobs, excluded)
+    signals = load_signals()
+    added, updated = merge_and_save(existing, new_jobs, excluded, signals)
     print(f"Added: {added}, Updated: {updated}")
 
     final = load_existing()

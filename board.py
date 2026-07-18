@@ -85,18 +85,19 @@ def pull_latest():
 
 def load():
     if not DATA_FILE.exists():
-        return [], []
+        return [], [], []
     with open(DATA_FILE) as f:
         data = json.load(f)
-    return data.get("jobs", []), data.get("excludedKeys", [])
+    return data.get("jobs", []), data.get("excludedKeys", []), data.get("signals", [])
 
 
-def save(jobs, excluded_keys, commit_message):
+def save(jobs, excluded_keys, signals, commit_message):
     payload = {
         "board": "Project Opportunity Board",
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "jobs": jobs,
         "excludedKeys": sorted(set(excluded_keys)),
+        "signals": signals,
     }
     with open(DATA_FILE, "w") as f:
         json.dump(payload, f, indent=2)
@@ -142,7 +143,7 @@ def fmt_row(j):
 # --- commands ----------------------------------------------------------
 
 def cmd_list(a):
-    jobs, _ = load()
+    jobs, _, _ = load()
     if a.tab:
         if a.tab not in VALID_TABS:
             die(f"--tab must be one of: {', '.join(VALID_TABS)}")
@@ -155,7 +156,7 @@ def cmd_list(a):
 
 
 def cmd_find(a):
-    jobs, _ = load()
+    jobs, _, _ = load()
     q = a.query.lower()
     hits = [j for j in jobs if q in (j.get("jobName", "") + " " + j.get("sourceDetail", "")).lower()]
     if not hits:
@@ -218,20 +219,20 @@ def cmd_add(a):
         die(f"--tab must be one of: {', '.join(VALID_TABS)}")
 
     pull_latest()
-    jobs, excluded = load()
+    jobs, excluded, signals = load()
 
     job = _build_job(a)
     job.setdefault("sourceType", "GC Email")
     job["opportunityId"] = f"manual-{int(datetime.now().timestamp())}"
     jobs.insert(0, job)
 
-    save(jobs, excluded, f"board.py add: {job['sourceType']} — {job['jobName']}")
+    save(jobs, excluded, signals, f"board.py add: {job['sourceType']} — {job['jobName']}")
     print(f"Added.\n{fmt_row(job)}\nhttps://leverxyz.github.io/job-opportunities/")
 
 
 def cmd_edit(a):
     pull_latest()
-    jobs, excluded = load()
+    jobs, excluded, signals = load()
     existing = find_job(jobs, a.id)
     if not existing:
         die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
@@ -240,13 +241,13 @@ def cmd_edit(a):
     idx = jobs.index(existing)
     jobs[idx] = updated
 
-    save(jobs, excluded, f"board.py edit: {updated.get('sourceType','')} {a.id}")
+    save(jobs, excluded, signals, f"board.py edit: {updated.get('sourceType','')} {a.id}")
     print(f"Updated.\n{fmt_row(updated)}\nhttps://leverxyz.github.io/job-opportunities/")
 
 
 def cmd_delete(a):
     pull_latest()
-    jobs, excluded = load()
+    jobs, excluded, signals = load()
     existing = find_job(jobs, a.id)
     if not existing:
         die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
@@ -256,8 +257,41 @@ def cmd_delete(a):
     if key not in excluded:
         excluded = excluded + [key]
 
-    save(jobs, excluded, f"board.py delete: {key}")
+    save(jobs, excluded, signals, f"board.py delete: {key}")
     print(f"Deleted permanently — will not reappear on the next sync.\n  was: {existing.get('jobName','')}")
+
+
+def cmd_interested(a):
+    """Chief said yes to this one. Highlights light green on the board and
+    logs a signal for the future learning loop. Toggle, not one-way -- a
+    second call clears it (no new signal logged on the way back off; the
+    log only records genuine "yes" moments, not corrections)."""
+    pull_latest()
+    jobs, excluded, signals = load()
+    existing = find_job(jobs, a.id)
+    if not existing:
+        die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
+
+    idx = jobs.index(existing)
+    now_interested = not jobs[idx].get("interested")
+    jobs[idx] = dict(jobs[idx], interested=now_interested)
+
+    if now_interested:
+        signals = signals + [{
+            "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "type": "interested",
+            "sourceType": jobs[idx].get("sourceType", ""),
+            "opportunityId": a.id,
+            "jobName": jobs[idx].get("jobName", ""),
+            "tier": jobs[idx].get("tier"),
+            "tag": jobs[idx].get("tag"),
+            "sourceDetail": jobs[idx].get("sourceDetail", ""),
+            "magnitude": jobs[idx].get("magnitude", ""),
+            "distanceTier": jobs[idx].get("distanceTier", ""),
+        }]
+
+    save(jobs, excluded, signals, f"board.py interested: {'on' if now_interested else 'off'} {a.id}")
+    print(("Marked interested." if now_interested else "Un-marked (no longer interested).") + f"\n{fmt_row(jobs[idx])}")
 
 
 # --- CLI -----------------------------------------------------------------
@@ -294,6 +328,9 @@ def build_parser():
     sp_del = sub.add_parser("delete", help="Permanently delete an opportunity by id")
     sp_del.add_argument("id")
 
+    sp_int = sub.add_parser("interested", help="Toggle Chief's interest on an opportunity (highlights it, logs a signal)")
+    sp_int.add_argument("id")
+
     return p
 
 
@@ -307,6 +344,7 @@ def main():
         "add": cmd_add,
         "edit": cmd_edit,
         "delete": cmd_delete,
+        "interested": cmd_interested,
     }[args.command](args)
 
 
