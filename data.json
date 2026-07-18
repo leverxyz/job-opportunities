@@ -1,20 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T04:12:56Z",
+  "updated": "2026-07-18T04:13:17Z",
   "jobs": [
-    {
-      "jobName": "INTERESTED TEST PROBE",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "sourceType": "GC Email",
-      "sourceDetail": "TestCo",
-      "bidDueDate": "2026-09-01",
-      "keyDates": "Bid Due: 2026-09-01",
-      "setAside": "NONE",
-      "status": "new",
-      "magnitude": "Unknown",
-      "opportunityId": "manual-1784347162"
-    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
@@ -32,7 +19,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/full-window-replacement-building-674-u-s-army-g-w15qkn26ra056-k-cece7",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "77595cf101dd5ecab97b9c0d6d0645fe",
@@ -51,7 +39,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/z-roof-repair-oh-140fc226r0012-k-a5366",
-      "distanceTier": "D4 Far"
+      "distanceTier": "D4 Far",
+      "expirySignaled": true
     },
     {
       "opportunityId": "134ab77c0eb8503085071dc996f7d39e",
@@ -70,7 +59,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/design-build-db-barracks-initiative-package-1-n4008526r0053-o-d66b9",
-      "distanceTier": "D4 Far"
+      "distanceTier": "D4 Far",
+      "expirySignaled": true
     },
     {
       "opportunityId": "85e6cce454cb5105bf6e317e6afc0a07",
@@ -89,7 +79,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/delta-range-grenade-pits-fort-devens-ma-w15qkn26qa138-o-11ef3",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "0f9c83cfcf585c5f8681d7f2cca9b44e",
@@ -108,7 +99,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/z2db-pharmacy-hood-and-cache-upgrade-36c24126q0525-k-ef1e1",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "1e6e1bb998d05bc2a813832e9c963a52",
@@ -127,7 +119,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/convert-intel-spaces-to-controlled-area-bldg-145-n4008526r0169-o-cb840",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "4c8a4b1a907c5534af3864fe59e3cfba",
@@ -146,7 +139,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/z2da-542-23-201-replace-roofs-building-69-and-1-36c24426b0010-o-b70a7",
-      "distanceTier": "D1 Core"
+      "distanceTier": "D1 Core",
+      "expirySignaled": true
     },
     {
       "opportunityId": "a433356dbddd5763b541978defeff576",
@@ -165,7 +159,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/z1da-upgrade-medical-gas-communication-system-36c24426r0119-o-33398",
-      "distanceTier": "D1 Core"
+      "distanceTier": "D1 Core",
+      "expirySignaled": true
     },
     {
       "opportunityId": "c046f5d3bd145a20820ba408e890f59d",
@@ -184,7 +179,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/vinyl-floor-tile-replacement-bldg-623-fort-devens-w15qkn26qa134-o-0f4b5",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "1f319f2b136150a0962890510952056c",
@@ -203,7 +199,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/construct-arabian-leopard-exhibit-at-the-smithsoni-33330226rt0010005-o-57564",
-      "distanceTier": "D2 Regional"
+      "distanceTier": "D2 Regional",
+      "expirySignaled": true
     },
     {
       "opportunityId": "96fac8584bd759d09b8ee7bc8e062638",
@@ -222,7 +219,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/construction-nuwcdivnpt-b68-rm-136-renovation-pr-n6660426q0291-k-f6a43",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "e3bd06e315fc5cf1a911d9dc0bf5f087",
@@ -241,7 +239,8 @@
       "status": "expired",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/construction-nuwcdivnpt-speed-awareness-signs-n6660426q0349-k-12a02",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "expirySignaled": true
     },
     {
       "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
@@ -696,7 +695,7 @@
       "bidDueDate": "2026-07-27",
       "status": "new",
       "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/renovate-squad-ops-bldg-25-project-axqd232620-w50s8126ra010-o-b6fd7",
+      "link": "https://www.highergov.com/contract-opportunity/w50s8126ra010-w50s8126ra010-o-b6fd7",
       "distanceTier": "D3 Stretch"
     },
     {
@@ -905,7 +904,7 @@
       "bidDueDate": "2026-07-28",
       "status": "new",
       "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/z-ny-lwr-grt-lakes-fshry-rsrcs-storage-ven-140fc226q0039-o-97ebb",
+      "link": "https://www.highergov.com/contract-opportunity/ny-lwr-grt-lakes-fshry-rsrcs-storage-ven-140fc226q0039-o-97ebb",
       "distanceTier": "D1 Core"
     },
     {
@@ -919,7 +918,7 @@
       "sourceType": "HigherGov",
       "sourceDetail": "USFS Region 9: Eastern Region",
       "location": "Philadelphia, PA\n35 miles\n0.75 hours away",
-      "magnitude": "$250K \u2013 $500K",
+      "magnitude": "$350K \u2013 $700K",
       "keyDates": "Bid Due: Jul 28, 2026",
       "bidDueDate": "2026-07-28",
       "status": "new",
@@ -1671,7 +1670,7 @@
     {
       "opportunityId": "36eeee24c3125448b6e053db1163593c",
       "jobName": "2026 Base Wide Flooring",
-      "projectDescription": "This is a combined synopsis/solicitation (&ldquo;synopsitation&rdquo; hereafter), which is expected to result in award of a Firm Fixed Price Indefinite Delivery Indefinite Quantity (IDIQ) contract for commercial services, i.e., Base-Wide Flooring services (including purchase, installation, repair, and replacement) at Wright-Patterson Air Force Base (WPAFB), Ohio, as described in the Statement of Work (Attachment 1). The synopsitation is prepared in accordance with the format in the Revolutionary",
+      "projectDescription": "Ammendment 001 - Incorporate the Full Solicitation FA860126R0022 0001 Form SF 33 into the attachments\n\nThis is a combined synopsis/solicitation (&ldquo;synopsitation&rdquo; hereafter), which is expected to result in award of a Firm Fixed Price Indefinite Delivery Indefinite Quantity (IDIQ) contract for commercial services, i.e., Base-Wide Flooring services (including purchase, installation, repair, and replacement) at Wright-Patterson Air Force Base (WPAFB), Ohio, as described in the Statement o",
       "tier": "Tier 4",
       "tag": "CONCORD-SUB",
       "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
@@ -2184,7 +2183,7 @@
     {
       "opportunityId": "315a39a6fff1572ab800f97e6f154295",
       "jobName": "BLDG 66 Windows Replacement",
-      "projectDescription": "Amendment 0001 ACM Report, Statement of Work (SOW) and the Specification attachments \n\nWindows Replacement \n",
+      "projectDescription": "Windows Replacement \n",
       "tier": "Tier 1",
       "tag": "APPLIED-PRIME",
       "reasoning": "roofing scope detected; envelope scope detected",
@@ -2237,6 +2236,19 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/n4008526r0221-design-bid-build-steam-and-conden-n4008526r0221-o-741f7",
       "distanceTier": "D3 Stretch"
+    },
+    {
+      "jobName": "INTERESTED TEST PROBE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceType": "GC Email",
+      "sourceDetail": "TestCo",
+      "bidDueDate": "2026-09-01",
+      "keyDates": "Bid Due: 2026-09-01",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784347162"
     },
     {
       "opportunityId": "65b9098aa6b651fcb22cb8fae7bb7711",
@@ -2372,6 +2384,150 @@
       "sourceDetail": "TestCo",
       "magnitude": "Unknown",
       "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
+      "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
+      "tier": "Tier 1",
+      "tag": "APPLIED-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$0.7M \u2013 $1.4M",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "77595cf101dd5ecab97b9c0d6d0645fe",
+      "jobName": "Z--Roof Repair OH",
+      "tier": "Tier 1",
+      "tag": "APPLIED-PRIME",
+      "sourceDetail": "Fish and Wildlife Service",
+      "magnitude": "$35K \u2013 $70K",
+      "distanceTier": "D4 Far"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "134ab77c0eb8503085071dc996f7d39e",
+      "jobName": "DESIGN-BUILD (DB) BARRACKS INITIATIVE (PACKAGE #1), MARINE CORPS AIR STATION (MCAS) CHERRY POINT, NC ",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "magnitude": "$150M \u2013 $300M",
+      "distanceTier": "D4 Far"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "85e6cce454cb5105bf6e317e6afc0a07",
+      "jobName": "Delta Range Grenade Pits Fort Devens MA",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$0.8M \u2013 $2.5M",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "0f9c83cfcf585c5f8681d7f2cca9b44e",
+      "jobName": "Z2DB--Pharmacy Hood and Cache Upgrade",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "VISN 1:\u00a0New England Healthcare System",
+      "magnitude": "$150K \u2013 $450K",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "1e6e1bb998d05bc2a813832e9c963a52",
+      "jobName": "CONVERT INTEL SPACES TO CONTROLLED AREA, BLDG 145, NAS OCEANA, VIRGINIA BEACH, VA ",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "Naval Facilities Engineering Command",
+      "magnitude": "$0.8M \u2013 $2.5M",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "4c8a4b1a907c5534af3864fe59e3cfba",
+      "jobName": "Z2DA--542-23-201 | Replace Roofs Building 69 and 139 | NCO 4  Construction East (VA-26-00047303)",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "VISN 4",
+      "magnitude": "$1.2M \u2013 $2.8M",
+      "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "a433356dbddd5763b541978defeff576",
+      "jobName": "Z1DA--Upgrade Medical Gas & Communication System    Design Build",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "VISN 4",
+      "magnitude": "$0.5M \u2013 $1M",
+      "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "c046f5d3bd145a20820ba408e890f59d",
+      "jobName": "Vinyl Floor Tile Replacement Bldg 623 Fort Devens MA",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$75K \u2013 $250K",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "1f319f2b136150a0962890510952056c",
+      "jobName": "Construct Arabian Leopard Exhibit at the Smithsonian National Zoological Park",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "sourceDetail": "Smithsonian Institution",
+      "magnitude": "$15M \u2013 $30M",
+      "distanceTier": "D2 Regional"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "96fac8584bd759d09b8ee7bc8e062638",
+      "jobName": "Construction - NUWCDIVNPT B68 Rm 136 Renovation Project",
+      "tier": "Tier 5",
+      "tag": "APPLIED-SUB-MEP",
+      "sourceDetail": "NUWC Newport Division",
+      "magnitude": "$150K \u2013 $600K",
+      "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-18T04:13:17Z",
+      "type": "expired_no_interest",
+      "sourceType": "HigherGov",
+      "opportunityId": "e3bd06e315fc5cf1a911d9dc0bf5f087",
+      "jobName": "Construction _NUWCDIVNPT Speed awareness signs",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "NUWC Newport Division",
+      "magnitude": "$25K \u2013 $100K",
+      "distanceTier": "D3 Stretch"
     }
   ]
 }
