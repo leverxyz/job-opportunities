@@ -1,9 +1,9 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T02:41:45Z",
+  "updated": "2026-07-18T02:42:29Z",
   "jobs": [
     {
-      "jobName": "TEST PROBE -- delete me",
+      "jobName": "TEST PROBE -- EDITED",
       "projectDescription": "automated end-to-end test entry",
       "tier": "Tier 2",
       "tag": "CONCORD-PRIME",
@@ -11,7 +11,7 @@
       "sourceType": "GC Email",
       "sourceDetail": "TestCo",
       "location": "Trenton, NJ",
-      "magnitude": "$100K",
+      "magnitude": "$250K",
       "keyDates": "Bid Due: TBD",
       "bidDueDate": null,
       "siteVisitDate": null,
