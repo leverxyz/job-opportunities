@@ -296,7 +296,13 @@ def existing_keys(jobs):
     return {(j.get("sourceType", ""), j.get("opportunityId", j.get("id", ""))) for j in jobs}
 
 def pull_highergov():
-    """Pull from all configured HigherGov searches."""
+    """Pull from all configured HigherGov searches, following pagination.
+
+    A single request only ever returns page 1 (up to page_size, default
+    100). The API reports meta.pagination.pages -- verified live 2026-07-17
+    that a real search can span multiple pages (265 results / 3 pages at
+    page_size=100) and every prior sync silently kept only page 1.
+    """
     if not HIGHERGOV_KEY:
         print("ERROR: HIGHERGOV_API_KEY not set")
         return []
@@ -306,17 +312,32 @@ def pull_highergov():
         if not search_id:
             continue
         print(f"  Pulling {label} (search {search_id})...")
-        params = {"api_key": HIGHERGOV_KEY, "search_id": search_id, "page_size": "100"}
-        try:
-            resp = httpx.get(HIGHERGOV_URL, params=params, timeout=30)
-            data = resp.json()
-            results = data.get("results", [])
-            if isinstance(results, dict):
-                results = results.get("data", results.get("results", []))
-            print(f"    {len(results)} results")
-            all_results.extend(results)
-        except Exception as e:
-            print(f"    ERROR: {e}")
+        page = 1
+        total_pages = 1
+        label_results = []
+        while page <= total_pages:
+            params = {
+                "api_key": HIGHERGOV_KEY,
+                "search_id": search_id,
+                "page_size": "100",
+                "page_number": str(page),
+            }
+            try:
+                resp = httpx.get(HIGHERGOV_URL, params=params, timeout=30)
+                data = resp.json()
+                results = data.get("results", [])
+                if isinstance(results, dict):
+                    results = results.get("data", results.get("results", []))
+                label_results.extend(results)
+                total_pages = data.get("meta", {}).get("pagination", {}).get("pages", 1)
+                if not results:
+                    break
+            except Exception as e:
+                print(f"    ERROR on page {page}: {e}")
+                break
+            page += 1
+        print(f"    {len(label_results)} results across {total_pages} page(s)")
+        all_results.extend(label_results)
     return all_results
 
 def process_opportunity(opp, existing_keys_set):
