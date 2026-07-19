@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T23:56:04Z",
+  "updated": "2026-07-19T23:56:09Z",
   "jobs": [
     {
       "jobName": "STEP3 WATCHDOG TEST",
@@ -9,9 +9,10 @@
       "sourceType": "GC Email",
       "sourceDetail": "TestCo",
       "setAside": "NONE",
-      "status": "new",
+      "status": "pursuing",
       "magnitude": "Unknown",
-      "opportunityId": "manual-1784505364"
+      "opportunityId": "manual-1784505364",
+      "pursuingStartedAt": "2026-07-19T23:56:09Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2582,6 +2583,19 @@
       "sourceType": "GC Email",
       "opportunityId": "manual-1784502546",
       "jobName": "STEP2 UI TEST \u2014 should show blue Pursuing band",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "TestCo",
+      "magnitude": "Unknown",
+      "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-19T23:56:09Z",
+      "type": "pursuing_started",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784505364",
+      "jobName": "STEP3 WATCHDOG TEST",
       "tier": "Tier 2",
       "tag": "CONCORD-PRIME",
       "sourceDetail": "TestCo",
