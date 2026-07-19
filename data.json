@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T23:03:10Z",
+  "updated": "2026-07-19T23:03:15Z",
   "jobs": [
     {
       "jobName": "INTAKE STEP1 TEST PROBE",
@@ -9,9 +9,10 @@
       "sourceType": "GC Email",
       "sourceDetail": "TestCo",
       "setAside": "NONE",
-      "status": "new",
+      "status": "pursuing",
       "magnitude": "Unknown",
-      "opportunityId": "manual-1784502190"
+      "opportunityId": "manual-1784502190",
+      "pursuingStartedAt": "2026-07-19T23:03:15Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2546,6 +2547,19 @@
       "sourceDetail": "NPS Northeast Region",
       "magnitude": "$75K \u2013 $250K",
       "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-19T23:03:15Z",
+      "type": "pursuing_started",
+      "actor": "testuser",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784502190",
+      "jobName": "INTAKE STEP1 TEST PROBE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "TestCo",
+      "magnitude": "Unknown",
+      "distanceTier": ""
     }
   ]
 }
