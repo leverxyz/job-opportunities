@@ -28,6 +28,7 @@ Usage:
   board.py interested <id>       -- human "maybe" signal, cosmetic, no downstream effect
   board.py pursue <id>           -- the actuator (Section 5) -- starts Sam's intake work
   board.py stop-pursuing <id>    -- reverses a pursue: declined + interested cleared together
+  board.py intake-done <id>      -- marks intake complete, stops the watchdog re-matching it
 
 Board Tab must be one of: HigherGov, BidNet, DPMC, "GC Email" (default
 for `add` is "GC Email" -- most manual adds are GC-sourced leads).
@@ -388,6 +389,47 @@ def cmd_stop_pursuing(a):
     )
 
 
+def cmd_intake_done(a):
+    """Closes the loop intake-watch.py's watchdog opens. `status` alone
+    can't tell "just marked pursuing" from "already had intake run" --
+    it stays "pursuing" forever once intake finishes, that's correct,
+    the job doesn't stop being pursued. So the watchdog matches on
+    status=="pursuing" AND intakeCompletedAt not set; this command is
+    the only thing that sets intakeCompletedAt, which is what makes a
+    job stop re-matching every cycle.
+
+    The project-intake skill must call this ONLY after step 5's `dbx
+    find`/`ls` verification confirms the folder and note actually exist
+    -- never on Sam's narration alone (intake.md's "trust the box, never
+    Sam's narration" rule, the single most important rule in that spec).
+    Calling this without that verification silently drops a job out of
+    the watchdog's view with no folder behind it -- exactly the failure
+    mode the rule exists to prevent."""
+    pull_latest()
+    jobs, excluded, signals = load()
+    existing = find_job(jobs, a.id)
+    if not existing:
+        die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
+
+    idx = jobs.index(existing)
+    jobs[idx] = dict(
+        jobs[idx],
+        intakeCompletedAt=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    )
+
+    signals = signals + [{
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "type": "intake_completed",
+        "actor": a.actor,
+        "sourceType": jobs[idx].get("sourceType", ""),
+        "opportunityId": a.id,
+        "jobName": jobs[idx].get("jobName", ""),
+    }]
+
+    save(jobs, excluded, signals, f"board.py intake-done ({a.actor}): {a.id}")
+    print(f"Intake marked complete -- will no longer appear in the watchdog's queue.\n{fmt_row(jobs[idx])}")
+
+
 # --- CLI -----------------------------------------------------------------
 
 def build_parser():
@@ -439,6 +481,10 @@ def build_parser():
     sp_stop.add_argument("id")
     sp_stop.add_argument("--actor", default="sam", help="Who's stopping this -- \"sam\" or a web login username")
 
+    sp_done = sub.add_parser("intake-done", help="Mark intake complete (folder+note verified) -- stops the watchdog re-matching this job")
+    sp_done.add_argument("id")
+    sp_done.add_argument("--actor", default="sam", help="Who's marking this done -- almost always \"sam\"")
+
     return p
 
 
@@ -455,6 +501,7 @@ def main():
         "interested": cmd_interested,
         "pursue": cmd_pursue,
         "stop-pursuing": cmd_stop_pursuing,
+        "intake-done": cmd_intake_done,
     }[args.command](args)
 
 
