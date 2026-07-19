@@ -1,21 +1,7 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T23:12:51Z",
+  "updated": "2026-07-19T23:23:50Z",
   "jobs": [
-    {
-      "jobName": "STEP2 UI TEST \u2014 should show blue Pursuing band",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "sourceType": "GC Email",
-      "sourceDetail": "TestCo",
-      "bidDueDate": "2026-08-15",
-      "keyDates": "Bid Due: 2026-08-15",
-      "setAside": "NONE",
-      "status": "pursuing",
-      "magnitude": "Unknown",
-      "opportunityId": "manual-1784502546",
-      "pursuingStartedAt": "2026-07-19T23:12:51Z"
-    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
@@ -2367,6 +2353,7 @@
     "GC Email:manual-1784345317",
     "GC Email:manual-1784347959",
     "GC Email:manual-1784502190",
+    "GC Email:manual-1784502546",
     "GC Email:manual-TESTPROBE-1784342505",
     "HigherGov:cf02414ae0775efd82c46b713ef26605"
   ],
