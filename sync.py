@@ -175,7 +175,23 @@ def compute_distance_tier(zip_code, city, state):
         tier = "D3 Stretch"
     else:
         tier = "D4 Far"
-    hours = max(0.3, miles / 50)
+    # Drive time: average speed rises with distance (more highway, less
+    # surface-street), not a flat number -- a flat 50mph made a 471mi trip
+    # (Vienna, OH) look slower per-mile than the old table's 430mi/6.5h
+    # Cleveland anchor (~66mph average), which was the wrong comparison to
+    # invite. Speed steps below are fit to the old table's own 16 anchor
+    # points (20mi/0.5h up to 450mi/7h, ~40mph to ~65mph) so short local
+    # trips and long highway runs both land close to what that table
+    # already implied -- just applied per job instead of per state.
+    if miles < 50:
+        mph = 40
+    elif miles < 150:
+        mph = 52
+    elif miles < 300:
+        mph = 58
+    else:
+        mph = 63
+    hours = max(0.3, miles / mph)
     return (tier, label, f"{round(miles)} miles", f"{round(hours, 2)} hours away")
 
 SET_ASIDE_MAP = {
