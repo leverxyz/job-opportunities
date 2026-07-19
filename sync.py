@@ -6,10 +6,11 @@ Per sourcing-rules.md v2026-07-06
 
 Usage: python3 sync.py
 """
-import json, os, re, sys, subprocess
+import json, math, os, re, sys, subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import httpx
+import pgeocode
 
 # Import DPMC scraper
 try:
@@ -87,7 +88,25 @@ BRIDGE_PAIRS = ["deck", "span", "girder", "culvert", "abutment"]  # bridge only 
 EXCLUDE_KEYWORDS = ["cyber security", "cybersecurity"]
 
 # --- §0.5 Distance Tiers ---
+#
+# Was a flat per-STATE lookup (every job in a state got the same anchor
+# city's mileage -- e.g. all of PA showed "35 miles", whether the job was
+# actually in Philadelphia (really ~28mi) or Franklin, PA (really ~282mi,
+# a D3 Stretch job silently reported as D1 Core/nearby, which also meant
+# it skipped the distance-tier review flag below). Fixed 2026-07-19:
+# real per-job distance from the actual place of performance, using
+# pgeocode (offline GeoNames zip data, no network call, no API key --
+# this pipeline already learned the hard way tonight not to add a new
+# live external dependency it doesn't need). Falls back to the old
+# per-state table only if a job's location can't be resolved at all, so
+# a geocoding miss degrades gracefully instead of dropping the job.
 
+HOME_ZIP = "08505"
+_geo = pgeocode.Nominatim("us")
+_home = _geo.query_postal_code(HOME_ZIP)
+HOME_LAT, HOME_LON = _home.latitude, _home.longitude
+
+# Old table, kept only as the fallback for the rare job pgeocode can't place.
 DISTANCE_TIERS = {
     "NJ": ("D1 Core", "Trenton, NJ", "20 miles", "0.5 hours away"),
     "PA": ("D1 Core", "Philadelphia, PA", "35 miles", "0.75 hours away"),
@@ -106,6 +125,58 @@ DISTANCE_TIERS = {
     "WV": ("D4 Far", "Charleston, WV", "430 miles", "6.5 hours away"),
     "NC": ("D4 Far", "Raleigh, NC", "450 miles", "7 hours away"),
 }
+
+
+def _haversine_miles(lat1, lon1, lat2, lon2):
+    r = 3958.8  # earth radius, miles
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(a))
+
+
+def _geocode_place(zip_code, city, state):
+    """Best-effort (lat, lon) for a place of performance. Zip first (precise,
+    ~65% of HigherGov records have one) -- falls back to city+state name
+    match, filtered to the right state so same-named cities in different
+    states (there are 5+ "Franklin"s alone) don't collide. None if neither
+    resolves."""
+    if zip_code:
+        r = _geo.query_postal_code(str(zip_code).strip().zfill(5))
+        if r is not None and not math.isnan(r.latitude):
+            return r.latitude, r.longitude
+    if city and state:
+        matches = _geo.query_location(city, top_k=200)
+        if len(matches):
+            matches = matches[matches.state_code == state]
+            if len(matches):
+                row = matches.iloc[0]
+                return row.latitude, row.longitude
+    return None
+
+
+def compute_distance_tier(zip_code, city, state):
+    """Real per-job distance tier. Tier boundaries picked to bracket the old
+    table's own anchor points (D1 anchors topped out ~70mi, D2 ran
+    130-175mi, D3 ran 230-380mi, D4 started at 430mi) rather than inventing
+    new ones -- same intent, now actually measured per job instead of
+    per state."""
+    coords = _geocode_place(zip_code, city, state)
+    label = f"{city}, {state}" if city else state
+    if coords is None:
+        return DISTANCE_TIERS.get(state, ("Unknown", label, "unknown", "unknown"))
+    miles = _haversine_miles(HOME_LAT, HOME_LON, coords[0], coords[1])
+    if miles < 100:
+        tier = "D1 Core"
+    elif miles < 200:
+        tier = "D2 Regional"
+    elif miles < 400:
+        tier = "D3 Stretch"
+    else:
+        tier = "D4 Far"
+    hours = max(0.3, miles / 50)
+    return (tier, label, f"{round(miles)} miles", f"{round(hours, 2)} hours away")
 
 SET_ASIDE_MAP = {
     "SBA": "SBA", "SB": "SBA", "SBP": "SBA-Partial",
@@ -425,10 +496,12 @@ def process_opportunity(opp, excluded_keys):
         log_skip(opp_id, title, "bridge work")
         return None
 
-    # Distance tier
+    # Distance tier -- real per-job distance from place of performance
     state = opp.get("pop_state", "")
-    distance_info = DISTANCE_TIERS.get(state, ("Unknown", state, "unknown", "unknown"))
-    distance_tier, default_city, miles, hours = distance_info
+    city = opp.get("pop_city", "")
+    zip_code = opp.get("pop_zip", "")
+    distance_info = compute_distance_tier(zip_code, city, state)
+    distance_tier, location_label, miles, hours = distance_info
 
     # NJ state-funded check — HigherGov Federal search should be federal money
     # But flag mixed funding if state/local somehow appears
@@ -476,9 +549,7 @@ def process_opportunity(opp, excluded_keys):
             magnitude = f"${val_low/1e6:.1f}M+".replace(".0M", "M")
 
     # Location
-    city = opp.get("pop_city", "")
-    label = f"{city}, {state}" if city else default_city
-    location = f"{label}\n{miles}\n{hours}"
+    location = f"{location_label}\n{miles}\n{hours}"
 
     # Key dates
     if due_date_str:
@@ -544,6 +615,14 @@ def merge_and_save(existing_jobs, new_jobs, excluded_keys=None, signals=None):
                     ej["tag"] = job.get("tag")
                     ej["reasoning"] = job.get("reasoning")
                     ej["link"] = job.get("link")
+                    # location/distanceTier were left out of this refresh list
+                    # until 2026-07-19 -- meant a distance-calc fix (like the
+                    # move off the flat per-state table) would silently never
+                    # reach any job already sitting on the board, only new
+                    # ones. Recomputing this every sync is safe: it's a pure
+                    # function of the job's own location fields.
+                    ej["location"] = job.get("location")
+                    ej["distanceTier"] = job.get("distanceTier")
                     updated += 1
                     break
         else:
