@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T23:03:15Z",
+  "updated": "2026-07-19T23:03:38Z",
   "jobs": [
     {
       "jobName": "INTAKE STEP1 TEST PROBE",
@@ -9,10 +9,11 @@
       "sourceType": "GC Email",
       "sourceDetail": "TestCo",
       "setAside": "NONE",
-      "status": "pursuing",
+      "status": "declined",
       "magnitude": "Unknown",
       "opportunityId": "manual-1784502190",
-      "pursuingStartedAt": "2026-07-19T23:03:15Z"
+      "pursuingStartedAt": "2026-07-19T23:03:15Z",
+      "interested": false
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2551,6 +2552,19 @@
     {
       "ts": "2026-07-19T23:03:15Z",
       "type": "pursuing_started",
+      "actor": "testuser",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784502190",
+      "jobName": "INTAKE STEP1 TEST PROBE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "TestCo",
+      "magnitude": "Unknown",
+      "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-19T23:03:38Z",
+      "type": "declined_after_intake",
       "actor": "testuser",
       "sourceType": "GC Email",
       "opportunityId": "manual-1784502190",
