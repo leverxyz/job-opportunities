@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-18T04:13:17Z",
+  "updated": "2026-07-19T02:23:39Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -259,7 +259,8 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/s-masi-carpet-replacement-at-federal-hall-140p4526r0028-o-719c7",
-      "distanceTier": "D1 Core"
+      "distanceTier": "D1 Core",
+      "interested": true
     },
     {
       "opportunityId": "cf02414ae0775efd82c46b713ef26605",
@@ -2528,6 +2529,18 @@
       "sourceDetail": "NUWC Newport Division",
       "magnitude": "$25K \u2013 $100K",
       "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-19T02:23:39Z",
+      "type": "interested",
+      "sourceType": "HigherGov",
+      "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
+      "jobName": "S--MASI, CARPET REPLACEMENT AT FEDERAL HALL",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "NPS Northeast Region",
+      "magnitude": "$75K \u2013 $250K",
+      "distanceTier": "D1 Core"
     }
   ]
 }
