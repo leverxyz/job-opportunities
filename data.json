@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T02:23:44Z",
+  "updated": "2026-07-19T02:29:28Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -261,25 +261,6 @@
       "link": "https://www.highergov.com/contract-opportunity/s-masi-carpet-replacement-at-federal-hall-140p4526r0028-o-719c7",
       "distanceTier": "D1 Core",
       "interested": true
-    },
-    {
-      "opportunityId": "cf02414ae0775efd82c46b713ef26605",
-      "jobName": "EDIS: REPAIR STAFF LOT GATE & FENCE",
-      "projectDescription": "EDIS: REPAIR STAFF LOT GATE & FENCE",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "NPS Northeast Region",
-      "location": "West Orange, NJ\n20 miles\n0.5 hours away",
-      "magnitude": "$15K \u2013 $45K",
-      "keyDates": "Bid Due: Jul 20, 2026",
-      "bidDueDate": "2026-07-20",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/edis-repair-staff-lot-gate-fence-140p4526q0039-o-d2730",
-      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
@@ -2371,7 +2352,8 @@
   "excludedKeys": [
     "GC Email:manual-1784345317",
     "GC Email:manual-1784347959",
-    "GC Email:manual-TESTPROBE-1784342505"
+    "GC Email:manual-TESTPROBE-1784342505",
+    "HigherGov:cf02414ae0775efd82c46b713ef26605"
   ],
   "signals": [
     {
