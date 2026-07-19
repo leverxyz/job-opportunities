@@ -311,11 +311,13 @@ def load_excluded_keys():
 def load_signals():
     """Chief's interested/not-interested decisions -- the training data for
     the future learning loop (own session, not built yet). Two kinds:
-    explicit ("interested", logged by the board page when he clicks the
-    button) and implicit ("expired_no_interest", logged here the first
-    time a job's bid due date passes without him ever marking it
-    interested). Standalone records -- a job can be deleted later and the
-    signal still stands on its own."""
+    explicit ("interested", logged via `board.py interested <id>`, run by
+    Sam on Chief's instruction -- the board page has been view-only since
+    20546f3, no button triggers this anymore) and implicit
+    ("expired_no_interest", logged here the first time a job's bid due
+    date passes without him ever marking it interested). Standalone
+    records -- a job can be deleted later and the signal still stands on
+    its own."""
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE) as f:
             data = json.load(f)
