@@ -25,6 +25,9 @@ Usage:
   board.py add --name NAME --tier "Tier N" [--tab TAB] [options]
   board.py edit <id> [--name NAME] [--tier "Tier N"] [options]
   board.py delete <id>
+  board.py interested <id>       -- human "maybe" signal, cosmetic, no downstream effect
+  board.py pursue <id>           -- the actuator (Section 5) -- starts Sam's intake work
+  board.py stop-pursuing <id>    -- reverses a pursue: declined + interested cleared together
 
 Board Tab must be one of: HigherGov, BidNet, DPMC, "GC Email" (default
 for `add` is "GC Email" -- most manual adds are GC-sourced leads).
@@ -148,7 +151,7 @@ def cmd_list(a):
         if a.tab not in VALID_TABS:
             die(f"--tab must be one of: {', '.join(VALID_TABS)}")
         jobs = [j for j in jobs if j.get("sourceType") == a.tab]
-    jobs = [j for j in jobs if (j.get("status") or "").lower() not in ("expired", "archive")]
+    jobs = [j for j in jobs if (j.get("status") or "").lower() not in ("expired", "archive", "declined")]
     jobs.sort(key=lambda j: (j.get("bidDueDate") is None, j.get("bidDueDate", "")))
     print(f"{len(jobs)} active opportunit{'y' if len(jobs)==1 else 'ies'}" + (f" on {a.tab}" if a.tab else "") + "\n")
     for j in jobs:
@@ -295,6 +298,96 @@ def cmd_interested(a):
     print(("Marked interested." if now_interested else "Un-marked (no longer interested).") + f"\n{fmt_row(jobs[idx])}")
 
 
+def cmd_pursue(a):
+    """The actuator (Section 5, intake.md) -- this is what wakes Sam's
+    intake work: Dropbox folder creation, doc pull, scope note, one
+    Telegram summary. See project-intake skill for what happens next;
+    this command only flips the state.
+
+    Idempotent, not one-way strict: calling it again on an already-
+    pursuing job is a no-op message, not an error -- the intake watchdog
+    may legitimately see the same job across more than one run while
+    intake is mid-flight, and that must not blow up."""
+    pull_latest()
+    jobs, excluded, signals = load()
+    existing = find_job(jobs, a.id)
+    if not existing:
+        die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
+
+    idx = jobs.index(existing)
+    if jobs[idx].get("status") == "pursuing":
+        print(f"Already pursuing -- no change.\n{fmt_row(jobs[idx])}")
+        return
+
+    jobs[idx] = dict(
+        jobs[idx],
+        status="pursuing",
+        pursuingStartedAt=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    )
+
+    signals = signals + [{
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "type": "pursuing_started",
+        "actor": a.actor,
+        "sourceType": jobs[idx].get("sourceType", ""),
+        "opportunityId": a.id,
+        "jobName": jobs[idx].get("jobName", ""),
+        "tier": jobs[idx].get("tier"),
+        "tag": jobs[idx].get("tag"),
+        "sourceDetail": jobs[idx].get("sourceDetail", ""),
+        "magnitude": jobs[idx].get("magnitude", ""),
+        "distanceTier": jobs[idx].get("distanceTier", ""),
+    }]
+
+    save(jobs, excluded, signals, f"board.py pursue ({a.actor}): {a.id}")
+    print(f"Marked pursuing -- intake starts on the next watchdog cycle.\n{fmt_row(jobs[idx])}")
+
+
+def cmd_stop_pursuing(a):
+    """Reverses a pursue -- for when intake already started (folder made,
+    Telegram sent) but the answer turns out to be no. Sets status to a
+    terminal 'declined' AND clears interested in the SAME write; both
+    must flip together, or the watchdog would see interested=true again
+    next cycle and re-trigger intake on a job Chief already killed.
+
+    dbx.py has no delete/move (by design, same restraint as everywhere
+    else in this codebase) -- any Dropbox folder already created is not
+    touched here. Print a reminder, don't pretend to clean it up; the
+    exact folder-path convention isn't box-verified enough yet to compute
+    and assert a specific path from this layer."""
+    pull_latest()
+    jobs, excluded, signals = load()
+    existing = find_job(jobs, a.id)
+    if not existing:
+        die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
+
+    idx = jobs.index(existing)
+    jobs[idx] = dict(jobs[idx], status="declined", interested=False)
+
+    signals = signals + [{
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "type": "declined_after_intake",
+        "actor": a.actor,
+        "sourceType": jobs[idx].get("sourceType", ""),
+        "opportunityId": a.id,
+        "jobName": jobs[idx].get("jobName", ""),
+        "tier": jobs[idx].get("tier"),
+        "tag": jobs[idx].get("tag"),
+        "sourceDetail": jobs[idx].get("sourceDetail", ""),
+        "magnitude": jobs[idx].get("magnitude", ""),
+        "distanceTier": jobs[idx].get("distanceTier", ""),
+    }]
+
+    save(jobs, excluded, signals, f"board.py stop-pursuing ({a.actor}): {a.id}")
+    print(
+        "Marked declined -- pulled off the active board.\n"
+        f"{fmt_row(jobs[idx])}\n"
+        "If Sam already created a Dropbox pursuit folder for this job, it has NOT been "
+        "deleted -- dbx.py has no delete/move capability, by design. Clean it up by hand "
+        "if you want it gone."
+    )
+
+
 # --- CLI -----------------------------------------------------------------
 
 def build_parser():
@@ -338,6 +431,14 @@ def build_parser():
     sp_int.add_argument("id")
     sp_int.add_argument("--actor", default="sam", help="Who's toggling this -- \"sam\" or a web login username")
 
+    sp_pursue = sub.add_parser("pursue", help="Mark an opportunity as actively pursued -- starts Sam's intake work")
+    sp_pursue.add_argument("id")
+    sp_pursue.add_argument("--actor", default="sam", help="Who's pursuing this -- \"sam\" or a web login username")
+
+    sp_stop = sub.add_parser("stop-pursuing", help="Reverse a pursue -- marks declined, clears interested")
+    sp_stop.add_argument("id")
+    sp_stop.add_argument("--actor", default="sam", help="Who's stopping this -- \"sam\" or a web login username")
+
     return p
 
 
@@ -352,6 +453,8 @@ def main():
         "edit": cmd_edit,
         "delete": cmd_delete,
         "interested": cmd_interested,
+        "pursue": cmd_pursue,
+        "stop-pursuing": cmd_stop_pursuing,
     }[args.command](args)
 
 
