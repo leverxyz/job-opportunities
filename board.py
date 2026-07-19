@@ -226,7 +226,7 @@ def cmd_add(a):
     job["opportunityId"] = f"manual-{int(datetime.now().timestamp())}"
     jobs.insert(0, job)
 
-    save(jobs, excluded, signals, f"board.py add: {job['sourceType']} — {job['jobName']}")
+    save(jobs, excluded, signals, f"board.py add ({a.actor}): {job['sourceType']} — {job['jobName']}")
     print(f"Added.\n{fmt_row(job)}\nhttps://leverxyz.github.io/job-opportunities/")
 
 
@@ -241,7 +241,7 @@ def cmd_edit(a):
     idx = jobs.index(existing)
     jobs[idx] = updated
 
-    save(jobs, excluded, signals, f"board.py edit: {updated.get('sourceType','')} {a.id}")
+    save(jobs, excluded, signals, f"board.py edit ({a.actor}): {updated.get('sourceType','')} {a.id}")
     print(f"Updated.\n{fmt_row(updated)}\nhttps://leverxyz.github.io/job-opportunities/")
 
 
@@ -257,7 +257,7 @@ def cmd_delete(a):
     if key not in excluded:
         excluded = excluded + [key]
 
-    save(jobs, excluded, signals, f"board.py delete: {key}")
+    save(jobs, excluded, signals, f"board.py delete ({a.actor}): {key}")
     print(f"Deleted permanently — will not reappear on the next sync.\n  was: {existing.get('jobName','')}")
 
 
@@ -280,6 +280,7 @@ def cmd_interested(a):
         signals = signals + [{
             "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "type": "interested",
+            "actor": a.actor,
             "sourceType": jobs[idx].get("sourceType", ""),
             "opportunityId": a.id,
             "jobName": jobs[idx].get("jobName", ""),
@@ -290,7 +291,7 @@ def cmd_interested(a):
             "distanceTier": jobs[idx].get("distanceTier", ""),
         }]
 
-    save(jobs, excluded, signals, f"board.py interested: {'on' if now_interested else 'off'} {a.id}")
+    save(jobs, excluded, signals, f"board.py interested ({a.actor}): {'on' if now_interested else 'off'} {a.id}")
     print(("Marked interested." if now_interested else "Un-marked (no longer interested).") + f"\n{fmt_row(jobs[idx])}")
 
 
@@ -301,6 +302,10 @@ def build_parser():
     sub = p.add_subparsers(dest="command", required=True)
 
     def add_common_fields(sp, name_required=False):
+        sp.add_argument("--actor", default="sam",
+                         help="Who's performing this action -- \"sam\" (default, his own "
+                              "invocations) or a web login username. Goes in the audit log "
+                              "and the git commit message.")
         sp.add_argument("--name", help="Project/opportunity name")
         sp.add_argument("--tier", help="Tier 1-5 (auto-derives tag)")
         sp.add_argument("--tab", help="HigherGov, BidNet, DPMC, or \"GC Email\"")
@@ -327,9 +332,11 @@ def build_parser():
 
     sp_del = sub.add_parser("delete", help="Permanently delete an opportunity by id")
     sp_del.add_argument("id")
+    sp_del.add_argument("--actor", default="sam", help="Who's performing this delete -- \"sam\" or a web login username")
 
     sp_int = sub.add_parser("interested", help="Toggle Chief's interest on an opportunity (highlights it, logs a signal)")
     sp_int.add_argument("id")
+    sp_int.add_argument("--actor", default="sam", help="Who's toggling this -- \"sam\" or a web login username")
 
     return p
 
