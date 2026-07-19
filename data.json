@@ -1,7 +1,18 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T15:55:25Z",
+  "updated": "2026-07-19T23:03:10Z",
   "jobs": [
+    {
+      "jobName": "INTAKE STEP1 TEST PROBE",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceType": "GC Email",
+      "sourceDetail": "TestCo",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784502190"
+    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
