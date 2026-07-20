@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T01:22:54Z",
+  "updated": "2026-07-20T01:22:59Z",
   "jobs": [
     {
       "jobName": "CLAIM MECHANISM TEST \u2014 DELETE ME",
@@ -9,9 +9,10 @@
       "sourceType": "GC Email",
       "sourceDetail": "Claim Test GC",
       "setAside": "NONE",
-      "status": "new",
+      "status": "pursuing",
       "magnitude": "Unknown",
-      "opportunityId": "manual-1784510574"
+      "opportunityId": "manual-1784510574",
+      "pursuingStartedAt": "2026-07-20T01:22:59Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2653,6 +2654,19 @@
       "sourceType": "GC Email",
       "opportunityId": "manual-1784508838",
       "jobName": "ZZZ TEST INTAKE 2 \u2014 DELETE ME (folder will need manual cleanup)"
+    },
+    {
+      "ts": "2026-07-20T01:22:59Z",
+      "type": "pursuing_started",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784510574",
+      "jobName": "CLAIM MECHANISM TEST \u2014 DELETE ME",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "Claim Test GC",
+      "magnitude": "Unknown",
+      "distanceTier": ""
     }
   ]
 }
