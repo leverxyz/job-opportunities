@@ -1,7 +1,18 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T00:50:02Z",
+  "updated": "2026-07-20T00:53:58Z",
   "jobs": [
+    {
+      "jobName": "ZZZ TEST INTAKE 2 \u2014 DELETE ME (folder will need manual cleanup)",
+      "tier": "Tier 1",
+      "tag": "APPLIED-PRIME",
+      "sourceType": "GC Email",
+      "sourceDetail": "ZZZ Test GC 2 \u2014 delete me",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784508838"
+    },
     {
       "jobName": "ZZZ TEST INTAKE \u2014 DELETE ME (folder will need manual cleanup)",
       "tier": "Tier 2",
