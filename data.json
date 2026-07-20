@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T00:54:04Z",
+  "updated": "2026-07-20T01:12:10Z",
   "jobs": [
     {
       "jobName": "ZZZ TEST INTAKE 2 \u2014 DELETE ME (folder will need manual cleanup)",
@@ -12,7 +12,8 @@
       "status": "pursuing",
       "magnitude": "Unknown",
       "opportunityId": "manual-1784508838",
-      "pursuingStartedAt": "2026-07-20T00:54:04Z"
+      "pursuingStartedAt": "2026-07-20T00:54:04Z",
+      "intakeCompletedAt": "2026-07-20T01:12:10Z"
     },
     {
       "jobName": "ZZZ TEST INTAKE \u2014 DELETE ME (folder will need manual cleanup)",
@@ -2657,6 +2658,14 @@
       "sourceDetail": "ZZZ Test GC 2 \u2014 delete me",
       "magnitude": "Unknown",
       "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-20T01:12:10Z",
+      "type": "intake_completed",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784508838",
+      "jobName": "ZZZ TEST INTAKE 2 \u2014 DELETE ME (folder will need manual cleanup)"
     }
   ]
 }
