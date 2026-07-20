@@ -1,7 +1,18 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-19T23:56:35Z",
+  "updated": "2026-07-20T00:47:22Z",
   "jobs": [
+    {
+      "jobName": "ZZZ TEST INTAKE \u2014 DELETE ME (folder will need manual cleanup)",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceType": "GC Email",
+      "sourceDetail": "ZZZ Test GC \u2014 delete me",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784508442"
+    },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
       "jobName": "Full Window Replacement, Building 674, U.S. Army Garrison Devens Reserve Forces Training Area (RFTA)",
