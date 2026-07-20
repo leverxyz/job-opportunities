@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T01:23:21Z",
+  "updated": "2026-07-20T09:03:45Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -567,44 +567,6 @@
       "distanceTier": "D3 Stretch"
     },
     {
-      "opportunityId": "b85ccacc04f95607bffa964f52ed42b7",
-      "jobName": "Construct ERHM Infrastructure Upgrades - University Drive - Pittsburgh, PA",
-      "projectDescription": "The scope of work shall generally consist of but is not limited to the following: construction work to facilitate all modifications at multiple existing buildings on the VAPHS University Drive VA campus to upgrade the infrastructure to support the new Electronic Health Records Modernization (EHRM) system.\n\nThe upgrade to the infrastructure will be campus wide buildings impacted to include Buildings 1, 5, 8, 29, 30, 33, and site. The architectural total existing space square footage affected is a",
-      "tier": "Tier 4",
-      "tag": "CONCORD-SUB",
-      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
-      "setAside": "NONE",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Program Contracting Activity Central",
-      "location": "Pittsburgh, PA\n271 miles\n4.68 hours away",
-      "magnitude": "$8M \u2013 $18M",
-      "keyDates": "Bid Due: Jul 24, 2026",
-      "bidDueDate": "2026-07-24",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/construct-erhm-infrastructure-upgrades-universit-36c77626r0082-1-o-e1f07",
-      "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "e6873b58d7ab5bc3b13ecd0349eee63f",
-      "jobName": "Z2DA--EHRM Upgrades - White River Junction, VT",
-      "projectDescription": "36C77626R0092\n",
-      "tier": "Tier 4",
-      "tag": "CONCORD-SUB",
-      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
-      "setAside": "NONE",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Program Contracting Activity Central",
-      "location": "White River Junction, VT\n271 miles\n4.68 hours away",
-      "magnitude": "$1.5M \u2013 $5M",
-      "keyDates": "Bid Due: Jul 24, 2026",
-      "bidDueDate": "2026-07-24",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/z2da-ehrm-upgrades-white-river-junction-vt-36c77626r0092-o-8a57a",
-      "distanceTier": "D3 Stretch"
-    },
-    {
       "opportunityId": "bd9c211f641b531cb44f38c30b655361",
       "jobName": "Missile Munitions Distribution Facility and Rail Classification Yard at Letterkenny Army Depot in Chambersburg, Pennsylvania",
       "projectDescription": "**Amendment 0009 is to: A. Remove the inclusion of a Project Labor Agreement for this requirement as it has been waived. B. Provide Proposal extension from 08 July 2026 to 24 July 2026 at 1100AM. This amended solicitation includes two (2) attachments.**Amendment 0008 is to: A. Provide Summary of Changes_12June2026. B. Provide Revised Drawings (Update Haul Routes for Stockpile locations)_10June2026. This amended solicitation includes four (4) attachments. **Amendment 0007 is to: A. Provide Summar",
@@ -814,6 +776,25 @@
       "distanceTier": "D3 Stretch"
     },
     {
+      "opportunityId": "b85ccacc04f95607bffa964f52ed42b7",
+      "jobName": "Construct ERHM Infrastructure Upgrades - University Drive - Pittsburgh, PA",
+      "projectDescription": "The scope of work shall generally consist of but is not limited to the following: construction work to facilitate all modifications at multiple existing buildings on the VAPHS University Drive VA campus to upgrade the infrastructure to support the new Electronic Health Records Modernization (EHRM) system.\n\nThe upgrade to the infrastructure will be campus wide buildings impacted to include Buildings 1, 5, 8, 29, 30, 33, and site. The architectural total existing space square footage affected is a",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Program Contracting Activity Central",
+      "location": "Pittsburgh, PA\n271 miles\n4.68 hours away",
+      "magnitude": "$8M \u2013 $18M",
+      "keyDates": "Bid Due: Jul 28, 2026",
+      "bidDueDate": "2026-07-28",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.com/contract-opportunity/construct-erhm-infrastructure-upgrades-universit-36c77626r0082-1-o-e1f07",
+      "distanceTier": "D3 Stretch"
+    },
+    {
       "opportunityId": "6cc76f06ff5b55228c6253c2042e1f9b",
       "jobName": "Solicitation for Design-Build (DB), B-550 Repair MCIS/Student HSG Dam Neck Annex, Naval Air Station Oceana, Virginia Beach, VA",
       "projectDescription": "See all applicable attachments. Attachment E- B550 DB RFP_VOL 2 of 3 - ATTACHMENTS A-0 is too large to upload to SAM. Interested parties may contact Shayna Eichner at Shayna.T.Eichner.civ@us.navy.mil to request the attachment be sent via DOD SAFE.\n\n\n\nPlease note: This solicitation and all applicable attachments are restricted to MACC holders (N4008521D0079-0086) under the INDEFINITE-DELIVERY/INDEFINITE QUANTITY (IDIQ) MULTIPLE AWARD CONSTRUCTION CONTRACT (MACC) FOR LARGE GENERAL CONSTRUCTION PRO",
@@ -881,7 +862,7 @@
       "sourceType": "HigherGov",
       "sourceDetail": "USFS Region 9: Eastern Region",
       "location": "Philadelphia, PA\n35 miles\n0.75 hours away",
-      "magnitude": "$350K \u2013 $700K",
+      "magnitude": "$250K \u2013 $500K",
       "keyDates": "Bid Due: Jul 28, 2026",
       "bidDueDate": "2026-07-28",
       "status": "new",
@@ -1479,6 +1460,25 @@
       "distanceTier": "D2 Regional"
     },
     {
+      "opportunityId": "e6873b58d7ab5bc3b13ecd0349eee63f",
+      "jobName": "Z2DA--EHRM Upgrades - White River Junction, VT",
+      "projectDescription": "Site Visit Agenda  \n\nEHRM Infrastructure Upgrades Construction &ndash; White River Junction, VT\n\n\n\tOpen meeting &amp; Introductions\n\n\n\n\tContracting Officer &ndash; Megan Dohm\n\tContract Specialist: Jen Braaten\n\tGeneral Engineer: Jonathan Rugg, James Kirkpatrick\n\tIntroduction of Vendors\n\tReminder to sign the sign-in sheet\n\n\n\n\n\n\tSolicitation Information\n\n\n\n\tPlease note that any verbal exchange at this site visit does not constitute a change to this solicitation. Only amendments constitute a change.",
+      "tier": "Tier 4",
+      "tag": "CONCORD-SUB",
+      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
+      "setAside": "NONE",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Program Contracting Activity Central",
+      "location": "White River Junction, VT\n271 miles\n4.68 hours away",
+      "magnitude": "$1.5M \u2013 $5M",
+      "keyDates": "Bid Due: Aug 6, 2026",
+      "bidDueDate": "2026-08-06",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.com/contract-opportunity/z2da-ehrm-upgrades-white-river-junction-vt-36c77626r0092-o-8a57a",
+      "distanceTier": "D3 Stretch"
+    },
+    {
       "opportunityId": "8a69f4bca10d5979aa9ad59b036bd2f8",
       "jobName": "Armed Forces Retirement Home Sheridan Bldg Construction Services",
       "projectDescription": "The General Services Administration (GSA) is procuring General Construction Services for the Armed Forces Retirement Home (AFRH) Sheridan Building Renovation. This project is being conducted as a full and open competition using the tradeoff method to ensure the best value to the government. The Sheridan Building is an occupied, eight-floor, 387,350 SF facility originally constructed in 1962. It is situated on the 272-acre AFRH campus at 3700 N Capitol Street NW, Washington, DC 20011, which is re",
@@ -1652,7 +1652,7 @@
     {
       "opportunityId": "36eeee24c3125448b6e053db1163593c",
       "jobName": "2026 Base Wide Flooring",
-      "projectDescription": "Ammendment 001 - Incorporate the Full Solicitation FA860126R0022 0001 Form SF 33 into the attachments\n\nThis is a combined synopsis/solicitation (&ldquo;synopsitation&rdquo; hereafter), which is expected to result in award of a Firm Fixed Price Indefinite Delivery Indefinite Quantity (IDIQ) contract for commercial services, i.e., Base-Wide Flooring services (including purchase, installation, repair, and replacement) at Wright-Patterson Air Force Base (WPAFB), Ohio, as described in the Statement o",
+      "projectDescription": "This is a combined synopsis/solicitation (&ldquo;synopsitation&rdquo; hereafter), which is expected to result in award of a Firm Fixed Price Indefinite Delivery Indefinite Quantity (IDIQ) contract for commercial services, i.e., Base-Wide Flooring services (including purchase, installation, repair, and replacement) at Wright-Patterson Air Force Base (WPAFB), Ohio, as described in the Statement of Work (Attachment 1). The synopsitation is prepared in accordance with the format in the Revolutionary",
       "tier": "Tier 4",
       "tag": "CONCORD-SUB",
       "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
@@ -1800,6 +1800,25 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/z1lz-526-17-707-parking-lot-replacement-and-expan-36c24226b0044-o-f18bd",
       "distanceTier": "D1 Core"
+    },
+    {
+      "opportunityId": "98ba66d0fcb65a3e97a3928fa627e244",
+      "jobName": "SCIF Door Replacement",
+      "projectDescription": "The 175th Wing, Maryland Air National Guard (MDANG) needs services for two (2) non-compliant door assemblies at two separate Sensitive Compartmented Information Facilities (SCIFs). The existing door assemblies do not meet current security standards for acoustic and radio frequency (RF) shielding as mandated by Intelligence Community Directive/Intelligence Community Standard (ICD/ICS) 705. This project will bring both facility entrances into full compliance with STC and RF requirements ",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "reasoning": "",
+      "setAside": "SBA",
+      "sourceType": "HigherGov",
+      "sourceDetail": "Department of the Army",
+      "location": "Baltimore, MD\n107 miles\n2.05 hours away",
+      "magnitude": "$120K \u2013 $280K",
+      "keyDates": "Bid Due: Aug 12, 2026",
+      "bidDueDate": "2026-08-12",
+      "status": "new",
+      "naics": "",
+      "link": "https://www.highergov.com/contract-opportunity/scif-door-replacement-w50s8226qa003-k-ee1e3",
+      "distanceTier": "D2 Regional"
     },
     {
       "opportunityId": "ed6c9146c9e45519b12a62da6cd75cf4",
@@ -2165,7 +2184,7 @@
     {
       "opportunityId": "315a39a6fff1572ab800f97e6f154295",
       "jobName": "BLDG 66 Windows Replacement",
-      "projectDescription": "Windows Replacement \n",
+      "projectDescription": "Amendment 0001 ACM Report, Statement of Work (SOW) and the Specification attachments \n\nWindows Replacement \n",
       "tier": "Tier 1",
       "tag": "APPLIED-PRIME",
       "reasoning": "roofing scope detected; envelope scope detected",
