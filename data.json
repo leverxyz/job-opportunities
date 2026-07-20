@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T01:22:59Z",
+  "updated": "2026-07-20T01:23:05Z",
   "jobs": [
     {
       "jobName": "CLAIM MECHANISM TEST \u2014 DELETE ME",
@@ -12,7 +12,8 @@
       "status": "pursuing",
       "magnitude": "Unknown",
       "opportunityId": "manual-1784510574",
-      "pursuingStartedAt": "2026-07-20T01:22:59Z"
+      "pursuingStartedAt": "2026-07-20T01:22:59Z",
+      "intakeClaimedAt": "2026-07-20T01:23:05Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
