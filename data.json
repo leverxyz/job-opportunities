@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T14:56:44Z",
+  "updated": "2026-07-20T16:53:18Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2239,19 +2239,6 @@
       "distanceTier": "D3 Stretch"
     },
     {
-      "jobName": "INTERESTED TEST PROBE",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "sourceType": "GC Email",
-      "sourceDetail": "TestCo",
-      "bidDueDate": "2026-09-01",
-      "keyDates": "Bid Due: 2026-09-01",
-      "setAside": "NONE",
-      "status": "new",
-      "magnitude": "Unknown",
-      "opportunityId": "manual-1784347162"
-    },
-    {
       "opportunityId": "65b9098aa6b651fcb22cb8fae7bb7711",
       "jobName": "RFP N4008026R1295 B16 Steam Plant NSA Bethesda _ LP MACC DB Construction",
       "projectDescription": "Solicitation N4008026R1295: Design-Build Construction for B16 Steam Plant ? NSA Bethesda, MD. This task order is set aside exclusively for NAVFAC Washington L-MACC contract holders (N4008023D0026/0027/0028/0029/0030 and N4008024D9500/9501). ",
@@ -2370,6 +2357,7 @@
   ],
   "excludedKeys": [
     "GC Email:manual-1784345317",
+    "GC Email:manual-1784347162",
     "GC Email:manual-1784347959",
     "GC Email:manual-1784502190",
     "GC Email:manual-1784502546",
