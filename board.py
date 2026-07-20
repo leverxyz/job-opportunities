@@ -29,6 +29,7 @@ Usage:
   board.py pursue <id>           -- the actuator (Section 5) -- starts Sam's intake work
   board.py stop-pursuing <id>    -- reverses a pursue: declined + interested cleared together
   board.py intake-done <id>      -- marks intake complete, stops the watchdog re-matching it
+  board.py intake-claim <id>     -- intake-watch.py only; claims a job so overlapping runs don't collide
 
 Board Tab must be one of: HigherGov, BidNet, DPMC, "GC Email" (default
 for `add` is "GC Email" -- most manual adds are GC-sourced leads).
@@ -389,6 +390,37 @@ def cmd_stop_pursuing(a):
     )
 
 
+def cmd_intake_claim(a):
+    """Called by intake-watch.py, once per job, right before it hands that
+    job's ---INTAKE--- block to an agent session -- NOT called by Sam
+    directly. Stamps intakeClaimedAt so a second watchdog run (a manual
+    re-trigger overlapping a still-running one, or a run that's slow for
+    some reason) sees the job as already being worked and skips it,
+    instead of both sessions independently creating their own Dropbox
+    folder for the same job. Real bug, not hypothetical: found live
+    2026-07-20 during Section 5 testing -- two overlapping runs each
+    created a folder for the same test job, and dbx.py has no delete to
+    clean up the duplicate with.
+
+    Claims go stale after 20 minutes (see intake-watch.py's
+    CLAIM_STALE_MINUTES) so a crashed or genuinely-stuck session doesn't
+    lock a job out forever -- the next scheduled tick just re-claims it."""
+    pull_latest()
+    jobs, excluded, signals = load()
+    existing = find_job(jobs, a.id)
+    if not existing:
+        die(f"no opportunity with id {a.id} -- use `board.py find <text>` to look it up first")
+
+    idx = jobs.index(existing)
+    jobs[idx] = dict(
+        jobs[idx],
+        intakeClaimedAt=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    )
+
+    save(jobs, excluded, signals, f"board.py intake-claim ({a.actor}): {a.id}")
+    print(f"Claimed.\n{fmt_row(jobs[idx])}")
+
+
 def cmd_intake_done(a):
     """Closes the loop intake-watch.py's watchdog opens. `status` alone
     can't tell "just marked pursuing" from "already had intake run" --
@@ -485,6 +517,10 @@ def build_parser():
     sp_done.add_argument("id")
     sp_done.add_argument("--actor", default="sam", help="Who's marking this done -- almost always \"sam\"")
 
+    sp_claim = sub.add_parser("intake-claim", help="Called by intake-watch.py, not Sam -- claims a job so a second overlapping watchdog run skips it")
+    sp_claim.add_argument("id")
+    sp_claim.add_argument("--actor", default="intake-watch", help="Almost always \"intake-watch\" (the script), not \"sam\"")
+
     return p
 
 
@@ -502,6 +538,7 @@ def main():
         "pursue": cmd_pursue,
         "stop-pursuing": cmd_stop_pursuing,
         "intake-done": cmd_intake_done,
+        "intake-claim": cmd_intake_claim,
     }[args.command](args)
 
 
