@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T09:03:45Z",
+  "updated": "2026-07-20T14:56:06Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -260,7 +260,7 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/s-masi-carpet-replacement-at-federal-hall-140p4526r0028-o-719c7",
       "distanceTier": "D1 Core",
-      "interested": false
+      "interested": true
     },
     {
       "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
@@ -2675,6 +2675,19 @@
       "sourceDetail": "Claim Test GC",
       "magnitude": "Unknown",
       "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-20T14:56:06Z",
+      "type": "interested",
+      "actor": "lrodriguez@concordce.com",
+      "sourceType": "HigherGov",
+      "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
+      "jobName": "S--MASI, CARPET REPLACEMENT AT FEDERAL HALL",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "NPS Northeast Region",
+      "magnitude": "$75K \u2013 $250K",
+      "distanceTier": "D1 Core"
     }
   ]
 }
