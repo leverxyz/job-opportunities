@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:47:24Z",
+  "updated": "2026-07-21T00:47:59Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -299,25 +299,6 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/building-repairs-buiilding-530-dam-neck-annex-n4008526r0176-o-b2e6a",
       "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "fbc1687da62f5c89bfeed541fe55fb5b",
-      "jobName": "Building 305 Office Renovations - ZQEL 19-0016",
-      "projectDescription": "Solicitation Notice: Renovation of Building 305, Youngstown Air Reserve Station\n\n1. Action and Classification\n\n\n\tSolicitation Number: FA665626B0002\n\tProject Title: ZQEL 19-0016 - MAINTAIN/REPAIR/CONSTRUCT VARIOUS ROOM RENOVATIONS AT BUILDING 305 MX COMMANDER OFFICES\n\tIssuing Agency: 910th Airlift Wing (AFRC), Youngstown Air Reserve Station, Ohio\n\tNAICS Code: 236220 - Commercial and Institutional Building Construction\n\tSet-Aside: This acquisition is anticipated to be a 100% HUBZone Small Business",
-      "tier": "Tier 5",
-      "tag": "APPLIED-SUB-MEP",
-      "reasoning": "MEP-heavy with roofing scope",
-      "setAside": "REVIEW: HZC",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Reserve Command",
-      "location": "Vienna, OH\n471 miles\n7.48 hours away",
-      "magnitude": "$100K \u2013 $250K",
-      "keyDates": "Bid Due: Jul 22, 2026",
-      "bidDueDate": "2026-07-22",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/building-305-office-renovations-zqel-19-0016-fa665626b0002-o-7a551",
-      "distanceTier": "D4 Far"
     },
     {
       "opportunityId": "efbb30def05d5de7ac3bec694383677b",
@@ -2312,7 +2293,8 @@
     "HigherGov:cf02414ae0775efd82c46b713ef26605",
     "HigherGov:daed49c8b1255456a995651bef26215f",
     "HigherGov:e14c1d8a5e5e5173a1fbe18be9be0280",
-    "HigherGov:e1af036f961e5a71b0b080a98b69a8f9"
+    "HigherGov:e1af036f961e5a71b0b080a98b69a8f9",
+    "HigherGov:fbc1687da62f5c89bfeed541fe55fb5b"
   ],
   "signals": [
     {
