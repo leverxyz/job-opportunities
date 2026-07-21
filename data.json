@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T01:51:14Z",
+  "updated": "2026-07-21T01:52:13Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2163,7 +2163,8 @@
       "naics": "",
       "link": "https://www.nj.gov/treasury/dpmc/project_construction_advertisements.shtml",
       "distanceTier": "D1 Core",
-      "dpmcStatus": "pre_bid_held"
+      "dpmcStatus": "pre_bid_held",
+      "interested": true
     }
   ],
   "excludedKeys": [
@@ -2652,6 +2653,19 @@
       "tag": "CONCORD-PRIME",
       "sourceDetail": "ACC Picatinny",
       "magnitude": "$250K \u2013 $900K",
+      "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-21T01:52:13Z",
+      "type": "interested",
+      "actor": "vgrushin@concordce.com",
+      "sourceType": "DPMC",
+      "opportunityId": "dpmc-E0398-00",
+      "jobName": "Curtain Wall Replacement \u2013 Marie Katzenbach School for the Deaf, Ewing, Mercer County, NJ",
+      "tier": "Lane 2",
+      "tag": "APPLIED-SUB",
+      "sourceDetail": "NJ DPMC",
+      "magnitude": "$5,075,132Add Alt #1A $112,168",
       "distanceTier": "D1 Core"
     }
   ]
