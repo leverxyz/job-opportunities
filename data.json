@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-20T17:43:19Z",
+  "updated": "2026-07-21T00:35:54Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -241,26 +241,6 @@
       "link": "https://www.highergov.com/contract-opportunity/construction-nuwcdivnpt-speed-awareness-signs-n6660426q0349-k-12a02",
       "distanceTier": "D2 Regional",
       "expirySignaled": true
-    },
-    {
-      "opportunityId": "e1af036f961e5a71b0b080a98b69a8f9",
-      "jobName": "S--MASI, CARPET REPLACEMENT AT FEDERAL HALL",
-      "projectDescription": "NPS/ FEHA CARPET REPLACEMENT AT FEDERAL HALL",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "NPS Northeast Region",
-      "location": "New York, NY\n56 miles\n1.08 hours away",
-      "magnitude": "$75K \u2013 $250K",
-      "keyDates": "Bid Due: Jul 20, 2026",
-      "bidDueDate": "2026-07-20",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/s-masi-carpet-replacement-at-federal-hall-140p4526r0028-o-719c7",
-      "distanceTier": "D1 Core",
-      "interested": false
     },
     {
       "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
@@ -2366,7 +2346,8 @@
     "GC Email:manual-1784508838",
     "GC Email:manual-1784510574",
     "GC Email:manual-TESTPROBE-1784342505",
-    "HigherGov:cf02414ae0775efd82c46b713ef26605"
+    "HigherGov:cf02414ae0775efd82c46b713ef26605",
+    "HigherGov:e1af036f961e5a71b0b080a98b69a8f9"
   ],
   "signals": [
     {
