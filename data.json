@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:47:10Z",
+  "updated": "2026-07-21T00:47:24Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -280,25 +280,6 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/y1ab-stabilize-improve-building-120-552-21-102-36c25026b0033-a00002-o-ad98d",
       "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "e14c1d8a5e5e5173a1fbe18be9be0280",
-      "jobName": "ZQEL 22-0006 Renovate B301",
-      "projectDescription": "Project: ZQEL 22-0006 : Renovation of Building 301, Youngstown Air Reserve Station\nLocation: 910th Airlift Wing (AFRC), Youngstown Air Reserve Station\n\nThe 910th Airlift Wing (AFRC) at Youngstown Air Reserve Station has a requirement for: Renovation of Building 301, Youngstown Air Reserve Station. The work specified herein consists of furnishing all labor, equipment, tools, appliances, transportation, and materials required to renovate of a portion of building 301, Rooms requiring work will be R",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
-      "setAside": "REVIEW: HZC",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Reserve Command",
-      "location": "Vienna, OH\n471 miles\n7.48 hours away",
-      "magnitude": "$80K \u2013 $250K",
-      "keyDates": "Bid Due: Jul 22, 2026",
-      "bidDueDate": "2026-07-22",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/zqel-22-0006-renovate-b301-fa665626b0003-o-91d70",
-      "distanceTier": "D4 Far"
     },
     {
       "opportunityId": "5d930ffcfb51564c90f3c5ae78b5352d",
@@ -2330,6 +2311,7 @@
     "GC Email:manual-TESTPROBE-1784342505",
     "HigherGov:cf02414ae0775efd82c46b713ef26605",
     "HigherGov:daed49c8b1255456a995651bef26215f",
+    "HigherGov:e14c1d8a5e5e5173a1fbe18be9be0280",
     "HigherGov:e1af036f961e5a71b0b080a98b69a8f9"
   ],
   "signals": [
