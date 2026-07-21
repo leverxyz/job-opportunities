@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:59:31Z",
+  "updated": "2026-07-21T00:59:51Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -279,7 +279,8 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/solicitation-w15qkn-26-q-a098-amendment-0001-posti-w15qkn26qa098-o-180ea",
-      "distanceTier": "D3 Stretch"
+      "distanceTier": "D3 Stretch",
+      "interested": true
     },
     {
       "opportunityId": "b66a88b2bb77515eb422846a99ae6fde",
@@ -2574,6 +2575,19 @@
       "sourceDetail": "ACC Picatinny",
       "magnitude": "$250K \u2013 $900K",
       "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-21T00:59:51Z",
+      "type": "interested",
+      "actor": "vgrushin@concordce.com",
+      "sourceType": "HigherGov",
+      "opportunityId": "40afd8e17d7e5e97bdfa10f32889f7d6",
+      "jobName": "Solicitation W15QKN-26-Q-A098 Amendment 0001 Posting for CSS 89224 Repair and Installation of Snow Melt System - Heat Trace  at PA053 and PA051 in Johnstown, PA in support of the 99th Readiness Divisi",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$150K \u2013 $450K",
+      "distanceTier": "D3 Stretch"
     }
   ]
 }
