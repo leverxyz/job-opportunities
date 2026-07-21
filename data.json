@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T01:50:12Z",
+  "updated": "2026-07-21T01:51:00Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -260,7 +260,7 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/css-88855-repair-amsa-interior-reading-pa-w15qkn26qa124-o-00fbd",
       "distanceTier": "D1 Core",
-      "interested": false
+      "interested": true
     },
     {
       "opportunityId": "40afd8e17d7e5e97bdfa10f32889f7d6",
@@ -2630,6 +2630,19 @@
     },
     {
       "ts": "2026-07-21T01:49:57Z",
+      "type": "interested",
+      "actor": "vgrushin@concordce.com",
+      "sourceType": "HigherGov",
+      "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
+      "jobName": "CSS 88855 - Repair AMSA Interior - Reading, PA",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$250K \u2013 $900K",
+      "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-21T01:51:00Z",
       "type": "interested",
       "actor": "vgrushin@concordce.com",
       "sourceType": "HigherGov",
