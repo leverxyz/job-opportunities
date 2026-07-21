@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:35:54Z",
+  "updated": "2026-07-21T00:36:07Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -259,7 +259,8 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/css-88855-repair-amsa-interior-reading-pa-w15qkn26qa124-o-00fbd",
-      "distanceTier": "D1 Core"
+      "distanceTier": "D1 Core",
+      "interested": true
     },
     {
       "opportunityId": "daed49c8b1255456a995651bef26215f",
@@ -2669,6 +2670,19 @@
       "tag": "CONCORD-PRIME",
       "sourceDetail": "NPS Northeast Region",
       "magnitude": "$75K \u2013 $250K",
+      "distanceTier": "D1 Core"
+    },
+    {
+      "ts": "2026-07-21T00:36:07Z",
+      "type": "interested",
+      "actor": "vgrushin@concordce.com",
+      "sourceType": "HigherGov",
+      "opportunityId": "16ef17ff701d574cb8901fcd582b90d7",
+      "jobName": "CSS 88855 - Repair AMSA Interior - Reading, PA",
+      "tier": "Tier 2",
+      "tag": "CONCORD-PRIME",
+      "sourceDetail": "ACC Picatinny",
+      "magnitude": "$250K \u2013 $900K",
       "distanceTier": "D1 Core"
     }
   ]
