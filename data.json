@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:48:10Z",
+  "updated": "2026-07-21T00:48:29Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -279,25 +279,6 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/y1ab-stabilize-improve-building-120-552-21-102-36c25026b0033-a00002-o-ad98d",
-      "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "5d930ffcfb51564c90f3c5ae78b5352d",
-      "jobName": "BUILDING REPAIRS, BUIILDING 530, DAM NECK ANNEX",
-      "projectDescription": "Login at https://piee.eb.mil and search for 'N4008526R0176' to obtain more details.*",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "GC work at D3 Stretch \u2014 boresighted, needs Chief review",
-      "setAside": "NONE",
-      "sourceType": "HigherGov",
-      "sourceDetail": "Naval Facilities Engineering Command",
-      "location": "Virginia Beach, VA\n244 miles\n4.21 hours away",
-      "magnitude": "$0.5M \u2013 $2.5M",
-      "keyDates": "Bid Due: Jul 22, 2026",
-      "bidDueDate": "2026-07-22",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/building-repairs-buiilding-530-dam-neck-annex-n4008526r0176-o-b2e6a",
       "distanceTier": "D3 Stretch"
     },
     {
@@ -2271,6 +2252,7 @@
     "GC Email:manual-1784508838",
     "GC Email:manual-1784510574",
     "GC Email:manual-TESTPROBE-1784342505",
+    "HigherGov:5d930ffcfb51564c90f3c5ae78b5352d",
     "HigherGov:cf02414ae0775efd82c46b713ef26605",
     "HigherGov:daed49c8b1255456a995651bef26215f",
     "HigherGov:e14c1d8a5e5e5173a1fbe18be9be0280",
