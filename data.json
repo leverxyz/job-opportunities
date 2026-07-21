@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T23:15:30Z",
+  "updated": "2026-07-21T23:15:41Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -260,7 +260,7 @@
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/solicitation-w15qkn-26-q-a098-amendment-0001-posti-w15qkn26qa098-o-180ea",
       "distanceTier": "D3 Stretch",
-      "interested": true
+      "interested": false
     },
     {
       "opportunityId": "b66a88b2bb77515eb422846a99ae6fde",
