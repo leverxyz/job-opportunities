@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:48:43Z",
+  "updated": "2026-07-21T00:48:58Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -261,25 +261,6 @@
       "link": "https://www.highergov.com/contract-opportunity/css-88855-repair-amsa-interior-reading-pa-w15qkn26qa124-o-00fbd",
       "distanceTier": "D1 Core",
       "interested": false
-    },
-    {
-      "opportunityId": "948ce3a9c9f85f3f8f7eddf400317d96",
-      "jobName": "Y1AB--Stabilize/Improve Building 120 - 552-21-102",
-      "projectDescription": "The purpose of this amendment is to post the Pre-Bid RFI answers, Addendum 1, Addendum 1 attachments, and reference documents for Pre-Bid RFI answers.\n",
-      "tier": "Tier 4",
-      "tag": "CONCORD-SUB",
-      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
-      "setAside": "SDVOSB",
-      "sourceType": "HigherGov",
-      "sourceDetail": "VISN 10:\u00a0Healthcare System",
-      "location": "Dayton, OH\n496 miles\n7.87 hours away",
-      "magnitude": "$1.5M \u2013 $5M",
-      "keyDates": "Bid Due: Jul 22, 2026",
-      "bidDueDate": "2026-07-22",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/y1ab-stabilize-improve-building-120-552-21-102-36c25026b0033-a00003-o-bfa58",
-      "distanceTier": "D4 Far"
     },
     {
       "opportunityId": "c23f81f096385566b8fab2b5f146b9b9",
@@ -2234,6 +2215,7 @@
     "GC Email:manual-1784510574",
     "GC Email:manual-TESTPROBE-1784342505",
     "HigherGov:5d930ffcfb51564c90f3c5ae78b5352d",
+    "HigherGov:948ce3a9c9f85f3f8f7eddf400317d96",
     "HigherGov:b1067c34c613513695c7c198ac7e526d",
     "HigherGov:cf02414ae0775efd82c46b713ef26605",
     "HigherGov:daed49c8b1255456a995651bef26215f",
