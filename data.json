@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T01:52:13Z",
+  "updated": "2026-07-21T01:52:16Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -2164,7 +2164,7 @@
       "link": "https://www.nj.gov/treasury/dpmc/project_construction_advertisements.shtml",
       "distanceTier": "D1 Core",
       "dpmcStatus": "pre_bid_held",
-      "interested": true
+      "interested": false
     }
   ],
   "excludedKeys": [
