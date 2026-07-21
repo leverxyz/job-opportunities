@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:36:23Z",
+  "updated": "2026-07-21T00:47:10Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -261,25 +261,6 @@
       "link": "https://www.highergov.com/contract-opportunity/css-88855-repair-amsa-interior-reading-pa-w15qkn26qa124-o-00fbd",
       "distanceTier": "D1 Core",
       "interested": false
-    },
-    {
-      "opportunityId": "daed49c8b1255456a995651bef26215f",
-      "jobName": "NYFO Paddock Fencing",
-      "projectDescription": "This is a sources sought notice ONLY. The U.S. Government desires to procure paddock fencing in fiscal year 2026, for The US Park Police (USPP) New York Field Office (NYFO) Horse Mounted Patrol (HMP) Unit which has a stable located at 407 Beach 169th Street, Queens, NY 11694. The USPP NYFO HMP Stable area has two (2) horse paddocks near the stable. The Government encourages all interested parties to respond to this sources sought and identify their capabilities of meeting the requirements of the",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "",
-      "setAside": "NONE",
-      "sourceType": "HigherGov",
-      "sourceDetail": "NPS National Office",
-      "location": "Queens, NY\n64 miles\n1.24 hours away",
-      "magnitude": "$25K \u2013 $90K",
-      "keyDates": "Bid Due: Jul 21, 2026",
-      "bidDueDate": "2026-07-21",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/nyfo-paddock-fencing-140p2126q0149-o-d73df",
-      "distanceTier": "D1 Core"
     },
     {
       "opportunityId": "b1067c34c613513695c7c198ac7e526d",
@@ -2348,6 +2329,7 @@
     "GC Email:manual-1784510574",
     "GC Email:manual-TESTPROBE-1784342505",
     "HigherGov:cf02414ae0775efd82c46b713ef26605",
+    "HigherGov:daed49c8b1255456a995651bef26215f",
     "HigherGov:e1af036f961e5a71b0b080a98b69a8f9"
   ],
   "signals": [
