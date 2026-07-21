@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-21T00:47:59Z",
+  "updated": "2026-07-21T00:48:10Z",
   "jobs": [
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -298,25 +298,6 @@
       "status": "new",
       "naics": "",
       "link": "https://www.highergov.com/contract-opportunity/building-repairs-buiilding-530-dam-neck-annex-n4008526r0176-o-b2e6a",
-      "distanceTier": "D3 Stretch"
-    },
-    {
-      "opportunityId": "efbb30def05d5de7ac3bec694383677b",
-      "jobName": "MOF Forinash Fencing Installation",
-      "projectDescription": "\n\nA site visit will be held on Wednesday July 15, 2026 at 1030 eastern. Meet at the gate on FR 793 or contact Hannah Scrafford at Hannah.Scrafford@usda.gov. \n\nNOTE July 13, 2026 - This amendment adds a Q&amp;A document and and extends the offical response date to July 22, 2026. \n\n\n\nThis is a combined synopsis/solicitation for commercial services prepared in accordance with the format in FAR Part 12. This announcement constitutes the only solicitation; quotes are being requested, and a separate w",
-      "tier": "Tier 2",
-      "tag": "CONCORD-PRIME",
-      "reasoning": "GC work at D4 Far \u2014 boresighted, needs Chief review",
-      "setAside": "SBA",
-      "sourceType": "HigherGov",
-      "sourceDetail": "USFS Region 9: Eastern Region",
-      "location": "Elkins, WV\n287 miles\n4.94 hours away",
-      "magnitude": "$40K \u2013 $150K",
-      "keyDates": "Bid Due: Jul 22, 2026",
-      "bidDueDate": "2026-07-22",
-      "status": "new",
-      "naics": "",
-      "link": "https://www.highergov.com/contract-opportunity/mof-forinash-fencing-installation-124425q0075-k-df822",
       "distanceTier": "D3 Stretch"
     },
     {
@@ -2294,6 +2275,7 @@
     "HigherGov:daed49c8b1255456a995651bef26215f",
     "HigherGov:e14c1d8a5e5e5173a1fbe18be9be0280",
     "HigherGov:e1af036f961e5a71b0b080a98b69a8f9",
+    "HigherGov:efbb30def05d5de7ac3bec694383677b",
     "HigherGov:fbc1687da62f5c89bfeed541fe55fb5b"
   ],
   "signals": [
