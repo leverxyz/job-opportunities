@@ -1,7 +1,15 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T01:56:37Z",
+  "updated": "2026-07-23T01:56:38Z",
   "jobs": [
+    {
+      "jobName": "ZZZ GATE TEST2 \u2014 DELETE ME",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784771798"
+    },
     {
       "jobName": "ZZZ GATE TEST \u2014 DELETE ME",
       "sourceType": "GC Email",
