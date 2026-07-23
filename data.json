@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T02:30:18Z",
+  "updated": "2026-07-23T02:31:53Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2017,7 +2017,8 @@
       "link": "",
       "distanceTier": "",
       "pursuingStartedAt": "2026-07-23T01:56:51Z",
-      "intakeClaimedAt": "2026-07-23T02:30:16Z"
+      "intakeClaimedAt": "2026-07-23T02:30:16Z",
+      "intakeCompletedAt": "2026-07-23T02:31:53Z"
     },
     {
       "opportunityId": "7a035381f91c50bc9ff941c45df94a34",
@@ -3075,6 +3076,14 @@
       "sourceDetail": "K2CG \u2014 Joe Steff",
       "magnitude": "",
       "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-23T02:31:53Z",
+      "type": "intake_completed",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "reilly-dewa-2026",
+      "jobName": "Replace Roof Surface \u2014 DEWA (Delaware Water Gap)"
     }
   ]
 }
