@@ -216,9 +216,17 @@ def _build_job(a, existing=None):
 def cmd_add(a):
     if not a.name:
         die("--name is required")
-    if not a.tier:
+    # GC Email leads are exempt from tiering -- Chief's call (2026-07-23):
+    # a GC reaching out already is the decision, there's no tiering pass to
+    # run on it, and an empty tier here is not the same bug this die() was
+    # originally written to catch (sync.py's merge_and_save only purges a
+    # tier of None, never ""). Tab defaults to "GC Email" when omitted, same
+    # as the sourceType default a few lines down, so the omitted-tab case
+    # has to be treated as GC Email here too, not just the explicit one.
+    effective_tab = a.tab or "GC Email"
+    if not a.tier and effective_tab != "GC Email":
         die("--tier is required (Tier 1-5) -- an untiered entry gets removed by the next daily sync")
-    if a.tier not in TIER_TAG:
+    if a.tier and a.tier not in TIER_TAG:
         die(f"--tier must be one of: {', '.join(TIER_TAG)}")
     if a.tab and a.tab not in VALID_TABS:
         die(f"--tab must be one of: {', '.join(VALID_TABS)}")
