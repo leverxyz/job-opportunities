@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T03:52:57Z",
+  "updated": "2026-07-23T04:12:40Z",
   "jobs": [
     {
       "jobName": "EHT High School Boiler Plant Improvement",
@@ -2493,27 +2493,6 @@
       "dpmcStatus": "pre_bid_held"
     },
     {
-      "opportunityId": "dpmc-E0398-00",
-      "jobName": "Curtain Wall Replacement \u2013 Marie Katzenbach School for the Deaf, Ewing, Mercer County, NJ",
-      "projectDescription": "Curtain Wall Replacement \u2013 Marie Katzenbach School for the Deaf, Ewing, Mercer County, NJ",
-      "tier": "Lane 2",
-      "tag": "APPLIED-SUB",
-      "reasoning": "NJ DPMC \u2014 roofing sub in larger project",
-      "setAside": "NONE",
-      "sourceType": "DPMC",
-      "sourceDetail": "NJ DPMC",
-      "location": "Ewing, NJ\nLocal \u2014 NJ state work",
-      "magnitude": "$5,075,132Add Alt #1A $112,168",
-      "keyDates": "Bid Due: 06/18/202606/23/202607/02/202607/16/202608/06/2026",
-      "bidDueDate": null,
-      "status": "new",
-      "naics": "",
-      "link": "https://www.nj.gov/treasury/dpmc/project_construction_advertisements.shtml",
-      "distanceTier": "D1 Core",
-      "dpmcStatus": "pre_bid_held",
-      "interested": false
-    },
-    {
       "opportunityId": "k2cg-b301-acairport-2026",
       "jobName": "Building 301 FAA Hangar Cafeteria and Dining Hall Renovation \u2014 AC Airport",
       "projectDescription": "Interior renovation of FAA Hangar cafeteria and dining hall at Atlantic City Airport. K2CG is GC. Concord as sub.",
@@ -2539,6 +2518,7 @@
     }
   ],
   "excludedKeys": [
+    "DPMC:dpmc-E0398-00",
     "GC Email:manual-1784345317",
     "GC Email:manual-1784347162",
     "GC Email:manual-1784347959",
