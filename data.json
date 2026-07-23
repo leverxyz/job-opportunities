@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T01:56:49Z",
+  "updated": "2026-07-23T01:56:51Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2011,10 +2011,11 @@
       "bidDueDate": "2026-08-14",
       "siteVisitDate": "2026-08-05",
       "rfiDueDate": "2026-08-07",
-      "status": "open",
+      "status": "pursuing",
       "naics": "",
       "link": "",
-      "distanceTier": ""
+      "distanceTier": "",
+      "pursuingStartedAt": "2026-07-23T01:56:51Z"
     },
     {
       "opportunityId": "7a035381f91c50bc9ff941c45df94a34",
@@ -3039,6 +3040,19 @@
       "sourceType": "GC Email",
       "opportunityId": "reilly-blackwater-2026",
       "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD",
+      "tier": "",
+      "tag": "APPLIED-SUB",
+      "sourceDetail": "Reilly Construction \u2014 Joe Steff",
+      "magnitude": "",
+      "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-23T01:56:51Z",
+      "type": "pursuing_started",
+      "actor": "claude-code-fix",
+      "sourceType": "GC Email",
+      "opportunityId": "reilly-dewa-2026",
+      "jobName": "Replace Roof Surface \u2014 DEWA (Delaware Water Gap)",
       "tier": "",
       "tag": "APPLIED-SUB",
       "sourceDetail": "Reilly Construction \u2014 Joe Steff",
