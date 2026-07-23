@@ -2492,6 +2492,27 @@
       "distanceTier": "D1 Core",
       "dpmcStatus": "pre_bid_held",
       "interested": false
+    },
+    {
+      "opportunityId": "k2cg-b301-acairport-2026",
+      "jobName": "Building 301 FAA Hangar Cafeteria and Dining Hall Renovation \u2014 AC Airport",
+      "projectDescription": "Interior renovation of FAA Hangar cafeteria and dining hall at Atlantic City Airport. K2CG is GC. Concord as sub.",
+      "tier": "",
+      "tag": "CONCORD-SUB",
+      "reasoning": "",
+      "setAside": "",
+      "sourceType": "GC Email",
+      "sourceDetail": "K2CG \u2014 Joe Steff",
+      "location": "Atlantic City, NJ",
+      "magnitude": "",
+      "keyDates": "Site Visit: Aug 4, 2026 | RFI Due: Aug 7, 2026 | Bid Due: Aug 26, 2026",
+      "bidDueDate": "2026-08-26",
+      "siteVisitDate": "2026-08-04",
+      "rfiDueDate": "2026-08-07",
+      "status": "open",
+      "naics": "",
+      "link": "",
+      "distanceTier": ""
     }
   ],
   "excludedKeys": [
