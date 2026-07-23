@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T02:00:07Z",
+  "updated": "2026-07-23T02:00:08Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2016,7 +2016,8 @@
       "naics": "",
       "link": "",
       "distanceTier": "",
-      "pursuingStartedAt": "2026-07-23T01:56:51Z"
+      "pursuingStartedAt": "2026-07-23T01:56:51Z",
+      "intakeClaimedAt": "2026-07-23T02:00:08Z"
     },
     {
       "opportunityId": "7a035381f91c50bc9ff941c45df94a34",
