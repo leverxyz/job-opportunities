@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T02:35:00Z",
+  "updated": "2026-07-23T02:35:02Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -23,7 +23,8 @@
       "link": "",
       "distanceTier": "",
       "pursuingStartedAt": "2026-07-23T01:56:49Z",
-      "intakeClaimedAt": "2026-07-23T02:30:15Z"
+      "intakeClaimedAt": "2026-07-23T02:30:15Z",
+      "intakeCompletedAt": "2026-07-23T02:35:02Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -3093,6 +3094,14 @@
       "sourceType": "GC Email",
       "opportunityId": "k2cg-b301-acairport-2026",
       "jobName": "Building 301 FAA Hangar Cafeteria and Dining Hall Renovation \u2014 AC Airport"
+    },
+    {
+      "ts": "2026-07-23T02:35:02Z",
+      "type": "intake_completed",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "reilly-blackwater-2026",
+      "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD"
     }
   ]
 }
