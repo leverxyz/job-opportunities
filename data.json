@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T02:31:53Z",
+  "updated": "2026-07-23T02:35:00Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2519,7 +2519,8 @@
       "link": "",
       "distanceTier": "",
       "pursuingStartedAt": "2026-07-23T01:56:52Z",
-      "intakeClaimedAt": "2026-07-23T02:30:18Z"
+      "intakeClaimedAt": "2026-07-23T02:30:18Z",
+      "intakeCompletedAt": "2026-07-23T02:35:00Z"
     }
   ],
   "excludedKeys": [
@@ -3084,6 +3085,14 @@
       "sourceType": "GC Email",
       "opportunityId": "reilly-dewa-2026",
       "jobName": "Replace Roof Surface \u2014 DEWA (Delaware Water Gap)"
+    },
+    {
+      "ts": "2026-07-23T02:35:00Z",
+      "type": "intake_completed",
+      "actor": "sam",
+      "sourceType": "GC Email",
+      "opportunityId": "k2cg-b301-acairport-2026",
+      "jobName": "Building 301 FAA Hangar Cafeteria and Dining Hall Renovation \u2014 AC Airport"
     }
   ]
 }
