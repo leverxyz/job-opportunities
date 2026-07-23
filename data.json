@@ -1,7 +1,21 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T02:35:02Z",
+  "updated": "2026-07-23T03:52:57Z",
   "jobs": [
+    {
+      "jobName": "EHT High School Boiler Plant Improvement",
+      "sourceType": "GC Email",
+      "sourceDetail": "Kaser Mechanical \u2014 Alpa Patel",
+      "projectDescription": "ITB for boiler plant improvement at Egg Harbor Township High School. Concord as sub.",
+      "location": "Egg Harbor Township, NJ",
+      "bidDueDate": "2026-09-25",
+      "rfiDueDate": "2026-09-14",
+      "keyDates": "RFI Due: 2026-09-14\nBid Due: 2026-09-25",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784778777"
+    },
     {
       "opportunityId": "reilly-blackwater-2026",
       "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD",
