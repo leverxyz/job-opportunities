@@ -1,7 +1,15 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-22T09:02:42Z",
+  "updated": "2026-07-23T01:56:37Z",
   "jobs": [
+    {
+      "jobName": "ZZZ GATE TEST \u2014 DELETE ME",
+      "sourceType": "GC Email",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784771797"
+    },
     {
       "opportunityId": "reilly-blackwater-2026",
       "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD",
