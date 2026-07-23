@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T01:56:38Z",
+  "updated": "2026-07-23T01:56:43Z",
   "jobs": [
     {
       "jobName": "ZZZ GATE TEST2 \u2014 DELETE ME",
@@ -9,14 +9,6 @@
       "magnitude": "Unknown",
       "sourceType": "GC Email",
       "opportunityId": "manual-1784771798"
-    },
-    {
-      "jobName": "ZZZ GATE TEST \u2014 DELETE ME",
-      "sourceType": "GC Email",
-      "setAside": "NONE",
-      "status": "new",
-      "magnitude": "Unknown",
-      "opportunityId": "manual-1784771797"
     },
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2541,6 +2533,7 @@
     "GC Email:manual-1784508442",
     "GC Email:manual-1784508838",
     "GC Email:manual-1784510574",
+    "GC Email:manual-1784771797",
     "GC Email:manual-TESTPROBE-1784342505",
     "HigherGov:3606de41687d51699a606796fc1579cf",
     "HigherGov:5d930ffcfb51564c90f3c5ae78b5352d",
