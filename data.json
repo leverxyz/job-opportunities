@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T01:56:44Z",
+  "updated": "2026-07-23T01:56:49Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -18,10 +18,11 @@
       "bidDueDate": "",
       "siteVisitDate": "",
       "rfiDueDate": "",
-      "status": "open",
+      "status": "pursuing",
       "naics": "",
       "link": "",
-      "distanceTier": ""
+      "distanceTier": "",
+      "pursuingStartedAt": "2026-07-23T01:56:49Z"
     },
     {
       "opportunityId": "c0aafb3c1f6d523db9e15953b9c7aaa7",
@@ -3030,6 +3031,19 @@
       "sourceDetail": "ACC Picatinny",
       "magnitude": "$150K \u2013 $450K",
       "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-23T01:56:49Z",
+      "type": "pursuing_started",
+      "actor": "claude-code-fix",
+      "sourceType": "GC Email",
+      "opportunityId": "reilly-blackwater-2026",
+      "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD",
+      "tier": "",
+      "tag": "APPLIED-SUB",
+      "sourceDetail": "Reilly Construction \u2014 Joe Steff",
+      "magnitude": "",
+      "distanceTier": ""
     }
   ]
 }
