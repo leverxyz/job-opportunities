@@ -1,6 +1,6 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-23T01:56:51Z",
+  "updated": "2026-07-23T01:56:52Z",
   "jobs": [
     {
       "opportunityId": "reilly-blackwater-2026",
@@ -2511,10 +2511,11 @@
       "bidDueDate": "2026-08-26",
       "siteVisitDate": "2026-08-04",
       "rfiDueDate": "2026-08-07",
-      "status": "open",
+      "status": "pursuing",
       "naics": "",
       "link": "",
-      "distanceTier": ""
+      "distanceTier": "",
+      "pursuingStartedAt": "2026-07-23T01:56:52Z"
     }
   ],
   "excludedKeys": [
@@ -3056,6 +3057,19 @@
       "tier": "",
       "tag": "APPLIED-SUB",
       "sourceDetail": "Reilly Construction \u2014 Joe Steff",
+      "magnitude": "",
+      "distanceTier": ""
+    },
+    {
+      "ts": "2026-07-23T01:56:52Z",
+      "type": "pursuing_started",
+      "actor": "claude-code-fix",
+      "sourceType": "GC Email",
+      "opportunityId": "k2cg-b301-acairport-2026",
+      "jobName": "Building 301 FAA Hangar Cafeteria and Dining Hall Renovation \u2014 AC Airport",
+      "tier": "",
+      "tag": "CONCORD-SUB",
+      "sourceDetail": "K2CG \u2014 Joe Steff",
       "magnitude": "",
       "distanceTier": ""
     }
