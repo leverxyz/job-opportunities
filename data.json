@@ -1,7 +1,20 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-24T20:27:55Z",
+  "updated": "2026-07-24T22:22:05Z",
   "jobs": [
+    {
+      "jobName": "Building 99 Roof Repair and Replace \u2014 Lakehurst",
+      "sourceType": "GC Email",
+      "sourceDetail": "K2CG \u2014 Joe Harper",
+      "projectDescription": "Roof repair and replacement at Building 99, Lakehurst. Applied Roofing as sub. Mandatory site visit Monday at 10:30am. SOW only posted so far.",
+      "location": "Lakehurst, NJ",
+      "siteVisitDate": "2026-07-27",
+      "keyDates": "Site Visit: 2026-07-27\nBid Due: TBD",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784931725"
+    },
     {
       "jobName": "B610 Roof Repair \u2014 Syracuse",
       "sourceType": "GC Email",
