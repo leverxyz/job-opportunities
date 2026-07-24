@@ -1,7 +1,21 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-24T09:02:22Z",
+  "updated": "2026-07-24T16:53:08Z",
   "jobs": [
+    {
+      "jobName": "Bldg 623 Drop Ceiling Grid System Replacement \u2014 Devens, MA",
+      "sourceType": "GC Email",
+      "sourceDetail": "K2CG \u2014 Joe Harper",
+      "projectDescription": "Drop ceiling grid system replacement at Building 623, Fort Devens, MA. Concord as sub. Coordinate site visit with Paul Lavoie. Questions due Jul 29 noon, proposal due Aug 3 9am.",
+      "location": "Devens, MA",
+      "bidDueDate": "2026-08-03",
+      "rfiDueDate": "2026-07-29",
+      "keyDates": "RFI Due: 2026-07-29\nBid Due: 2026-08-03",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784911988"
+    },
     {
       "opportunityId": "reilly-blackwater-2026",
       "jobName": "Roof Repair \u2014 Blackwater NWR, Cambridge, MD",
