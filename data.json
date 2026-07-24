@@ -1,7 +1,22 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-24T19:51:04Z",
+  "updated": "2026-07-24T20:27:55Z",
   "jobs": [
+    {
+      "jobName": "B610 Roof Repair \u2014 Syracuse",
+      "sourceType": "GC Email",
+      "sourceDetail": "K2CG \u2014 Joe Harper",
+      "projectDescription": "MATOC roof repair at Building 610, Syracuse. Applied Roofing as sub. Site visit Jul 30 at 10am. Send names by Jul 28 to Joe + Maj Richard Peirson. Proposal due Aug 4 COB.",
+      "location": "Syracuse, NY",
+      "bidDueDate": "2026-08-04",
+      "siteVisitDate": "2026-07-30",
+      "rfiDueDate": "2026-07-28",
+      "keyDates": "Site Visit: 2026-07-30\nRFI Due: 2026-07-28\nBid Due: 2026-08-04",
+      "setAside": "NONE",
+      "status": "new",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784924875"
+    },
     {
       "jobName": "Install Epoxy Flooring \u2014 Building 2301",
       "sourceType": "GC Email",
