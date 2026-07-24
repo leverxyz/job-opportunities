@@ -1,7 +1,17 @@
 {
   "board": "Project Opportunity Board",
-  "updated": "2026-07-24T22:22:05Z",
+  "updated": "2026-07-24T22:37:58Z",
   "jobs": [
+    {
+      "jobName": "ZZZ GATE TEST4 \u2014 DELETE ME",
+      "sourceType": "GC Email",
+      "projectDescription": "test",
+      "setAside": "NONE",
+      "status": "pursuing",
+      "magnitude": "Unknown",
+      "opportunityId": "manual-1784932678",
+      "pursuingStartedAt": "2026-07-24T22:37:58Z"
+    },
     {
       "jobName": "Building 99 Roof Repair and Replace \u2014 Lakehurst",
       "sourceType": "GC Email",
@@ -3492,6 +3502,19 @@
       "sourceDetail": "NAVSUP Fleet Logistics Center Norfolk",
       "magnitude": "TBD",
       "distanceTier": "D3 Stretch"
+    },
+    {
+      "ts": "2026-07-24T22:37:58Z",
+      "type": "pursuing_started",
+      "actor": "claude-code-test",
+      "sourceType": "GC Email",
+      "opportunityId": "manual-1784932678",
+      "jobName": "ZZZ GATE TEST4 \u2014 DELETE ME",
+      "tier": null,
+      "tag": null,
+      "sourceDetail": "",
+      "magnitude": "Unknown",
+      "distanceTier": ""
     }
   ]
 }
